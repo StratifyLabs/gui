@@ -23,5 +23,5 @@ add_custom_target(pull
 
 add_subdirectory(SDK SDK EXCLUDE_FROM_ALL)
 add_subdirectory(gui)
-add_subdirectory(tests)
+#add_subdirectory(tests)
 

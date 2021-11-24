@@ -45,6 +45,11 @@ set(LWIP_STRATIFYOS_PATH
 sdk_add_subdirectory(API v1.2)
 include(${BASE_DIRECTORY}/API/libraries/API.cmake)
 
+set(LVGL_API_IS_QT_SIMULATOR OFF CACHE INTERNAL "Enable QT Simulator")
+set(LVGL_QT_PATH "/Users/tgil/Qt/6.1.0/clang_64/lib/cmake" CACHE INTERNAL "Enable QT Simulator")
+set(LVGL_NO_STRATIFY_OS ON CACHE INTERNAL "No dependecies on Stratify OS")
+set(LVGL_CONFIG_PATH ${CMAKE_CURRENT_SOURCE_DIR}/config CACHE INTERNAL "LVGL config path")
+
 set(LWIP_CONFIG_PATH ${CMAKE_CURRENT_SOURCE_DIR}/config CACHE INTERNAL "LWIP config path")
 set(MBEDTLS_CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/config/mbedtls/config.h CACHE INTERNAL "MBEDTLS config file")
 
