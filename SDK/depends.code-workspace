@@ -1,0 +1,40 @@
+{
+	"folders": [
+		{
+			"path": "dependencies/API"
+		},
+		{
+			"path": "dependencies/CMakeSDK"
+		},
+		{
+			"path": "dependencies/CryptoAPI"
+		},
+		{
+			"path": "dependencies/InetAPI"
+		},
+		{
+			"path": "dependencies/JsonAPI"
+		},
+		{
+			"path": "dependencies/CloudAPI"
+		},
+		{
+			"path": "dependencies/SosAPI"
+		},
+		{
+			"path": "dependencies/StratifyOS"
+		},
+		{
+			"path": "dependencies/HalAPI"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"SDK/dependencies": true
+		},
+		"git.detectSubmodules": false,
+		"git.scanRepositories": [
+			"SDK/dependencies/API"
+		]
+	}
+}

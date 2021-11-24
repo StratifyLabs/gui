@@ -1,0 +1,18 @@
+{
+   "description": "cli is a sample command line program.",
+   "github": "https://github.com/StratifyLabs/cli",
+   "name": "cli",
+   "permissions": "public",
+   "publisher": "Stratify Labs, Inc",
+   "type": "app",
+   "uid": "9cQyOTk3fZXOuMtPyf5j9X4H4b83",
+   "version": "1.11",
+   "ramSize": 8192,
+   "timestamp": 1622921927,
+   "documentId": "",
+   "hardwareId": "",
+   "tagList": [
+      "utility"
+   ],
+   "team": ""
+}
