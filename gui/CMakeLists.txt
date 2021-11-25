@@ -1,6 +1,8 @@
 
 set(DEPENDENCIES
+  LvglAPI
   WindowAPI
+  JsonAPI
   TestAPI
   SysAPI
   FsAPI
@@ -10,11 +12,13 @@ set(DEPENDENCIES
 set(LOCAL_NAME ${PROJECT_NAME})
 
 sos_sdk_add_subdirectory(PRIVATE_SOURCELIST ${CMAKE_CURRENT_SOURCE_DIR}/src)
+sos_sdk_add_subdirectory(FONT_SOURCELIST ${CMAKE_CURRENT_SOURCE_DIR}/src/fonts)
 sos_sdk_app_target(RELEASE ${LOCAL_NAME} "" release ${SOS_ARCH})
 add_executable(${RELEASE_TARGET})
 target_sources(${RELEASE_TARGET}
   PRIVATE
   ${PRIVATE_SOURCELIST}
+  ${FONT_SOURCELIST}
   )
 
 target_compile_definitions(${RELEASE_TARGET}

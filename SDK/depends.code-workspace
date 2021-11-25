@@ -18,15 +18,12 @@
 		{
 			"path": "dependencies/CloudAPI"
 		},
-		{
-			"path": "dependencies/SosAPI"
-		},
-		{
-			"path": "dependencies/StratifyOS"
-		},
-		{
-			"path": "dependencies/HalAPI"
-		}
+    {
+        "path": "dependencies/WindowAPI"
+    },
+    {
+        "path": "dependencies/LvglAPI"
+    }
 	],
 	"settings": {
 		"files.exclude": {
