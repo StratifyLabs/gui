@@ -14,6 +14,7 @@ int main(int argc, char *argv[]) {
 
   sys::Cli cli(argc, argv);
 
+
   lvgl::Runtime runtime(
     "gui",
     window::Point(),
