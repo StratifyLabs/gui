@@ -3,3 +3,4 @@ cmake_link/
 cmake_arm/
 SDK/dependencies/
 SDK/StratifyLabs-SDK/
+gui/src/assetfs/data.assetfs

@@ -1,3 +1,4 @@
+#include <lvgl_api.h>
 
 #include "Application.hpp"
 
@@ -6,6 +7,8 @@
 #include "About.hpp"
 #include "Files.hpp"
 #include "Github.hpp"
+
+extern "C" const char data_assetfs[];
 
 void Application::run(sys::Cli &cli, const window::Size &size) {
 
@@ -16,8 +19,14 @@ void Application::run(sys::Cli &cli, const window::Size &size) {
     window::Window::Flags::shown | window::Window::Flags::highdpi);
 
   fonts_initialize();
-  model().runtime = &runtime;
 
+  // mount the assets FS
+  lv_fs_drv_t drive;
+  lvgl_api_mount_asset_filesystem(data_assetfs, &drive, 'd');
+  lvgl_api_initialize_png_decoder();
+  // Icon is at d:icon.png
+
+  model().runtime = &runtime;
 
   Printer::Object root_object(printer(), "gui");
   printer().key("starting", cli.get_name());
@@ -43,7 +52,7 @@ void Application::run(sys::Cli &cli, const window::Size &size) {
 
   static const auto button_style = Style()
                                      .fill_width()
-                                     .set_height(25_percent)
+                                     .set_height(15_percent)
                                      .set_border_width(20)
                                      .set_text_font(model().button_font);
 
@@ -73,11 +82,7 @@ void Application::run(sys::Cli &cli, const window::Size &size) {
            .clear_flag(Flags::scrollable)
            .justify_space_between()
            .set_row_padding(50)
-           .add(Label()
-                  .fill_width()
-                  .set_text_font(Font::find(72))
-                  .set_text(var::KeyString(Icons::check).append(" gui"))
-                  .set_text_alignment(TextAlignment::left))
+           .add(Image().set_source("d:icon256x256.png"))
            .add(Button()
                   .add_event_callback(
                     EventCode::clicked,
@@ -122,5 +127,3 @@ void Application::run(sys::Cli &cli, const window::Size &size) {
   // use runtime.set_stopped() to exit
   runtime.loop();
 }
-
-

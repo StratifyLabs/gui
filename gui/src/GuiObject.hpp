@@ -55,7 +55,7 @@ protected:
       .animation = Screen::LoadAnimation::move_right,
       .period = animation_period_milliseconds * 1_milliseconds};
 
-    Font button_font = Font::find(64).get_font();
+    Font button_font = Font::find(48).get_font();
 
     Style container_style = Style()
                               .set_vertical_padding(50)
