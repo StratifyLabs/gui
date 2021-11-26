@@ -1,5 +1,6 @@
 
 set(SOURCES
+	Icons.hpp
 	fonts.h
 	fonts.c
 	montserrat_i_12.c

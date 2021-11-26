@@ -5,6 +5,20 @@
 #ifndef GUI_APPLICATION_HPP
 #define GUI_APPLICATION_HPP
 
-class Application {};
+#include <sys/Cli.hpp>
+#include <lvgl.hpp>
+#include <window/Types.hpp>
+
+#include "GuiObject.hpp"
+
+class Application : public GuiObject {
+public:
+  static void run(sys::Cli & cli, const window::Size & size);
+
+
+
+};
+
+
 
 #endif // GUI_APPLICATION_HPP

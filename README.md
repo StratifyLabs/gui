@@ -6,16 +6,17 @@ The **gui** project is graphical user interface template project. It is has the 
 - C and C++: the application code is C++ with various supporting libraries written in C and C++
 - No changes to any system files (all build files and dependencies are contained)
 - Cross-platform with support for macOS, windows, ubuntu and [StratifyOS](https://github.com/StratifyLabs/StratifyOS).
+- Permissive licenses for all libraries (MIT, BSD, zlib, apache)
 
 ## API Features
 
 The **gui** project contains built-in support for:
 
 - [InetAPI](https://github.com/StratifyLabs/InetAPI): `HTTP`, `HTTPS`, `TLS` based on `mbedtls`, and BSD sockets
-- [JsonAPI](https://github.com/StratifyLabs/JsonAPI): based on [jansson library]()
+- [JsonAPI](https://github.com/StratifyLabs/JsonAPI): based on [jansson library](https://github.com/akheron/jansson)
 - [CryptoAPI](https://github.com/StratifyLabs/CryptoAPI): AES, ECDSA, ECDH, and SHA256
-- [Graphics API](https://github.com/StratifyLabs/LvglAPI): based on [lvgl]()
-- [WindowAPI](https://github.com/StratifyLabs/WindowAPI): based on [libsdl]()
+- [Graphics API](https://github.com/StratifyLabs/LvglAPI): based on [lvgl](https://lvgl.io)
+- [WindowAPI](https://github.com/StratifyLabs/WindowAPI): based on [libsdl](https://www.libsdl.org/)
 - [Filesystems, Threads, Data Management, Timers, Testing, Printing](https://github.com/StratifyLabs/API): Stratify Labs API
   framework
 
