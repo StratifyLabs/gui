@@ -39,6 +39,9 @@ cd gui
 cmake -P bootstrap.cmake
 cd cmake_link
 cmake .. -GNinja
+ninja sdl
+rm -Rf *
+cmake .. -GNinja
 ninja
 ```
 
