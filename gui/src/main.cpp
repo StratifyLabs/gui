@@ -1,6 +1,11 @@
 // COPYING: Copyright 2017-2021 Tyler Gilbert and Stratify Labs. All rights
 // reserved
 
+
+//This must be included to handle
+//SDL's main changing scheme
+#include <SDL_main.h>
+
 #include <sys/Cli.hpp>
 
 #include "Application.hpp"
