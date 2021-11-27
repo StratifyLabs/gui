@@ -18,41 +18,39 @@ void Application::run(sys::Cli &cli, const window::Size &size) {
     size,
     window::Window::Flags::shown | window::Window::Flags::highdpi);
 
+
+  //make the fonts available to `Font::find()`
   fonts_initialize();
 
-  // mount the assets FS
-  lv_fs_drv_t drive;
+  // mount the assets FS which include the PNG icon
+  // this file is distributed with the binary rather than as a separate file
+  static lv_fs_drv_t drive;
   lvgl_api_mount_asset_filesystem(data_assetfs, &drive, 'd');
-  lvgl_api_initialize_png_decoder();
-  // Icon is at d:icon.png
+  // Icon is at d:icon256x256.png
 
+  //load the PNG decoder
+  lvgl_api_initialize_png_decoder();
+
+  //model cannot be touched until all lvgl initialization is complete
+  //it is initialized on first access
   model().runtime = &runtime;
 
   Printer::Object root_object(printer(), "gui");
   printer().key("starting", cli.get_name());
-
   // This is where we create our top level navigation system
   // This can be based on windows, tiles, screens, tabs or whatever you deem to
   // be appropriate
 
-  static constexpr auto about_screen_name = "About";
-  static constexpr auto github_screen_name = "Github";
-  static constexpr auto files_screen_name = "Files";
-
-  Screen about_screen(about_screen_name);
-  Screen github_screen(github_screen_name);
-  Screen files_screen(files_screen_name);
-
-  About::setup(Container(about_screen));
-  Files::setup(Container(files_screen));
-  Github::setup(Container(github_screen));
+  About::setup(Container(model().about_screen));
+  Files::setup(Container(model().files_screen));
+  Github::setup(Container(model().github_screen));
 
   // The current screen is the "default" screen
   // it is automatically created by lvgl
 
   static const auto button_style = Style()
                                      .fill_width()
-                                     .set_height(15_percent)
+                                     .set_height(20_percent)
                                      .set_border_width(20)
                                      .set_text_font(model().button_font);
 

@@ -2,6 +2,7 @@
 set(DEPENDENCIES
   LvglAPI
   WindowAPI
+  InetAPI
   JsonAPI
   TestAPI
   SysAPI

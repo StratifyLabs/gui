@@ -15,7 +15,7 @@ using namespace printer;
 
 #include "fonts/Icons.hpp"
 
-class GuiObject {
+class GuiObject : public api::ExecutionContext {
 public:
   static Printer &printer() { return model().printer; }
 
@@ -24,6 +24,10 @@ protected:
     thread::Thread thread;
     thread::Mutex mutex;
   };
+
+  static constexpr auto about_screen_name = "About";
+  static constexpr auto github_screen_name = "Github";
+  static constexpr auto files_screen_name = "Files";
 
   static constexpr u32 animation_period_milliseconds = 200;
   /*
@@ -38,6 +42,11 @@ protected:
    */
   class Model {
     API_SINGLETON(Model);
+
+
+    Screen about_screen = Screen(about_screen_name);
+    Screen github_screen = Screen(github_screen_name);
+    Screen files_screen = Screen(files_screen_name);
 
     // this can be used to create a thread to process
     // background tasks
