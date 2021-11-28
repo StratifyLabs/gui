@@ -42,9 +42,14 @@ private:
   var::GeneralString get_property_value(lvgl::Property property, const char * value);
   var::GeneralString  get_variable(const char * key);
   var::GeneralString get_json_value(const json::JsonValue value);
+  var::GeneralString get_lv_state_part(var::StringView key_name);
 
   const char *get_lv_path_animation_path(Animation::Path value);
-  const char *get_lv_class(var::StringView class_name);
+
+
+  void write_output(const var::GeneralString & value){
+    m_output.write(value.string_view());
+  }
 };
 
 #endif // GUI_THEMEGENERATOR_HPP

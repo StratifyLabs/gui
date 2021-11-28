@@ -89,97 +89,53 @@ void ThemeGenerator::generate_apply_callback() {
                   | "_apply_callback(lv_theme_t * theme, lv_obj_t * object){\n")
                    .string_view());
 
-  auto add_styles = [&](const char *class_name, JsonObject object) {
-    const auto key_list = object.get_key_list();
+  auto add_styles = [&](StringView class_name, JsonObject object) {
+    write_output(GeneralString().format(
+      "  if(%s){\n",
+      object.at("condition").to_cstring()));
 
-    m_output.write(
-      GeneralString()
-        .format("  if(lv_obj_check_type(object, &%s)){\n", class_name)
-        .string_view());
-
+    const auto styles_object = object.at("styles").to_object();
+    const auto key_list = styles_object.get_key_list();
     for (const auto &key : key_list) {
       //"default"
       GeneralString line;
-      GeneralString state_part;
-      const auto modifier_list = key.split("|");
-      for (const auto &item : modifier_list) {
-        if (item.find("default") != StringView::npos) {
-          state_part |= "LV_STATE_DEFAULT|";
-        } else if (item.find("checked") != StringView::npos) {
-          state_part |= "LV_STATE_CHECKED|";
-        } else if (item.find("focused") != StringView::npos) {
-          state_part |= "LV_STATE_FOCUSED|";
-        } else if (item.find("focus_key") != StringView::npos) {
-          state_part |= "LV_STATE_FOCUS_KEY|";
-        } else if (item.find("edited") != StringView::npos) {
-          state_part |= "LV_STATE_EDITED|";
-        } else if (item.find("hovered") != StringView::npos) {
-          state_part |= "LV_STATE_HOVERED|";
-        } else if (item.find("pressed") != StringView::npos) {
-          state_part |= "LV_STATE_PRESSED|";
-        } else if (item.find("scrolled") != StringView::npos) {
-          state_part |= "LV_STATE_SCROLLED|";
-        } else if (item.find("disabled") != StringView::npos) {
-          state_part |= "LV_STATE_DISABLED|";
-        } else if (item.find("user1") != StringView::npos) {
-          state_part |= "LV_STATE_USER_1|";
-        } else if (item.find("user2") != StringView::npos) {
-          state_part |= "LV_STATE_USER_2|";
-        } else if (item.find("user3") != StringView::npos) {
-          state_part |= "LV_STATE_USER_3|";
-        } else if (item.find("user4") != StringView::npos) {
-          state_part |= "LV_STATE_USER_4|";
-        } else if (item.find("scrollbar") != StringView::npos) {
-          state_part |= "LV_PART_SCROLLBAR|";
-        } else if (item.find("indicator") != StringView::npos) {
-          state_part |= "LV_PART_INDICATOR|";
-        } else if (item.find("knob") != StringView::npos) {
-          state_part |= "LV_PART_KNOB|";
-        } else if (item.find("items") != StringView::npos) {
-          state_part |= "LV_PART_ITEMS|";
-        } else if (item.find("ticks") != StringView::npos) {
-          state_part |= "LV_PART_TICKS|";
-        } else if (item.find("cursor") != StringView::npos) {
-          state_part |= "LV_PART_CURSOR|";
-        }
-      }
+      const auto state_part = get_lv_state_part(key);
 
-      state_part.pop_back();
-
-      const auto json_value = object.at(key);
+      const auto json_value = styles_object.at(key);
       if (json_value.is_array()) {
         for (const auto &value : json_value.to_array()) {
           line |= var::GeneralString().format(
-            "    lv_obj_add_style(obj, &%s, %s);\n",
+            "    lv_obj_add_style(object, (lv_style_t*)&%s_style, %s);\n",
             value.to_cstring() + 1,
             state_part.cstring());
         }
       } else {
         line = var::GeneralString().format(
-          "    lv_obj_add_style(obj, &%s_style, %s);\n",
+          "    lv_obj_add_style(object, (lv_style_t*)&%s_style, %s);\n",
           json_value.to_cstring() + 1,
           state_part.cstring());
       }
 
-      m_output.write(line.string_view());
+      write_output(line);
     }
 
-    m_output.write("  }\n\n");
+    write_output("    return;\n");
+    write_output("  }\n\n");
   };
 
   for (const auto &key : key_list) {
-    add_styles(get_lv_class(key), m_classes_object.at(key).to_object());
+    add_styles(key, m_classes_object.at(key).to_object());
   }
 
-  m_output.write("}\n");
+  m_output.write("}\n\n");
 }
 
 void ThemeGenerator::generate_theme() {
   API_RETURN_IF_ERROR();
   const auto name = m_name;
-  m_output.write(("lv_theme_t " | name | "_theme = {\n").string_view())
-    .write(("  .apply_cb = " | name | "_apply_callback,\n").string_view())
-    .write("  .parent = NULL,\n")
+  write_output("lv_theme_t " | name | "_theme = {\n");
+  write_output("  .apply_cb = " | name | "_apply_callback,\n");
+  m_output.write("  .parent = NULL,\n")
     .write("  .user_data = NULL,\n")
     .write("  .disp = NULL,\n")
     .write("  .color_primary = NULL,\n")
@@ -217,7 +173,7 @@ void ThemeGenerator::generate_descriptors() {
           property_list_string
             |= var::NumberString(
                  u32(Style::property_from_cstring(property.to_cstring())),
-                 "  0x%04X,")
+                 " (lv_style_prop_t)0x%04X,")
                | "  // " | property.to_string_view() | "\n";
         }
         m_output.write(property_list_string.string_view()).write("};\n\n");
@@ -233,7 +189,7 @@ void ThemeGenerator::generate_descriptors() {
       if (type == "transitionPropertyList") {
         // this is already handled
       } else if (type == "transitionDescriptor") {
-        const auto variable_name = var::GeneralString(name) | "_descriptor";
+        const auto variable_name = var::GeneralString(name);
         const auto delay = get_json_value(json_object.at("delay"));
         const auto period = get_json_value(json_object.at("period"));
         const auto path_type = get_json_value(json_object.at("path"));
@@ -241,7 +197,8 @@ void ThemeGenerator::generate_descriptors() {
           = get_json_value(json_object.at("property_list"));
 
         m_output
-          .write(("const lv_style_transition_dsc_t " | variable_name | " = {\n")
+          .write(("static const lv_style_transition_dsc_t " | variable_name
+                  | " = {\n")
                    .string_view())
           .write(("  .props = " | property_list | ",\n").string_view())
           .write("  .user_data = NULL,\n")
@@ -256,7 +213,7 @@ void ThemeGenerator::generate_descriptors() {
       } else if (type == "colorFilterDescriptor") {
         const auto code = get_json_value(json_object.at("code"));
         m_output
-          .write(("lv_color_t " | name
+          .write(("static lv_color_t " | name
                   | "(const lv_color_filter_dsc_t * filter_descriptor, "
                     "lv_color_t color, lv_opa_t opacity){\n")
                    .string_view())
@@ -272,7 +229,6 @@ void ThemeGenerator::generate_styles() {
   auto get_style_const_list_entry = [&](const char *key, const char *value) {
     const char *property_name = get_lv_style_from_name(key);
     const StringView property = property_name;
-    printf("style const %s -> %s\n", key, value);
     if (property == "unknown") {
 
       // check for special cases
@@ -280,10 +236,10 @@ void ThemeGenerator::generate_styles() {
         const auto update_value
           = get_property_value(Style::property_from_cstring(key), value);
         return var::GeneralString().format(
-          "  { .prop = LV_STYLE_PADDING_TOP, .value = { %s } },\n"
-          "  { .prop = LV_STYLE_PADDING_BOTTOM, .value = { %s } },\n"
-          "  { .prop = LV_STYLE_PADDING_LEFT, .value = { %s } },\n"
-          "  { .prop = LV_STYLE_PADDING_RIGHT, .value = { %s } }",
+          "  { .prop = LV_STYLE_PAD_TOP, .value = { %s } },\n"
+          "  { .prop = LV_STYLE_PAD_BOTTOM, .value = { %s } },\n"
+          "  { .prop = LV_STYLE_PAD_LEFT, .value = { %s } },\n"
+          "  { .prop = LV_STYLE_PAD_RIGHT, .value = { %s } }",
           update_value.cstring(),
           update_value.cstring(),
           update_value.cstring(),
@@ -294,8 +250,8 @@ void ThemeGenerator::generate_styles() {
         const auto update_value
           = get_property_value(Style::property_from_cstring(key), value);
         return var::GeneralString().format(
-          "  { .prop = LV_STYLE_PADDING_LEFT, .value = { %s } },\n"
-          "  { .prop = LV_STYLE_PADDING_RIGHT, .value = { %s } }",
+          "  { .prop = LV_STYLE_PAD_LEFT, .value = { %s } },\n"
+          "  { .prop = LV_STYLE_PAD_RIGHT, .value = { %s } }",
           update_value.cstring(),
           update_value.cstring());
       }
@@ -304,8 +260,8 @@ void ThemeGenerator::generate_styles() {
         const auto update_value
           = get_property_value(Style::property_from_cstring(key), value);
         return var::GeneralString().format(
-          "  { .prop = LV_STYLE_PADDING_TOP, .value = { %s } },\n"
-          "  { .prop = LV_STYLE_PADDING_BOTTOM, .value = { %s } }",
+          "  { .prop = LV_STYLE_PAD_TOP, .value = { %s } },\n"
+          "  { .prop = LV_STYLE_PAD_BOTTOM, .value = { %s } }",
           update_value.cstring(),
           update_value.cstring());
       }
@@ -345,11 +301,12 @@ void ThemeGenerator::generate_styles() {
     const auto entry_key_list = entry_object.get_key_list();
     printer().object("keys", entry_key_list);
     const auto style_name = KeyString(entry).pop_front();
-    m_output.write(var::GeneralString()
-                     .format(
-                       "const lv_style_const_prop_t %s_const_list[] = {\n",
-                       style_name.cstring())
-                     .string_view());
+    m_output.write(
+      var::GeneralString()
+        .format(
+          "static const lv_style_const_prop_t %s_const_list[] = {\n",
+          style_name.cstring())
+        .string_view());
 
     for (const auto &key_entry : entry_key_list) {
 
@@ -366,7 +323,7 @@ void ThemeGenerator::generate_styles() {
     m_output.write("};\n");
     m_output.write(
       var::GeneralString()
-        .format("const lv_style_t %s_style = {\n", style_name.cstring())
+        .format("static const lv_style_t %s_style = {\n", style_name.cstring())
         .string_view());
     m_output.write(var::GeneralString()
                      .format(
@@ -399,6 +356,14 @@ var::GeneralString ThemeGenerator::get_variable(const char *key) {
 
       if (result.is_real()) {
         return GeneralString(NumberString(result.to_real()).string_view());
+      }
+
+      if (result.is_true()) {
+        return GeneralString("1");
+      }
+
+      if (result.is_false()) {
+        return GeneralString("0");
       }
 
       if (result.is_object()) {
@@ -434,6 +399,14 @@ ThemeGenerator::get_json_value(const json::JsonValue json_value) {
     return GeneralString(NumberString(json_value.to_real()).string_view());
   }
 
+  if (json_value.is_true()) {
+    return "1";
+  }
+
+  if (json_value.is_false()) {
+    return "0";
+  }
+
   return {};
 }
 
@@ -446,11 +419,11 @@ ThemeGenerator::get_property_value(Property property, const char *value) {
     if (const auto number_value = Color::palette_from_cstring(value);
         number_value != Palette::invalid) {
       return var::GeneralString().format(
-        ".color = 0x%08X",
+        ".color = { .full = 0x%08X } ",
         Color::get_palette(number_value).get_color());
     }
 
-    return var::GeneralString().format(".color = %s", value);
+    return var::GeneralString().format(".color = { .full= %s }", value);
   };
 
   auto get_number = [&](const char *value) {
@@ -536,7 +509,7 @@ ThemeGenerator::get_property_value(Property property, const char *value) {
   };
 
   auto get_pointer = [&](const char *value) {
-    return var::GeneralString().format(".ptr = %s", value);
+    return var::GeneralString().format(".ptr = (void*)%s", value);
   };
 
   switch (property) {
@@ -950,103 +923,53 @@ const char *ThemeGenerator::get_lv_style_from_name(const char *property_name) {
   return "unknown";
 }
 
-const char *ThemeGenerator::get_lv_class(const StringView class_name) {
-  if (class_name == "&Arc") {
-    return "lv_arc_class";
-  }
-  if (class_name == "&Bar") {
-    return "lv_bar_class";
-  }
-  if (class_name == "&Button") {
-    return "lv_btn_class";
-  }
-  if (class_name == "&ButtonMatrix") {
-    return "lv_btnmatrix_class";
-  }
-  if (class_name == "&Calendar") {
-    return "lv_calendar_class";
-  }
-  if (class_name == "&CalendarHeaderArrow") {
-    return "lv_calendar_header_arrow_class";
-  }
-  if (class_name == "&CalendarHeaderDropDown") {
-    return "lv_calendar_header_dropdown_class";
-  }
-  if (class_name == "&Chart") {
-    return "lv_chart_class";
-  }
-  if (class_name == "&Checkbox") {
-    return "lv_checkbox_class";
-  }
-  if (class_name == "&ColorWheel") {
-    return "lv_colorwheel_class";
-  }
-  if (class_name == "&DropDown") {
-    return "lv_dropdown_class";
-  }
-  if (class_name == "&DropDownList") {
-    return "lv_dropdownlist_class";
-  }
-  if (class_name == "&Keyboard") {
-    return "lv_keyboard_class";
-  }
-  if (class_name == "&Led") {
-    return "lv_colorwheel_class";
-  }
-  if (class_name == "&Line") {
-    return "lv_line_class";
-  }
-  if (class_name == "&List") {
-    return "lv_list_class";
-  }
-  if (class_name == "&ListButton") {
-    return "lv_list_btn_class";
-  }
-  if (class_name == "&ListText") {
-    return "lv_list_text_class";
-  }
-  if (class_name == "&MessageBox") {
-    return "lv_msgbox_class";
-  }
-  if (class_name == "&Meter") {
-    return "lv_meter_class";
-  }
-  if (class_name == "&Object") {
-    return "lv_obj_class";
-  }
-  if (class_name == "&Roller") {
-    return "lv_roller_class";
-  }
-  if (class_name == "&Slider") {
-    return "lv_slider_class";
-  }
-  if (class_name == "&Spinbox") {
-    return "lv_spinbox_class";
-  }
-  if (class_name == "&Spinner") {
-    return "lv_spinner_class";
-  }
-  if (class_name == "&Switch") {
-    return "lv_switch_class";
-  }
-  if (class_name == "&TabView") {
-    return "lv_tabview_class";
-  }
-  if (class_name == "&Table") {
-    return "lv_table_class";
-  }
-  if (class_name == "&TextArea") {
-    return "lv_textarea_class";
-  }
-  if (class_name == "&TileView") {
-    return "lv_tileview_class";
-  }
-  if (class_name == "&TileViewTile") {
-    return "lv_tileview_tile_class";
-  }
-  if (class_name == "&Window") {
-    return "lv_win_class";
+var::GeneralString ThemeGenerator::get_lv_state_part(var::StringView key_name) {
+  GeneralString result;
+  const auto modifier_list = key_name.split("|");
+  for (const auto &item : modifier_list) {
+    if (item.find("default") != StringView::npos) {
+      result |= "LV_STATE_DEFAULT|";
+    } else if (item.find("checked") != StringView::npos) {
+      result |= "LV_STATE_CHECKED|";
+    } else if (item.find("focused") != StringView::npos) {
+      result |= "LV_STATE_FOCUSED|";
+    } else if (item.find("focus_key") != StringView::npos) {
+      result |= "LV_STATE_FOCUS_KEY|";
+    } else if (item.find("edited") != StringView::npos) {
+      result |= "LV_STATE_EDITED|";
+    } else if (item.find("hovered") != StringView::npos) {
+      result |= "LV_STATE_HOVERED|";
+    } else if (item.find("pressed") != StringView::npos) {
+      result |= "LV_STATE_PRESSED|";
+    } else if (item.find("scrolled") != StringView::npos) {
+      result |= "LV_STATE_SCROLLED|";
+    } else if (item.find("disabled") != StringView::npos) {
+      result |= "LV_STATE_DISABLED|";
+    } else if (item.find("user1") != StringView::npos) {
+      result |= "LV_STATE_USER_1|";
+    } else if (item.find("user2") != StringView::npos) {
+      result |= "LV_STATE_USER_2|";
+    } else if (item.find("user3") != StringView::npos) {
+      result |= "LV_STATE_USER_3|";
+    } else if (item.find("user4") != StringView::npos) {
+      result |= "LV_STATE_USER_4|";
+    } else if (item.find("scrollbar") != StringView::npos) {
+      result |= "LV_PART_SCROLLBAR|";
+    } else if (item.find("indicator") != StringView::npos) {
+      result |= "LV_PART_INDICATOR|";
+    } else if (item.find("selected") != StringView::npos) {
+      result |= "LV_PART_SELECTED|";
+    } else if (item.find("knob") != StringView::npos) {
+      result |= "LV_PART_KNOB|";
+    } else if (item.find("items") != StringView::npos) {
+      result |= "LV_PART_ITEMS|";
+    } else if (item.find("ticks") != StringView::npos) {
+      result |= "LV_PART_TICKS|";
+    } else if (item.find("cursor") != StringView::npos) {
+      result |= "LV_PART_CURSOR|";
+    }
   }
 
-  return "invalid";
+  result.pop_back();
+  return result;
 }
