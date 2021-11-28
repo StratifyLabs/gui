@@ -1,0 +1,502 @@
+{
+  "type": "theme",
+  "name": "dark",
+  "header": "dark_theme.h",
+  "$variables": {
+    "$transitionPeriodMilliseconds": 100,
+    "$primaryColor": "0xffffff",
+    "$secondaryColor": "0xffffff",
+    "$infoColor": "0xffffff",
+    "$warningColor": "0xffffff",
+    "$dangerColor": "0xffffff",
+    "$successColor": "0xffffff",
+    "$colorScreen": "0xffffff",
+    "$colorText": "0xffffff",
+    "$radiusCircle": "0x7fff",
+    "$scrollbarSize": 7,
+    "$scrollbarPadding": 7,
+    "$opacity40": 102,
+    "$opacity50": 127,
+    "$opacityCover": 255,
+    "$borderWidth": 10,
+    "$paddingNormal": 8,
+    "$paddingSmall": 4,
+    "$paddingDefault": 4,
+    "$outlineWidth": 4,
+    "$transitionNormal": {
+      "name": "transition_normal",
+      "type": "transitionDescriptor",
+      "properties": [
+        "background_opacity",
+        "background_color"
+      ],
+      "path": "linear",
+      "period": "$transitionPeriodMilliseconds",
+      "delay": 0
+    },
+    "$transitionDelayed": {
+      "name": "transition_delayed",
+      "type": "transitionDescriptor",
+      "properties": [
+        "background_opacity",
+        "background_color"
+      ],
+      "path": "linear",
+      "period": "$transitionPeriodMilliseconds",
+      "delay": 70
+    },
+    "$darkColorFilter": {
+      "name": "dark_filter_callback",
+      "type": "colorFilterDescriptor",
+      "code": "LV_UNUSED(f);\n return lv_color_darken(c, opa);"
+    },
+    "$greyColorFilter": {
+      "name": "grey_filter_callback",
+      "type": "colorFilterDescriptor",
+      "code": "LV_UNUSED(f);\n return lv_color_mix(lv_palette_lighten(LV_PALETTE_GREY, 2), color, opa);"
+    }
+  },
+  "#styles": {
+    "#screen": {
+      "background_opacity": "$opacityCover",
+      "background_color": "$colorScreen",
+      "text_color": "$colorText",
+      "row_padding": "$paddingSmall",
+      "column_padding": "$paddingSmall"
+    },
+    "#scrollbar": {
+      "background_color": "grey",
+      "radius": "$radiusCircle",
+      "right_padding": "$scrollbarPadding",
+      "top_padding": "$scrollbarPadding",
+      "width": "$scrollbarSize",
+      "height": "$scrollbarSize",
+      "background_opacity": "$opacity40",
+      "transition": "$transitionNormal"
+    },
+    "#scrollbar_scrolled": {
+      "background_opacity": "$opacityCover"
+    },
+    "#card": {
+      "radius": 12,
+      "background_opacity": "$opacityCover",
+      "background_color": "blue_grey",
+      "border_color": "blue_grey",
+      "border_width": "$borderWidth",
+      "border_post": true,
+      "padding": "$paddingDefault",
+      "row_padding": "$paddingSmall",
+      "column_padding": "$paddingSmall",
+      "line_color": "blue_grey",
+      "line_width": 1
+    },
+    "#button": {
+      "radius": 12,
+      "background_opacity": "cover",
+      "background_color": "blue_grey",
+      "text_color": "white",
+      "horizontal_padding": 5,
+      "vertical_padding": 10,
+      "column_padding": 3,
+      "row_padding": 3
+    },
+    "#background_color_primary": {},
+    "#background_color_primary_muted": {},
+    "#background_color_secondary": {},
+    "#background_color_secondary_muted": {},
+    "#background_color_grey": {},
+    "#background_color_white": {},
+    "#pressed": {
+      "color_filter_descriptor": "$darkColorFilter",
+      "color_filter_opacity": 35
+    },
+    "#disabled": {
+      "color_filter_descriptor": "$greyColorFilter",
+      "color_filter_opacity": 35
+    },
+    "#padding_zero": {},
+    "#padding_tiny": {},
+    "#padding_small": {},
+    "#padding_normal": {},
+    "#padding_gap": {},
+    "#line_space_large": {},
+    "#text_align_center": {},
+    "#outline_primary": {
+      "outline_color": "$primaryColor",
+      "outline_width": "$outlineWidth",
+      "outline_padding": "$outlineWidth",
+      "outline_opacity": "$opacity50"
+    },
+    "#outline_secondary": {
+      "outline_color": "$secondaryColor",
+      "outline_width": "$outlineWidth",
+      "outline_padding": "$outlineWidth",
+      "outline_opacity": "$opacity50"
+    },
+    "#circle": {},
+    "#radius_none": {},
+    "#clip_corner": {
+      "clip_corner": true
+    },
+    "#grow": {},
+    "#transition_delayed": {
+      "transition": "$transitionDelayed"
+    },
+    "#transition_normal": {
+      "transition": "$transitionNormal"
+    },
+    "#animation": {},
+    "#knob": {},
+    "#indicator": {},
+    "#arc_indicator": {},
+    "#arc_indicator_primary": {},
+    "#chart_series": {},
+    "#chart_inidicator": {},
+    "#chart_ticks": {},
+    "#chart_background": {},
+    "#dropdown_list": {},
+    "#checkbox_marker": {},
+    "#checkbox_marker_checked": {},
+    "#switch_knob": {},
+    "#line": {},
+    "#table_cell": {},
+    "#meter_marker": {},
+    "#meter_indicator": {},
+    "#calendar_background": {},
+    "#calendar_day": {},
+    "#colorwheel_main": {},
+    "#message_box_background": {},
+    "#message_box_button_background": {},
+    "#keyboard_button_background": {},
+    "#list_background": {},
+    "#list_button": {},
+    "#list_item_grow": {},
+    "#list_label": {},
+    "#tab_background_focus": {},
+    "#tab_button": {},
+    "#led": {}
+  },
+  "&classes": {
+    "&Object": {},
+    "default": "#screen"
+  },
+  "&Button": {
+    "default": [
+      "#button",
+      "#primary",
+      "#transition_delayed"
+    ],
+    "pressed": [
+      "#pressed",
+      "#grow",
+      "#transition_normal"
+    ],
+    "checked": "#background_color_secondary",
+    "disabled": "#disabled"
+  },
+  "&Line": {},
+  "&ButtonMatrix": {
+    "parent::&MessageBox": {
+      "default | items": "#button",
+      "pressed | items": "#pressed",
+      "disabled | items": "#disabled",
+      "checked | items": "#background_color_primary",
+      "focus_key | items": "#background_color_primary_muted",
+      "edited | items": "#background_color_secondaryMuted"
+    },
+    "parent::&TabView": {
+      "default": "#background_color_white",
+      "focus_key": [
+        "#outline_primary",
+        "#tab_background_focus"
+      ],
+      "pressed | items": "#pressed",
+      "checked | items": [
+        "#background_color_primary_muted",
+        "#tabButton"
+      ],
+      "focus_key | items": [
+        "#outline_primary",
+        "#tab_background_focus"
+      ],
+      "edited | items": "#outline_secondary"
+    },
+    "default": "#card",
+    "focus_key": "#outline_primary",
+    "edited": "#outline_primary",
+    "default | items": "#button",
+    "disabled | items": "#disabled",
+    "pressed | items ": "#pressed",
+    "checked | items": "#background_color_primary",
+    "focus_key | items": "#outline_primary",
+    "edited | items": "#outline_secondary"
+  },
+  "&Bar": {
+    "default": [
+      "#background_color_primary_muted",
+      "#circle"
+    ],
+    "focus_key": "#outline_primary",
+    "edited": "#outline_secondary",
+    "default | indicator": [
+      "#background_color_primary",
+      "#circle"
+    ]
+  },
+  "&Slider": {
+    "default": [
+      "#background_color_primary_muted",
+      "#circle"
+    ],
+    "focus_key": "#outline_primary",
+    "edited": "#outline_secondary",
+    "default | indicator": [
+      "#background_color_primary",
+      "#circle"
+    ],
+    "default | knob": "#knob"
+  },
+  "&Table": {
+    "default": [
+      "#card",
+      "#padding_zero",
+      "#radius_none"
+    ],
+    "focus_key": "#outline_primary",
+    "edited": "#outline_secondary",
+    "default | scrollbar": "#scrollbar",
+    "scrolled | scrollbar": "#scrollbar_scrolled",
+    "default | items": [
+      "#background_color_white",
+      "#padding_normal",
+      "#table_cell"
+    ],
+    "pressed | items": "#pressed",
+    "focus_key | items": "#background_color_primary",
+    "edited | items": "#background_color_secondary"
+  },
+  "&Checkbox": {
+    "default": "#gap_padding",
+    "focus_key": "#outline_primary",
+    "disabled | indicator": "#disabled",
+    "default | indicator": [
+      "#checkbox_marker",
+      "#transition_delayed"
+    ],
+    "checked | indicator": [
+      "#background_color_primary",
+      "#checkbox_marker_checked"
+    ],
+    "pressed | indicator": [
+      "#pressed",
+      "#grow",
+      "#transition_normal"
+    ]
+  },
+  "&Switch": {
+    "default": [
+      "#background_color_grey",
+      "#circle"
+    ],
+    "disabled": "#disabled",
+    "focus_key": "#outline_primary",
+    "checked | indicator": "#background_color_primary",
+    "default | indicator": "#circle",
+    "disabled | indicator": "#disabled",
+    "default | knob": [
+      "#knob",
+      "#background_color_white",
+      "#switchKnob"
+    ],
+    "disabled | knob": "#disabled"
+  },
+  "&Chart": {
+    "default": [
+      "#card",
+      "#padding_small",
+      "#chartBackground"
+    ],
+    "default | scrollbar": "#scrollbar",
+    "scrolled | scrollbar": "#scrollbar_scrolled",
+    "default | items": "#chart_series",
+    "default | indicator": "#chart_indicator",
+    "default | ticks": "#chart_ticks"
+  },
+  "&Roller": {
+    "default": [
+      "#card",
+      "#animation",
+      "#line_space_large",
+      "#textAlignCenter"
+    ],
+    "focus_key": "#outline_primary",
+    "edited": "#background_color_secondary",
+    "selected": "#background_color_primary"
+  },
+  "&DropDown": {
+    "default": [
+      "#card",
+      "#padding_small",
+      "#transition_delayed"
+    ],
+    "pressed": [
+      "#pressed",
+      "#transition_normal"
+    ],
+    "focus_key": "#outline_primary",
+    "edited": "#background_color_secondary",
+    "default | indicator": "#transition_normal"
+  },
+  "&DropDownList": {
+    "default": [
+      "#card",
+      "#clip_corner",
+      "#line_space_large",
+      "#dropdown_list"
+    ],
+    "default | scrollbar": "#scrollbar",
+    "scrolled | scrollbar": "#scrollbar_scrolled",
+    "default | selected": "#background_color_white",
+    "checked | selected": "#background_color_primary",
+    "pressed | selected": "#pressed"
+  },
+  "&Arc": {
+    "default": "#arc_indicator",
+    "default | indicator": [
+      "#arc_indicator",
+      "#arc_indicator_primary"
+    ],
+    "default | knob": "#knob"
+  },
+  "&Spinner": {
+    "default": "#arc_indicator",
+    "default | indicator": [
+      "#arc_indicator",
+      "#arc_indicator_primary"
+    ]
+  },
+  "&Meter": {
+    "default": [
+      "#card",
+      "#circle"
+    ],
+    "default | indicator": "#meter_indicator"
+  },
+  "&TextArea": {
+    "default": [
+      "#card",
+      "#padding_small"
+    ],
+    "focus_key": "#outline_primary",
+    "edited": "#background_color_secondary",
+    "default | scrollbar": "#scrollbar",
+    "scrolled | scrollbar": "#scrollbar_scrolled",
+    "focused | cursor": "#text_area_cursor",
+    "default | textarea_placeholder": "#text_area_placeholder"
+  },
+  "&Calendar": {
+    "default": [
+      "#card",
+      "#calendar_background"
+    ],
+    "default | items": "#calendarDay",
+    "pressed | items": "#pressed",
+    "disabled | items": "#disabled",
+    "focus_key": "#outline_primary",
+    "edited": "#background_color_secondary"
+  },
+  "&CalendarHeaderArrow": {
+    "default": "#card"
+  },
+  "&CalendarHeaderDropDown": {
+    "default": "#card"
+  },
+  "&Keyboard": {
+    "default": [
+      "#card",
+      "#padding_small"
+    ],
+    "focus_key": "#outline_primary",
+    "edited": "#background_color_secondary",
+    "default | items": [
+      "#button",
+      "#background_color_white",
+      "#keyboard_button_background"
+    ],
+    "disabled | items": "#disabled",
+    "checked | items": "#background_color_grey",
+    "focus_key | items": "#background_color_primary_muted",
+    "edited | items": "#background_color_secondaryMuted"
+  },
+  "&List": {
+    "default": [
+      "#card",
+      "#list_background"
+    ],
+    "default | scrollbar": "#scrollbar",
+    "scrolled | scrollbar": "#scrollbar_scrolled"
+  },
+  "&ListText": {
+    "default": [
+      "#background_color_grey",
+      "#list_item_grow"
+    ]
+  },
+  "&ListButton": {
+    "default": [
+      "#background_color_white",
+      "#listButton"
+    ],
+    "focus_key": [
+      "#background_color_primary",
+      "#list_item_grow"
+    ],
+    "pressed": [
+      "#pressed",
+      "#list_item_grow"
+    ]
+  },
+  "&MessageBox": {
+    "default": [
+      "#card",
+      "#message_box_background"
+    ]
+  },
+  "&Spinbox": {
+    "default": [
+      "#card",
+      "#padding_small"
+    ],
+    "checked | items": "#background_color_grey",
+    "focus_key | items": "#background_color_primary_muted",
+    "default | cursor": "#background_color_primary"
+  },
+  "&TileView": {
+    "default": "#screen",
+    "default | scrollbar": "#scrollbar",
+    "scrolled | scrollbar": "#scrollbar_scrolled"
+  },
+  "&TileViewTile": {
+    "default | scrollbar": "#scrollbar",
+    "scrolled | scrollbar": "#scrollbar_scrolled"
+  },
+  "&TabView": {
+    "default": [
+      "#screen",
+      "#padding_zero"
+    ]
+  },
+  "&ColorWheel": {
+    "default": [
+      "#colorwheelMain",
+      "#padding_normal"
+    ],
+    "default | knob": [
+      "#background_color_white",
+      "#padding_normal"
+    ]
+  },
+  "&Led": {
+    "default": "#led"
+  }
+}

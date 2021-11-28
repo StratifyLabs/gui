@@ -9,4 +9,6 @@ set(SOURCES
 	Files.hpp
 	Github.cpp
 	Github.hpp
+	ThemeGenerator.cpp
+	ThemeGenerator.hpp
 	PARENT_SCOPE)
