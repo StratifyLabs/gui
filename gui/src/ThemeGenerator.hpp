@@ -40,10 +40,11 @@ private:
 
   const char * get_lv_style_from_name(const char * property_name);
   var::GeneralString get_property_value(lvgl::Property property, const char * value);
-  var::NumberString  get_variable(const char * key);
+  var::GeneralString  get_variable(const char * key);
+  var::GeneralString get_json_value(const json::JsonValue value);
 
-
-
+  const char *get_lv_path_animation_path(Animation::Path value);
+  const char *get_lv_class(var::StringView class_name);
 };
 
 #endif // GUI_THEMEGENERATOR_HPP
