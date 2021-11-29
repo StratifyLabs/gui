@@ -9,6 +9,8 @@
     "$colorInfo": "0xffffff",
     "$colorWarning": "0xffffff",
     "$colorDanger": "0xffffff",
+    "$colorWhite": "0xffffff",
+    "$colorGrey": "0xffffff",
     "$colorSuccess": "0xffffff",
     "$colorScreen": "0xffffff",
     "$colorText": "0xffffff",
@@ -104,7 +106,7 @@
       "radius": 12,
       "background_opacity": "cover",
       "background_color": "blue_grey",
-      "text_color": "white",
+      "text_color": "$colorWhite",
       "horizontal_padding": 5,
       "vertical_padding": 10,
       "column_padding": 3,
@@ -651,7 +653,7 @@
       "condition": "lv_obj_check_type(object, &lv_colorwheel_class)",
       "styles": {
         "default": [
-          "#colorwheelMain",
+          "#colorwheel_main",
           "#padding_normal"
         ],
         "default | knob": [

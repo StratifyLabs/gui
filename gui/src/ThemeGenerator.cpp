@@ -28,7 +28,10 @@ ThemeGenerator::ThemeGenerator(const sys::Cli &cli) : m_cli(&cli) {
   }
 
   if (is_success()) {
-    m_output = File(File::IsOverwrite::yes, "theme.c");
+    const auto output_path = cli.get_option("output");
+    m_output = File(
+      File::IsOverwrite::yes,
+      output_path.is_empty() ? StringView("theme.c") : output_path);
   }
 
   generate_descriptors();
@@ -138,24 +141,27 @@ void ThemeGenerator::generate_theme() {
   m_output.write("  .parent = NULL,\n")
     .write("  .user_data = NULL,\n")
     .write("  .disp = NULL,\n")
-    .write("  .color_primary = NULL,\n")
-    .write("  .color_secondary = NULL,\n")
+    .write("  .color_primary = 0,\n")
+    .write("  .color_secondary = 0,\n")
     .write("  .font_small = NULL,\n")
     .write("  .font_normal = NULL,\n")
     .write("  .font_large = NULL,\n")
-    .write("  .flags = NULL\n")
+    .write("  .flags = 0\n")
     .write("};\n\n");
 
-  m_output
-    .write(("void " | name
-            | "_theme_initialize(lv_disp_t * disp, lv_theme_t * parent){\n")
-             .string_view())
-    .write(("  " | name | "_theme.disp = disp;\n").string_view())
-    .write(("  " | name | "_theme.parent = parent;\n").string_view())
-    .write("}\n");
+  write_output(
+    "lv_theme_t * " | name
+    | "_theme_initialize(lv_disp_t * disp, lv_theme_t * parent){\n");
+  write_output("  " | name | "_theme.disp = disp;\n");
+  write_output("  " | name | "_theme.parent = parent;\n");
+  write_output("  return &" | name | "_theme;\n");
+  write_output("}\n");
 }
 
 void ThemeGenerator::generate_descriptors() {
+
+  write_output("#include \"themes.h\"\n\n");
+
   const auto key_list = m_variables_object.get_key_list();
   for (const auto &variable : m_variables_object) {
     if (variable.is_object()) {
@@ -512,6 +518,10 @@ ThemeGenerator::get_property_value(Property property, const char *value) {
     return var::GeneralString().format(".ptr = (void*)%s", value);
   };
 
+  auto get_pointer_address = [&](const char *value) {
+    return var::GeneralString().format(".ptr = (void*)&%s", value);
+  };
+
   switch (property) {
 
   case Property::background_color:
@@ -536,8 +546,9 @@ ThemeGenerator::get_property_value(Property property, const char *value) {
   case Property::arc_image_source:
   case Property::background_image_source:
   case Property::color_filter_descriptor:
-  case Property::transition:
     return get_pointer(value);
+  case Property::transition:
+    return get_pointer_address(value);
 
   case Property::width:
   case Property::minimum_width:

@@ -14,6 +14,7 @@ set(LOCAL_NAME ${PROJECT_NAME})
 
 sos_sdk_add_subdirectory(PRIVATE_SOURCELIST ${CMAKE_CURRENT_SOURCE_DIR}/src)
 sos_sdk_add_subdirectory(FONT_SOURCELIST ${CMAKE_CURRENT_SOURCE_DIR}/src/fonts)
+sos_sdk_add_subdirectory(THEME_SOURCELIST ${CMAKE_CURRENT_SOURCE_DIR}/src/themes)
 sos_sdk_add_subdirectory(ASSETFS_SOURCELIST ${CMAKE_CURRENT_SOURCE_DIR}/src/assetfs)
 
 sos_sdk_app_target(RELEASE ${LOCAL_NAME} "" release ${SOS_ARCH})
@@ -26,6 +27,7 @@ target_sources(${RELEASE_TARGET}
   ${PRIVATE_SOURCELIST}
   ${FONT_SOURCELIST}
   ${ASSETFS_SOURCELIST}
+  ${THEME_SOURCELIST}
   )
 
 
