@@ -10,16 +10,18 @@
 
 extern "C" const char data_assetfs[];
 
-void Application::run(sys::Cli &cli, const window::Size &size) {
+void Application::run(sys::Cli &cli) {
 
   lvgl::Runtime runtime(
     "gui",
     window::Point(),
-    size,
-    window::Window::Flags::shown | window::Window::Flags::highdpi);
+    window::Size(320 * 4, 240 * 4),
+    window::Window::Flags::shown | window::Window::Flags::highdpi
+      | window::Window::Flags::resizeable);
 
+  runtime.window().set_minimum_size(window::Size(480,360));
 
-  //make the fonts available to `Font::find()`
+  // make the fonts available to `Font::find()`
   fonts_initialize();
 
   // mount the assets FS which include the PNG icon
@@ -28,11 +30,11 @@ void Application::run(sys::Cli &cli, const window::Size &size) {
   lvgl_api_mount_asset_filesystem(data_assetfs, &drive, 'd');
   // Icon is at d:icon256x256.png
 
-  //load the PNG decoder
+  // load the PNG decoder
   lvgl_api_initialize_png_decoder();
 
-  //model cannot be touched until all lvgl initialization is complete
-  //it is initialized on first access
+  // model cannot be touched until all lvgl initialization is complete
+  // it is initialized on first access
   model().runtime = &runtime;
 
   Printer::Object root_object(printer(), "gui");
@@ -125,5 +127,3 @@ void Application::run(sys::Cli &cli, const window::Size &size) {
   // use runtime.set_stopped() to exit
   runtime.loop();
 }
-
-

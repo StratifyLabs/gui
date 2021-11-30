@@ -13,7 +13,7 @@
 
 class Application : public GuiObject {
 public:
-  static void run(sys::Cli & cli, const window::Size & size);
+  static void run(sys::Cli & cli);
 
 
 

@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
     exit(api::ExecutionContext::is_error() ? 1 : 0);
   }
 
-  Application::run(cli, window::Size(320*4,240*4));
+  Application::run(cli);
 
   return 0;
 }
