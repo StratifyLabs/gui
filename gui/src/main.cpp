@@ -9,16 +9,9 @@
 #include <sys/Cli.hpp>
 
 #include "Application.hpp"
-#include "ThemeGenerator.hpp"
 
 int main(int argc, char *argv[]) {
   sys::Cli cli(argc, argv);
-
-
-  if( !cli.get_option("theme").is_empty() ){
-    (ThemeGenerator(cli));
-    exit(api::ExecutionContext::is_error() ? 1 : 0);
-  }
 
   Application::run(cli);
 

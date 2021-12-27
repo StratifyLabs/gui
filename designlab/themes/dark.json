@@ -1,0 +1,672 @@
+{
+  "type": "theme",
+  "name": "dark",
+  "header": "dark_theme.h",
+  "$variables": {
+    "$transitionPeriodMilliseconds": 100,
+    "$colorPrimary": "0xffffff",
+    "$colorSecondary": "0xffffff",
+    "$colorInfo": "0xffffff",
+    "$colorWarning": "0xffffff",
+    "$colorDanger": "0xffffff",
+    "$colorWhite": "0xffffff",
+    "$colorGrey": "0xffffff",
+    "$colorSuccess": "0xffffff",
+    "$colorScreen": "0xffffff",
+    "$colorText": "0xffffff",
+    "$radiusCircle": "0x7fff",
+    "$scrollbarSize": 7,
+    "$scrollbarPadding": 7,
+    "$opacity40": 102,
+    "$opacity50": 127,
+    "$opacityCover": 255,
+    "$borderWidth": 10,
+    "$paddingNormal": 8,
+    "$paddingSmall": 4,
+    "$paddingDefault": 4,
+    "$outlineWidth": 4,
+    "$transitionPropertyList": {
+      "name": "transition_property_list",
+      "type": "transitionPropertyList",
+      "properties": [
+        "background_opacity",
+        "background_color",
+        "transform_width",
+        "transform_height",
+        "translate_y",
+        "translate_x",
+        "transform_zoom",
+        "transform_angle",
+        "color_filter_opacity",
+        "color_filter_descriptor"
+      ]
+    },
+    "$transitionNormal": {
+      "name": "transition_normal",
+      "type": "transitionDescriptor",
+      "property_list": "transition_property_list",
+      "path": "linear",
+      "period": "$transitionPeriodMilliseconds",
+      "delay": 0
+    },
+    "$transitionDelayed": {
+      "name": "transition_delayed",
+      "type": "transitionDescriptor",
+      "property_list": "transition_property_list",
+      "path": "linear",
+      "period": "$transitionPeriodMilliseconds",
+      "delay": 70
+    },
+    "$darkColorFilter": {
+      "name": "dark_filter_callback",
+      "type": "colorFilterDescriptor",
+      "code": "LV_UNUSED(filter_descriptor);\n  return lv_color_darken(color, opacity);"
+    },
+    "$greyColorFilter": {
+      "name": "grey_filter_callback",
+      "type": "colorFilterDescriptor",
+      "code": "LV_UNUSED(filter_descriptor);\n  return lv_color_mix(lv_palette_lighten(LV_PALETTE_GREY, 2), color, opacity);"
+    }
+  },
+  "@styles": {
+    "@screen": {
+      "background_opacity": "$opacityCover",
+      "background_color": "$colorScreen",
+      "text_color": "$colorText",
+      "row_padding": "$paddingSmall",
+      "column_padding": "$paddingSmall"
+    },
+    "@scrollbar": {
+      "background_color": "grey",
+      "radius": "$radiusCircle",
+      "right_padding": "$scrollbarPadding",
+      "top_padding": "$scrollbarPadding",
+      "width": "$scrollbarSize",
+      "height": "$scrollbarSize",
+      "background_opacity": "$opacity40",
+      "transition": "$transitionNormal"
+    },
+    "@scrollbar_scrolled": {
+      "background_opacity": "$opacityCover"
+    },
+    "@card": {
+      "radius": 12,
+      "background_opacity": "$opacityCover",
+      "background_color": "blue_grey",
+      "border_color": "blue_grey",
+      "border_width": "$borderWidth",
+      "border_post": true,
+      "padding": "$paddingDefault",
+      "row_padding": "$paddingSmall",
+      "column_padding": "$paddingSmall",
+      "line_color": "blue_grey",
+      "line_width": 1
+    },
+    "@button": {
+      "radius": 12,
+      "background_opacity": "cover",
+      "background_color": "blue_grey",
+      "text_color": "$colorWhite",
+      "horizontal_padding": 5,
+      "vertical_padding": 10,
+      "column_padding": 3,
+      "row_padding": 3
+    },
+    "@background_color_primary": {},
+    "@background_color_primary_muted": {},
+    "@background_color_secondary": {},
+    "@background_color_secondary_muted": {},
+    "@background_color_grey": {},
+    "@background_color_white": {},
+    "@pressed": {
+      "color_filter_descriptor": "$darkColorFilter",
+      "color_filter_opacity": 35
+    },
+    "@disabled": {
+      "color_filter_descriptor": "$greyColorFilter",
+      "color_filter_opacity": 35
+    },
+    "@padding_zero": {},
+    "@padding_tiny": {},
+    "@padding_small": {},
+    "@padding_normal": {},
+    "@padding_gap": {},
+    "@line_space_large": {},
+    "@text_align_center": {},
+    "@outline_primary": {
+      "outline_color": "$colorPrimary",
+      "outline_width": "$outlineWidth",
+      "outline_padding": "$outlineWidth",
+      "outline_opacity": "$opacity50"
+    },
+    "@outline_secondary": {
+      "outline_color": "$colorSecondary",
+      "outline_width": "$outlineWidth",
+      "outline_padding": "$outlineWidth",
+      "outline_opacity": "$opacity50"
+    },
+    "@circle": {},
+    "@radius_none": {},
+    "@clip_corner": {
+      "clip_corner": true
+    },
+    "@grow": {},
+    "@transition_delayed": {
+      "transition": "$transitionDelayed"
+    },
+    "@transition_normal": {
+      "transition": "$transitionNormal"
+    },
+    "@animation": {},
+    "@knob": {},
+    "@indicator": {},
+    "@arc_indicator": {},
+    "@arc_indicator_primary": {},
+    "@chart_series": {
+      "line_width": 3,
+      "radius": 3,
+      "width": 8,
+      "height": 8,
+      "column_padding": 2
+    },
+    "@chart_indicator": {
+      "radius": "$radiusCircle",
+      "width": 8,
+      "height": 8,
+      "background_color": "$colorPrimary",
+      "background_opacity": "cover"
+    },
+    "@chart_ticks": {},
+    "@chart_background": {
+      "border_post": false,
+      "column_padding": 10,
+      "line_color": "grey"
+    },
+    "@dropdown_list": {},
+    "@checkbox_marker": {},
+    "@checkbox_marker_checked": {},
+    "@switch_knob": {},
+    "@line": {},
+    "@table_cell": {},
+    "@meter_marker": {},
+    "@meter_indicator": {},
+    "@calendar_background": {},
+    "@calendar_day": {},
+    "@colorwheel_main": {},
+    "@message_box_background": {},
+    "@message_box_button_background": {},
+    "@keyboard_button_background": {},
+    "@list_background": {},
+    "@list_button": {},
+    "@list_item_grow": {},
+    "@list_label": {},
+    "@tab_background_focus": {},
+    "@text_area_cursor": {},
+    "@text_area_placeholder": {},
+    "@tab_button": {},
+    "@led": {}
+  },
+  "&classes": {
+    "&Screen": {
+      "condition": ".screen",
+      "styles": {
+        "default": "@screen",
+        "default | scrollbar": "@scrollbar",
+        "scrolled | scrollbar": "@scrollbar_scrolled"
+      }
+    },
+    "&ObjectWithTabViewParent": {
+      "condition": ".obj && .parent(tabview)",
+      "styles": {}
+    },
+    "&ObjectWithTabViewGrandparent": {
+      "condition": ".obj && .grandparent(tabview)",
+      "styles": {
+        "default": "@padding_normal",
+        "default | scrollbar": "@scrollbar",
+        "scrolled | scrollbar": "@scrollbar_scrolled"
+      }
+    },
+    "&WindowHeader": {
+      "condition": "lv_obj_get_index(object) == 0 && .parent(win)",
+      "styles": {
+        "default": [
+          "@background_color_grey",
+          "@padding_tiny"
+        ]
+      }
+    },
+    "&WindowContent": {
+      "condition": "lv_obj_get_index(object) == 0 && .parent(win)",
+      "styles": {
+        "default": [
+          "@screen",
+          "@padding_normal"
+        ],
+        "default | scrollbar": "@scrollbar",
+        "scrolled | scrollbar": "@scrollbar_scrolled"
+      }
+    },
+    "&Object": {
+      "condition": ".obj",
+      "styles": {
+        "default": "@card",
+        "default | scrollbar": "@scrollbar",
+        "scrolled | scrollbar": "@scrollbar_scrolled"
+      }
+    },
+    "&Button": {
+      "condition": ".btn",
+      "styles": {
+        "default": [
+          "@button",
+          "@transition_delayed"
+        ],
+        "pressed": [
+          "@pressed",
+          "@grow",
+          "@transition_normal"
+        ],
+        "checked": "@background_color_secondary",
+        "disabled": "@disabled"
+      }
+    },
+    "&Line": {
+      "condition": ".line"
+    },
+    "&ButtonMatrixWithMessageBoxParent": {
+      "condition": ".btnmatrix && .parent(msgbox)",
+      "styles": {
+        "default | items": "@button",
+        "pressed | items": "@pressed",
+        "disabled | items": "@disabled",
+        "checked | items": "@background_color_primary",
+        "focus_key | items": "@background_color_primary_muted",
+        "edited | items": "@background_color_secondary_muted"
+      }
+    },
+    "&ButtonMatrixWithTabViewParent": {
+      "condition": ".btnmatrix && .parent(tabview)",
+      "styles": {
+        "default": "@background_color_white",
+        "focus_key": [
+          "@outline_primary",
+          "@tab_background_focus"
+        ],
+        "pressed | items": "@pressed",
+        "checked | items": [
+          "@background_color_primary_muted",
+          "@tab_button"
+        ],
+        "focus_key | items": [
+          "@outline_primary",
+          "@tab_background_focus"
+        ],
+        "edited | items": "@outline_secondary"
+      }
+    },
+    "&ButtonMatrix": {
+      "condition": ".btnmatrix",
+      "styles": {
+        "default": "@card",
+        "focus_key": "@outline_primary",
+        "edited": "@outline_primary",
+        "default | items": "@button",
+        "disabled | items": "@disabled",
+        "pressed | items ": "@pressed",
+        "checked | items": "@background_color_primary",
+        "focus_key | items": "@outline_primary",
+        "edited | items": "@outline_secondary"
+      }
+    },
+    "&Bar": {
+      "condition": ".bar",
+      "styles": {
+        "default": [
+          "@background_color_primary_muted",
+          "@circle"
+        ],
+        "focus_key": "@outline_primary",
+        "edited": "@outline_secondary",
+        "default | indicator": [
+          "@background_color_primary",
+          "@circle"
+        ]
+      }
+    },
+    "&Slider": {
+      "condition": ".slider",
+      "styles": {
+        "default": [
+          "@background_color_primary_muted",
+          "@circle"
+        ],
+        "focus_key": "@outline_primary",
+        "edited": "@outline_secondary",
+        "default | indicator": [
+          "@background_color_primary",
+          "@circle"
+        ],
+        "default | knob": "@knob"
+      }
+    },
+    "&Table": {
+      "condition": ".table",
+      "styles": {
+        "default": [
+          "@card",
+          "@padding_zero",
+          "@radius_none"
+        ],
+        "focus_key": "@outline_primary",
+        "edited": "@outline_secondary",
+        "default | scrollbar": "@scrollbar",
+        "scrolled | scrollbar": "@scrollbar_scrolled",
+        "default | items": [
+          "@background_color_white",
+          "@padding_normal",
+          "@table_cell"
+        ],
+        "pressed | items": "@pressed",
+        "focus_key | items": "@background_color_primary",
+        "edited | items": "@background_color_secondary"
+      }
+    },
+    "&Checkbox": {
+      "condition": ".checkbox",
+      "styles": {
+        "default": "@padding_gap",
+        "focus_key": "@outline_primary",
+        "disabled | indicator": "@disabled",
+        "default | indicator": [
+          "@checkbox_marker",
+          "@transition_delayed"
+        ],
+        "checked | indicator": [
+          "@background_color_primary",
+          "@checkbox_marker_checked"
+        ],
+        "pressed | indicator": [
+          "@pressed",
+          "@grow",
+          "@transition_normal"
+        ]
+      }
+    },
+    "&Switch": {
+      "condition": ".switch",
+      "styles": {
+        "default": [
+          "@background_color_grey",
+          "@circle"
+        ],
+        "disabled": "@disabled",
+        "focus_key": "@outline_primary",
+        "checked | indicator": "@background_color_primary",
+        "default | indicator": "@circle",
+        "disabled | indicator": "@disabled",
+        "default | knob": [
+          "@knob",
+          "@background_color_white",
+          "@switch_knob"
+        ],
+        "disabled | knob": "@disabled"
+      }
+    },
+    "&Chart": {
+      "condition": ".chart",
+      "styles": {
+        "default": [
+          "@card",
+          "@padding_small",
+          "@chart_background"
+        ],
+        "default | scrollbar": "@scrollbar",
+        "scrolled | scrollbar": "@scrollbar_scrolled",
+        "default | items": "@chart_series",
+        "default | indicator": "@chart_indicator",
+        "default | ticks": "@chart_ticks"
+      }
+    },
+    "&Roller": {
+      "condition": ".roller",
+      "styles": {
+        "default": [
+          "@card",
+          "@animation",
+          "@line_space_large",
+          "@text_align_center"
+        ],
+        "focus_key": "@outline_primary",
+        "edited": "@background_color_secondary",
+        "default | selected": "@background_color_primary"
+      }
+    },
+    "&DropDown": {
+      "condition": ".dropdown",
+      "styles": {
+        "default": [
+          "@card",
+          "@padding_small",
+          "@transition_delayed"
+        ],
+        "pressed": [
+          "@pressed",
+          "@transition_normal"
+        ],
+        "focus_key": "@outline_primary",
+        "edited": "@background_color_secondary",
+        "default | indicator": "@transition_normal"
+      }
+    },
+    "&DropDownList": {
+      "condition": ".dropdownlist",
+      "styles": {
+        "default": [
+          "@card",
+          "@clip_corner",
+          "@line_space_large",
+          "@dropdown_list"
+        ],
+        "default | scrollbar": "@scrollbar",
+        "scrolled | scrollbar": "@scrollbar_scrolled",
+        "default | selected": "@background_color_white",
+        "checked | selected": "@background_color_primary",
+        "pressed | selected": "@pressed"
+      }
+    },
+    "&Arc": {
+      "condition": ".arc",
+      "styles": {
+        "default": "@arc_indicator",
+        "default | indicator": [
+          "@arc_indicator",
+          "@arc_indicator_primary"
+        ],
+        "default | knob": "@knob"
+      }
+    },
+    "&Spinner": {
+      "condition": ".spinner",
+      "styles": {
+        "default": "@arc_indicator",
+        "default | indicator": [
+          "@arc_indicator",
+          "@arc_indicator_primary"
+        ]
+      }
+    },
+    "&Meter": {
+      "condition": ".meter",
+      "styles": {
+        "default": [
+          "@card",
+          "@circle"
+        ],
+        "default | indicator": "@meter_indicator"
+      }
+    },
+    "&TextArea": {
+      "condition": ".textarea",
+      "styles": {
+        "default": [
+          "@card",
+          "@padding_small"
+        ],
+        "focus_key": "@outline_primary",
+        "edited": "@background_color_secondary",
+        "default | scrollbar": "@scrollbar",
+        "scrolled | scrollbar": "@scrollbar_scrolled",
+        "focused | cursor": "@text_area_cursor",
+        "default | textarea_placeholder": "@text_area_placeholder"
+      }
+    },
+    "&Calendar": {
+      "condition": ".calendar",
+      "styles": {
+        "default": [
+          "@card",
+          "@calendar_background"
+        ],
+        "default | items": "@calendar_day",
+        "pressed | items": "@pressed",
+        "disabled | items": "@disabled",
+        "focus_key": "@outline_primary",
+        "edited": "@background_color_secondary"
+      }
+    },
+    "&CalendarHeaderArrow": {
+      "condition": ".calendar_header_arrow",
+      "styles": {
+        "default": "@card"
+      }
+    },
+    "&CalendarHeaderDropDown": {
+      "condition": ".calendar_header_dropdown",
+      "styles": {
+        "default": "@card"
+      }
+    },
+    "&Keyboard": {
+      "condition": ".keyboard",
+      "styles": {
+        "default": [
+          "@card",
+          "@padding_small"
+        ],
+        "focus_key": "@outline_primary",
+        "edited": "@background_color_secondary",
+        "default | items": [
+          "@button",
+          "@background_color_white",
+          "@keyboard_button_background"
+        ],
+        "disabled | items": "@disabled",
+        "checked | items": "@background_color_grey",
+        "focus_key | items": "@background_color_primary_muted",
+        "edited | items": "@background_color_secondary_muted"
+      }
+    },
+    "&List": {
+      "condition": ".list",
+      "styles": {
+        "default": [
+          "@card",
+          "@list_background"
+        ],
+        "default | scrollbar": "@scrollbar",
+        "scrolled | scrollbar": "@scrollbar_scrolled"
+      }
+    },
+    "&ListText": {
+      "condition": ".list_text",
+      "styles": {
+        "default": [
+          "@background_color_grey",
+          "@list_item_grow"
+        ]
+      }
+    },
+    "&ListButton": {
+      "condition": ".list_btn",
+      "styles": {
+        "default": [
+          "@background_color_white",
+          "@list_button"
+        ],
+        "focus_key": [
+          "@background_color_primary",
+          "@list_item_grow"
+        ],
+        "pressed": [
+          "@pressed",
+          "@list_item_grow"
+        ]
+      }
+    },
+    "&MessageBox": {
+      "condition": ".msgbox)",
+      "styles": {
+        "default": [
+          "@card",
+          "@message_box_background"
+        ]
+      }
+    },
+    "&Spinbox": {
+      "condition": ".spinbox",
+      "styles": {
+        "default": [
+          "@card",
+          "@padding_small"
+        ],
+        "checked | items": "@background_color_grey",
+        "focus_key | items": "@background_color_primary_muted",
+        "default | cursor": "@background_color_primary"
+      }
+    },
+    "&TileView": {
+      "condition": ".tileview",
+      "styles": {
+        "default": "@screen",
+        "default | scrollbar": "@scrollbar",
+        "scrolled | scrollbar": "@scrollbar_scrolled"
+      }
+    },
+    "&TileViewTile": {
+      "condition": ".tileview_tile",
+      "styles": {
+        "default | scrollbar": "@scrollbar",
+        "scrolled | scrollbar": "@scrollbar_scrolled"
+      }
+    },
+    "&TabView": {
+      "condition": ".tabview",
+      "styles": {
+        "default": [
+          "@screen",
+          "@padding_zero"
+        ]
+      }
+    },
+    "&ColorWheel": {
+      "condition": ".colorwheel",
+      "styles": {
+        "default": [
+          "@colorwheel_main",
+          "@padding_normal"
+        ],
+        "default | knob": [
+          "@background_color_white",
+          "@padding_normal"
+        ]
+      }
+    },
+    "&Led": {
+      "condition": ".led",
+      "styles": {
+        "default": "@led"
+      }
+    }
+  }
+}

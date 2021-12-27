@@ -1,0 +1,31 @@
+{
+  "name": "dark",
+  "type": "colors",
+  "version": 0,
+  "$variables": {
+    "$colorBackground": "0xffeeeeee",
+    "$colorForeground": "0xff222222",
+    "$colorPrimary": "0xff1c3a87",
+    "$colorSecondary": "0xff303846",
+    "$colorInfo": "0xff0dcaf0",
+    "$colorWarning": "0xffffc107",
+    "$colorDanger": "0xff912123",
+    "$colorSuccess": "0xff329d5c",
+    "$colorWhite": "0xffffffff",
+    "$colorLight": "0xffe0e0e0",
+    "$colorDark": "0xff222222",
+    "$colorGrey": "0xff888888",
+    "$colorText": "0xffffffff",
+
+    "$colorPrimaryText": "$colorBackground",
+    "$colorSecondaryText": "$colorBackground",
+    "$colorInfoText": "$colorBackground",
+    "$colorWarningText": "$colorBackground",
+    "$colorDangerText": "$colorBackground",
+    "$colorSuccessText": "$colorBackground",
+    "$colorDarkText": "$colorBackground",
+    "$colorLightText": "$colorForeground",
+    "$colorGreyText": "$colorDark",
+    "$colorWhiteText": "$colorDark"
+  }
+}

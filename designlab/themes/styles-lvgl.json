@@ -1,0 +1,789 @@
+{
+  "name": "lvgl",
+  "type": "styles",
+  "version": 0,
+  "$variables": {
+    "$transitionPeriodMilliseconds": 100,
+    "$transitionSlidePeriodMilliseconds": 250,
+    "$radiusCircle": "0x7fff",
+    "$opacity20": 51,
+    "$opacity40": 102,
+    "$opacity50": 127,
+    "$opacity60": 153,
+    "$opacity80": 204,
+    "$opaque": 255,
+    "$opacityCover": 255,
+    "$transitionPropertyList": {
+      "name": "transition_property_list",
+      "type": "transitionPropertyList",
+      "properties": [
+        "background_opacity",
+        "background_color",
+        "transform_width",
+        "transform_height",
+        "translate_y",
+        "translate_x",
+        "transform_zoom",
+        "transform_angle",
+        "color_filter_opacity",
+        "color_filter_descriptor",
+        "opacity"
+      ]
+    },
+    "$transitionNormal": {
+      "name": "transition_normal",
+      "type": "transitionDescriptor",
+      "property_list": "transition_property_list",
+      "path": "linear",
+      "period": "$transitionPeriodMilliseconds",
+      "delay": 0
+    },
+    "$transitionSlideIn": {
+      "name": "transition_slide_in",
+      "type": "transitionDescriptor",
+      "property_list": "transition_property_list",
+      "path": "ease_out",
+      "period": "$transitionSlidePeriodMilliseconds",
+      "delay": 0
+    },
+    "$transitionSlideOut": {
+      "name": "transition_slide_out",
+      "type": "transitionDescriptor",
+      "property_list": "transition_property_list",
+      "path": "ease_in",
+      "period": "$transitionSlidePeriodMilliseconds",
+      "delay": 0
+    },
+    "$transitionDelayed": {
+      "name": "transition_delayed",
+      "type": "transitionDescriptor",
+      "property_list": "transition_property_list",
+      "path": "linear",
+      "period": "$transitionPeriodMilliseconds",
+      "delay": 50
+    },
+    "$transitionLongDelayed": {
+      "name": "transition_long_delayed",
+      "type": "transitionDescriptor",
+      "property_list": "transition_property_list",
+      "path": "linear",
+      "period": "$transitionPeriodMilliseconds",
+      "delay": 800
+    },
+    "$darkColorFilter": {
+      "name": "&dark_filter",
+      "type": "colorFilterDescriptor",
+      "code": "LV_UNUSED(filter_descriptor);\n  return lv_color_darken(color, opacity);"
+    },
+    "$lightColorFilter": {
+      "name": "&light_filter",
+      "type": "colorFilterDescriptor",
+      "code": "LV_UNUSED(filter_descriptor);\n  return lv_color_lighten(color, opacity);"
+    },
+    "$greyColorFilter": {
+      "name": "&grey_filter",
+      "type": "colorFilterDescriptor",
+      "code": "LV_UNUSED(filter_descriptor);\n  return lv_color_mix(lv_palette_lighten(LV_PALETTE_GREY, 2), color, opacity);"
+    }
+  },
+  "@styles": {
+    "@h1": {
+      "text_font": "$fontHeaderExtraLarge",
+      "top_padding": "$sizePaddingMedium",
+      "bottom_padding": "$sizePaddingSmall",
+      "width": "LV_PCT(100)"
+    },
+    "@h2": {
+      "text_font": "$fontHeaderLarge",
+      "top_padding": "$sizePaddingMedium",
+      "bottom_padding": "$sizePaddingSmall",
+      "width": "LV_PCT(100)"
+    },
+    "@h3": {
+      "text_font": "$fontHeaderMedium",
+      "top_padding": "$sizePaddingMedium",
+      "bottom_padding": "$sizePaddingSmall",
+      "width": "LV_PCT(100)"
+    },
+    "@h4": {
+      "text_font": "$fontHeaderSmall",
+      "top_padding": "$sizePaddingSmall",
+      "bottom_padding": "$sizePaddingSmall",
+      "width": "LV_PCT(100)"
+    },
+    "@container": {
+      "padding": "$sizePaddingMedium",
+      "background_color": "$colorBackground",
+      "border_width": 0,
+      "text_color": "$colorForeground",
+      "background_opacity": "$opacityCover"
+    },
+    "@naked": {
+      "padding": 0,
+      "background_color": "$colorBackground",
+      "border_width": 0,
+      "text_color": "$colorForeground"
+    },
+    "@text_font_small": {
+      "text_font": "$fontBodySmall"
+    },
+    "@text_font_large": {
+      "text_font": "$fontBodyLarge"
+    },
+    "@row": {
+      "padding": 0,
+      "background_color": "$colorBackground",
+      "border_width": 0,
+      "text_color": "$colorForeground",
+      "background_opacity": "$opacityCover",
+      "column_padding": "$sizePaddingMedium",
+      "width": "LV_SIZE_CONTENT",
+      "height": "LV_SIZE_CONTENT"
+    },
+    "@col": {
+      "padding": 0,
+      "background_color": "$colorBackground",
+      "border_width": 0,
+      "text_color": "$colorForeground",
+      "background_opacity": "$opacityCover",
+      "row_padding": "$sizePaddingMedium",
+      "width": "LV_SIZE_CONTENT",
+      "height": "LV_SIZE_CONTENT"
+    },
+    "@bg_primary": {
+      "background_color": "$colorPrimary",
+      "background_opacity": "$opaque"
+    },
+    "@bg_secondary": {
+      "background_color": "$colorSecondary",
+      "background_opacity": "$opaque"
+    },
+    "@bg_warning": {
+      "background_color": "$colorWarning",
+      "background_opacity": "$opaque"
+    },
+    "@bg_info": {
+      "background_color": "$colorInfo",
+      "background_opacity": "$opaque"
+    },
+    "@bg_danger": {
+      "background_color": "$colorDanger",
+      "background_opacity": "$opaque"
+    },
+    "@bg_success": {
+      "background_color": "$colorSuccess",
+      "background_opacity": "$opaque"
+    },
+    "@bg_light": {
+      "background_color": "$colorLight"
+    },
+    "@bg_dark": {
+      "background_color": "$colorDark"
+    },
+    "@btn_primary": {
+      "background_color": "$colorPrimary",
+      "border_color": "$colorPrimary",
+      "text_color": "$colorPrimaryText"
+    },
+    "@btn_secondary": {
+      "background_color": "$colorSecondary",
+      "border_color": "$colorSecondary",
+      "text_color": "$colorSecondaryText"
+    },
+    "@btn_warning": {
+      "background_color": "$colorWarning",
+      "border_color": "$colorWarning",
+      "text_color": "$colorWarningText"
+    },
+    "@btn_info": {
+      "background_color": "$colorInfo",
+      "border_color": "$colorInfo",
+      "text_color": "$colorInfoText"
+    },
+    "@btn_danger": {
+      "background_color": "$colorDanger",
+      "border_color": "$colorDanger",
+      "text_color": "$colorDangerText"
+    },
+    "@btn_success": {
+      "background_color": "$colorSuccess",
+      "border_color": "$colorSuccess",
+      "text_color": "$colorSuccessText"
+    },
+    "@btn_light": {
+      "background_color": "$colorLight",
+      "border_color": "$colorLight",
+      "text_color": "$colorLightText"
+    },
+    "@btn_dark": {
+      "background_color": "$colorDark",
+      "border_color": "$colorDark",
+      "text_color": "$colorDarkText"
+    },
+    "@btn_outline_default": {
+      "background_color": "$colorBackground",
+      "border_color": "$colorPrimary",
+      "text_color": "$colorPrimary",
+      "border_width": "$sizeButtonBorderWidth",
+      "vertical_padding": "$sizeButtonPaddingY - $sizeButtonBorderWidth"
+    },
+    "@btn_outline_primary": {
+      "background_color": "$colorBackground",
+      "border_color": "$colorPrimary",
+      "text_color": "$colorPrimary",
+      "border_width": "$sizeButtonBorderWidth",
+      "vertical_padding": "$sizeButtonPaddingY - $sizeButtonBorderWidth"
+    },
+    "@btn_outline_secondary": {
+      "background_color": "$colorBackground",
+      "border_color": "$colorSecondary",
+      "text_color": "$colorSecondary",
+      "border_width": "$sizeButtonBorderWidth",
+      "vertical_padding": "$sizeButtonPaddingY - $sizeButtonBorderWidth"
+    },
+    "@btn_outline_warning": {
+      "background_color": "$colorBackground",
+      "border_color": "$colorWarning",
+      "text_color": "$colorWarning",
+      "border_width": "$sizeButtonBorderWidth",
+      "vertical_padding": "$sizeButtonPaddingY - $sizeButtonBorderWidth"
+    },
+    "@btn_outline_info": {
+      "background_color": "$colorBackground",
+      "border_color": "$colorInfo",
+      "text_color": "$colorInfo",
+      "border_width": "$sizeButtonBorderWidth",
+      "vertical_padding": "$sizeButtonPaddingY - $sizeButtonBorderWidth"
+    },
+    "@btn_outline_danger": {
+      "background_color": "$colorBackground",
+      "border_color": "$colorDanger",
+      "text_color": "$colorDanger",
+      "border_width": "$sizeButtonBorderWidth",
+      "vertical_padding": "$sizeButtonPaddingY - $sizeButtonBorderWidth"
+    },
+    "@btn_outline_success": {
+      "background_color": "$colorBackground",
+      "border_color": "$colorSuccess",
+      "text_color": "$colorSuccess",
+      "border_width": "$sizeButtonBorderWidth",
+      "vertical_padding": "$sizeButtonPaddingY - $sizeButtonBorderWidth"
+    },
+    "@btn_outline_light": {
+      "background_color": "$colorBackground",
+      "border_color": "$colorLight",
+      "text_color": "$colorGrey",
+      "border_width": "$sizeButtonBorderWidth",
+      "vertical_padding": "$sizeButtonPaddingY - $sizeButtonBorderWidth"
+    },
+    "@btn_outline_dark": {
+      "background_color": "$colorBackground",
+      "border_color": "$colorDark",
+      "text_color": "$colorGrey",
+      "border_width": "$sizeButtonBorderWidth",
+      "vertical_padding": "$sizeButtonPaddingY - $sizeButtonBorderWidth"
+    },
+    "@paragraph": {
+      "text_font": "$fontBodyMedium",
+      "width": "LV_PCT(100)",
+      "bottom_padding": "$sizePadding"
+    },
+    "@form": {
+      "row_padding": "$sizePadding *2",
+      "left_padding": "$sizePadding",
+      "right_padding": "$sizePadding *4",
+      "vertical_padding": "$sizePadding"
+    },
+    "@form_row": {
+      "column_padding": "$sizePadding",
+      "width": "LV_PCT(100)"
+    },
+    "@form_col": {
+      "row_padding": "$sizePadding",
+      "width": "LV_PCT(80)"
+    },
+    "@form_label": {
+      "text_font": "$fontFormLabel",
+      "padding": "$sizePadding"
+    },
+    "@form_field": {
+      "text_font": "$fontFormField",
+      "padding": "$sizePadding *2",
+      "border_width": "$sizeFormFieldBorderWidth"
+    },
+    "@form_switch": {
+      "border_width": "$sizeFormSwitchBorderWidth",
+      "radius": "$sizeFormSwitchBorderRadius",
+      "width": "$sizeFormSwitchWidth",
+      "height": "$sizeFormSwitchHeight"
+    },
+    "@form_hint": {
+      "text_font": "$fontFormHint",
+      "padding": "$sizePaddingSmall",
+      "text_color": "$colorGrey"
+    },
+    "@form_filesystem": {
+      "text_font": "$fontFormFileSystem"
+    },
+    "@form_dropdown": {
+      "text_font": "$fontFormField",
+      "border_width": "$sizeFormFieldBorderWidth",
+      "padding": "$sizePadding *2"
+    },
+    "@form_dropdown_list": {
+      "text_font": "$fontFormField",
+      "border_width": "$sizeFormFieldBorderWidth",
+      "maximum_height": "$sizeDropdownMax",
+      "row_padding": "$sizePadding",
+      "padding": "$sizePadding *2"
+    },
+    "@text_light": {
+      "text_color": "$colorLight"
+    },
+    "@text_dark": {
+      "text_color": "$colorDark"
+    },
+    "@text_primary": {
+      "text_color": "$colorPrimaryText"
+    },
+    "@text_secondary": {
+      "text_color": "$colorSecondaryText"
+    },
+    "@text_info": {
+      "text_color": "$colorInfoText"
+    },
+    "@text_warning": {
+      "text_color": "$colorWarningText"
+    },
+    "@text_danger": {
+      "text_color": "$colorDangerText"
+    },
+    "@text_success": {
+      "text_color": "$colorSuccessText"
+    },
+    "@text_color_primary": {
+      "text_color": "$colorPrimary"
+    },
+    "@text_color_secondary": {
+      "text_color": "$colorSecondary"
+    },
+    "@text_color_info": {
+      "text_color": "$colorInfo"
+    },
+    "@text_color_warning": {
+      "text_color": "$colorWarning"
+    },
+    "@text_color_danger": {
+      "text_color": "$colorDanger"
+    },
+    "@text_color_success": {
+      "text_color": "$colorSuccess"
+    },
+    "@btn_sm": {
+      "text_font": "$fontButtonSmall",
+      "horizontal_padding": "$sizeButtonPaddingXSmall",
+      "vertical_padding": "$sizeButtonPaddingYSmall"
+    },
+    "@btn_md": {
+      "text_font": "$fontButtonMedium",
+      "horizontal_padding": "$sizeButtonPaddingXMedium",
+      "vertical_padding": "$sizeButtonPaddingYMedium"
+    },
+    "@btn_lg": {
+      "text_font": "$fontButtonLarge",
+      "horizontal_padding": "$sizeButtonPaddingXLarge",
+      "vertical_padding": "$sizeButtonPaddingYLarge"
+    },
+    "@badge": {
+      "background_opacity": "$opaque",
+      "background_color": "$colorPrimary",
+      "text_color": "$colorText",
+      "horizontal_padding": "$sizeBadgePaddingX",
+      "vertical_padding": "$sizeBadgePaddingY",
+      "radius": "$sizeBadgeBorderRadius",
+      "height": "LV_SIZE_CONTENT",
+      "width": "LV_SIZE_CONTENT"
+    },
+    "@rounded_pill": {
+      "radius": "$radiusCircle"
+    },
+    "@badge_sm": {
+      "text_font": "$fontBadgeSmall",
+      "horizontal_padding": "$sizeBadgePaddingXSmall",
+      "vertical_padding": "$sizeBadgePaddingYSmall"
+    },
+    "@badge_md": {
+      "text_font": "$fontBadgeMedium",
+      "horizontal_padding": "$sizeBadgePaddingXMedium",
+      "vertical_padding": "$sizeBadgePaddingYMedium"
+    },
+    "@badge_lg": {
+      "text_font": "$fontBadgeLarge",
+      "horizontal_padding": "$sizeBadgePaddingXLarge",
+      "vertical_padding": "$sizeBadgePaddingYLarge"
+    },
+    "screen": {
+      "background_opacity": "$opacityCover",
+      "background_color": "$colorBackground",
+      "text_color": "$colorText",
+      "row_padding": "$sizePaddingSmall",
+      "column_padding": "$sizePaddingSmall"
+    },
+    "scrollbar": {
+      "background_color": "$colorGrey",
+      "radius": "$radiusCircle",
+      "right_padding": "$sizeScrollbarPadding",
+      "top_padding": "$sizeScrollbarPadding",
+      "width": "$sizeScrollbar",
+      "height": "$sizeScrollbar",
+      "background_opacity": 0,
+      "transition": "$transitionLongDelayed"
+    },
+    "scrollbar_scrolled": {
+      "background_opacity": "$opacity60",
+      "transition": "$transitionNormal"
+    },
+    "@slide_over_from_right_hidden": {
+      "transition": "$transitionSlideOut",
+      "translate_x": "LV_PCT(100)"
+    },
+    "@slide_over_from_right": {
+      "transition": "$transitionSlideIn",
+      "translate_x": 0
+    },
+    "@modal": {
+      "background_color": "$colorForeground",
+      "width": "LV_PCT(100)",
+      "height": "LV_PCT(100)",
+      "background_opacity": 0,
+      "transition": "$transitionNormal"
+    },
+    "@modal_enabled": {
+      "background_opacity": "$opacity80",
+      "transition": "$transitionDelayed"
+    },
+    "@modal_content": {
+      "opacity": 0,
+      "transition": "$transitionNormal"
+    },
+    "@modal_content_enabled": {
+      "opacity": "$opaque",
+      "translate_y": "$sizeModalTranslateY",
+      "transition": "$transitionDelayed"
+    },
+    "@card": {
+      "radius": "$sizeCardBorderRadius",
+      "background_opacity": "$opacityCover",
+      "background_color": "$colorBackground",
+      "border_color": "$colorGrey",
+      "border_width": "$sizeCardBorderWidth",
+      "text_color": "$colorForeground",
+      "border_post": true,
+      "padding": 0,
+      "row_padding": "$sizePaddingMedium",
+      "column_padding": "$sizePaddingMedium",
+      "line_color": "$colorGrey",
+      "line_width": 1,
+      "height": "LV_SIZE_CONTENT"
+    },
+    "@list_group": {
+      "radius": "$sizeCardBorderRadius",
+      "background_opacity": "$opacityCover",
+      "background_color": "$colorBackground",
+      "border_color": "$colorGrey",
+      "border_width": "$sizeCardBorderWidth",
+      "text_color": "$colorForeground",
+      "border_post": true,
+      "horizontal_padding": 0,
+      "vertical_padding": 0,
+      "row_padding": 0,
+      "column_padding": "$sizePaddingMedium",
+      "line_color": "$colorGrey",
+      "line_width": 1,
+      "height": "LV_SIZE_CONTENT"
+    },
+    "@list_group_flush": {
+      "radius": "$sizeCardBorderRadius",
+      "background_opacity": "$opacityCover",
+      "background_color": "$colorBackground",
+      "text_color": "$colorForeground",
+      "border_post": true,
+      "horizontal_padding": "$sizePadding",
+      "vertical_padding": 0,
+      "row_padding": 0,
+      "column_padding": "$sizePaddingMedium",
+      "line_color": "$colorGrey",
+      "line_width": 1,
+      "height": "LV_SIZE_CONTENT"
+    },
+    "@card_header": {
+      "padding": "$sizePaddingMedium",
+      "background_color": "$colorGrey",
+      "background_opacity": "$opacity20",
+      "border_width": "$sizeCardBorderWidth",
+      "border_side": "bottom",
+      "border_color": "$colorGrey",
+      "width": "LV_PCT(100)",
+      "text_font": "$fontHeaderMedium"
+    },
+    "@primary_card": {
+      "border_color": "$colorPrimary",
+      "background_color": "$colorPrimary",
+      "text_color": "$colorPrimaryText"
+    },
+    "@primary_card_header": {
+      "background_color": "$colorPrimary",
+      "border_color": "$colorPrimary",
+      "background_opacity": "$opacity50"
+    },
+    "@primary_card_body": {
+      "background_opacity": "$opacity20",
+      "background_color": "$colorPrimary",
+      "text_color": "$colorText",
+      "border_color": "$colorPrimary"
+    },
+    "@primary_card_footer": {
+      "background_opacity": "$opacity50",
+      "background_color": "$colorPrimary",
+      "border_color": "$colorPrimary"
+    },
+    "@card_body": {
+      "padding": "$sizePaddingMedium",
+      "width": "LV_PCT(100)",
+      "background_color": "$colorBackground",
+      "background_opacity": "$opaque",
+      "text_font": "$fontBodyMedium"
+    },
+    "@card_footer": {
+      "padding": "$sizePaddingMedium",
+      "background_color": "$colorGrey",
+      "background_opacity": "$opacity20",
+      "border_width": "$sizeCardBorderWidth",
+      "border_side": "top",
+      "border_color": "$colorGrey",
+      "width": "LV_PCT(100)"
+    },
+    "@darker": {
+      "color_filter_descriptor": "$darkColorFilter",
+      "color_filter_opacity": 40
+    },
+    "@hline": {
+      "background_color": "$colorGrey",
+      "background_opacity": "$opaque",
+      "height": "$sizeHorizontalLine",
+      "width": "LV_PCT(100)"
+    },
+    "button": {
+      "radius": "$sizeButtonBorderRadius",
+      "background_opacity": "cover",
+      "background_color": "$colorPrimary",
+      "text_color": "$colorPrimaryText",
+      "text_font": "$fontButtonDefault",
+      "horizontal_padding": "$sizeButtonPaddingX",
+      "vertical_padding": "$sizeButtonPaddingY",
+      "column_padding": 3,
+      "row_padding": 3
+    },
+    "background_color_primary": {
+      "background_color": "$colorPrimary",
+      "background_opacity": "$opaque"
+    },
+    "background_color_primary_muted": {
+      "background_color": "$colorGrey",
+      "background_opacity": "$opaque"
+    },
+    "background_color_secondary": {
+      "background_color": "$colorSecondary",
+      "background_opacity": "$opaque"
+    },
+    "background_color_secondary_muted": {
+      "background_color": "$colorSecondary",
+      "text_color": "$colorSecondary",
+      "opacity": "$opacity20"
+    },
+    "background_color_grey": {
+      "background_color": "$colorGrey",
+      "background_opacity": "$opaque",
+      "text_color": "$colorGreyText",
+      "padding": "$sizePaddingSmall"
+    },
+    "background_color_white": {
+      "background_color": "$colorWhite",
+      "opacity": "$opaque",
+      "text_color": "$colorWhiteText"
+    },
+    "pressed": {
+      "color_filter_descriptor": "$darkColorFilter",
+      "color_filter_opacity": 60
+    },
+    "disabled": {
+      "color_filter_descriptor": "$lightColorFilter",
+      "color_filter_opacity": 127
+    },
+    "padding_zero": {
+      "padding": 0
+    },
+    "padding_tiny": {
+      "padding": "$sizePaddingTiny"
+    },
+    "padding_small": {
+      "padding": "$sizePaddingSmall"
+    },
+    "padding_normal": {
+      "padding": "$sizePadding"
+    },
+    "padding_gap": {
+      "padding": "$sizePadding",
+      "column_padding": "$sizePadding"
+    },
+    "line_space_large": {},
+    "text_align_center": {
+      "text_alignment": "center"
+    },
+    "outline_border_primary": {
+      "border_color": "$colorPrimary"
+    },
+    "outline_border_secondary": {
+      "outline_color": "$colorSecondary",
+      "outline_width": "$sizeOutlineWidth",
+      "outline_padding": "$sizeOutlineWidth",
+      "outline_opacity": "$opacity50"
+    },
+    "@circle": {
+      "radius": "LV_RADIUS_CIRCLE"
+    },
+    "radius_none": {},
+    "clip_corner": {
+      "clip_corner": true
+    },
+    "progress_bar_background": {
+      "height": "$sizeProgressBarHeight",
+      "background_opacity": "$opaque",
+      "background_color": "$colorGrey",
+      "radius": "$sizeProgressBarRadius"
+    },
+    "progress_bar_indicator": {
+      "background_opacity": "$opaque",
+      "background_color": "$colorPrimary"
+    },
+    "grow": {
+      "transform_width": "$sizeGrow",
+      "transform_height": "$sizeGrow"
+    },
+    "shrink": {
+      "transform_width": "$sizeShrink",
+      "transform_height": "$sizeShrink"
+    },
+    "transition_delayed": {
+      "transition": "$transitionDelayed"
+    },
+    "transition_normal": {
+      "transition": "$transitionNormal"
+    },
+    "animation": {
+      "animation_time": 200
+    },
+    "knob": {
+      "background_color": "$colorPrimary",
+      "background_opacity": "$opaque",
+      "padding": 12,
+      "radius": "$radiusCircle"
+    },
+    "indicator": {
+    },
+    "arc_indicator": {
+      "arc_color": "$colorGrey",
+      "arc_width": "$sizeArcWidth",
+      "arc_rounded": true
+    },
+    "arc_indicator_primary": {
+      "arc_color": "$colorPrimary"
+    },
+    "chart_series": {
+      "line_width": 3,
+      "radius": 3,
+      "width": 8,
+      "height": 8,
+      "column_padding": 2
+    },
+    "chart_indicator": {
+      "radius": "$radiusCircle",
+      "width": 8,
+      "height": 8,
+      "background_color": "$colorPrimary",
+      "background_opacity": "cover"
+    },
+    "chart_ticks": {},
+    "chart_background": {
+      "border_post": false,
+      "column_padding": 10,
+      "line_color": "grey"
+    },
+    "dropdown_list": {
+      "maximum_height": "$sizeDropdownMax"
+    },
+    "checkbox_marker": {
+      "padding": "$sizePadding",
+      "border_width": "$sizeCheckboxBorderWidth",
+      "border_color": "$colorPrimary",
+      "background_color": "$colorBackground",
+      "background_opacity": "$opaque",
+      "radius": "$sizeCheckboxRadius"
+    },
+    "checkbox_marker_checked": {
+      "background_image_source": "LV_SYMBOL_OK",
+      "text_color": "$colorWhite",
+      "text_font": "$fontBodySmall"
+    },
+    "switch_knob": {
+      "background_color": "$colorPrimary"
+    },
+    "line": {
+      "line_width": "$sizeLineWidth",
+      "line_color": "$colorText"
+    },
+    "table_cell": {},
+    "meter_marker": {},
+    "meter_indicator": {},
+    "calendar_background": {},
+    "calendar_day": {},
+    "colorwheel_main": {
+      "arc_width": "$sizeColorWheelArcWidth"
+    },
+    "message_box_background": {},
+    "message_box_button_background": {},
+    "keyboard_button_background": {},
+    "list_background": {
+      "padding": "$sizePadding"
+    },
+    "list_button": {
+      "border_color": "$colorGrey",
+      "border_side": "bottom",
+      "border_width": "$sizeBorderWidth",
+      "background_color": "$colorBackground",
+      "background_opacity": "$opaque",
+      "padding": "$sizePadding * 2",
+      "column_padding": "$sizePadding"
+    },
+    "list_item_grow": {},
+    "list_label": {
+      "width": 80
+    },
+    "tab_background_focus": {},
+    "text_area_cursor": {
+      "border_color": "$colorForeground",
+      "border_side": "LV_BORDER_SIDE_BOTTOM",
+      "border_opacity": "$opaque",
+      "border_width": "$sizeBorderWidth /2",
+      "background_color": "$colorForeground",
+      "background_opacity": 20,
+      "left_padding": "-1",
+      "animation_time": 400
+    },
+    "text_area_placeholder": {
+
+    },
+    "tab_button": {},
+    "led": {}
+  }
+}

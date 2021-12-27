@@ -1,0 +1,398 @@
+{
+   "source": "gui/src",
+   "themes": [
+      {
+         "path": "designlab/themes/lvgl-small-light.json"
+      },
+      {
+         "path": "designlab/themes/lvgl-small-dark.json"
+      }
+   ],
+   "assets": [
+      {
+         "path": "designlab/fonts/fontawesome/fa-icons.json"
+      },
+      {
+         "path": "designlab/fonts/fontawesome/fa-solid.json"
+      },
+      {
+         "path": "designlab/fonts/fontawesome/fa-regular.json"
+      },
+      {
+         "path": "designlab/fonts/fontawesome/fa-brands.json"
+      },
+      {
+         "path": "designlab/fonts/fontawesome/Font Awesome 5 Free-Solid-900.otf"
+      },
+      {
+         "path": "designlab/fonts/fontawesome/Font Awesome 5 Brands-Regular-400.otf"
+      },
+      {
+         "path": "designlab/fonts/fontawesome/Font Awesome 5 Free-Regular-400.otf"
+      },
+      {
+         "path": "designlab/assets/StratifyLabs-400px.png"
+      },
+      {
+         "path": "designlab/assets/Stratify-Icon-250px.png"
+      }
+   ],
+   "fonts": [
+      {
+         "path": "designlab/fonts/Montserrat/Montserrat-Regular.ttf",
+         "name": "montserrat",
+         "style": "regular",
+         "range": "0x20-0x7F",
+         "bitsPerPixel": "8",
+         "sizesStart": "28",
+         "sizesSteps": "4",
+         "sizesTotal": "3",
+         "icons": "true"
+      },
+      {
+         "path": "designlab/fonts/SourceCode/SourceCodePro-Regular.ttf",
+         "name": "sourcecode",
+         "style": "regular",
+         "range": "0x20-0x7F",
+         "bitsPerPixel": "8",
+         "sizesStart": "12",
+         "sizesSteps": "4",
+         "sizesTotal": "3",
+         "icons": "false"
+      },
+      {
+         "path": "designlab/fonts/Montserrat/Montserrat-SemiBold.ttf",
+         "name": "montserrat",
+         "style": "semi_bold",
+         "range": "0x20-0x7F",
+         "bitsPerPixel": "8",
+         "sizesStart": "28",
+         "sizesSteps": "8",
+         "sizesTotal": "5",
+         "icons": "true"
+      }
+   ],
+   "icons": {
+      "name": "icons",
+      "path": "",
+      "range": [
+         {
+            "family": "solid",
+            "name": "angle-down",
+            "unicode": "uf107"
+         },
+         {
+            "family": "solid",
+            "name": "angle-left",
+            "unicode": "uf104"
+         },
+         {
+            "family": "solid",
+            "name": "angle-right",
+            "unicode": "uf105"
+         },
+         {
+            "family": "solid",
+            "name": "angle-up",
+            "unicode": "uf106"
+         },
+         {
+            "family": "solid",
+            "name": "bars",
+            "unicode": "uf0c9"
+         },
+         {
+            "family": "solid",
+            "name": "bold",
+            "unicode": "uf032"
+         },
+         {
+            "family": "solid",
+            "name": "check",
+            "unicode": "uf00c"
+         },
+         {
+            "family": "solid",
+            "name": "check-double",
+            "unicode": "uf560"
+         },
+         {
+            "family": "solid",
+            "name": "chevron-down",
+            "unicode": "uf078"
+         },
+         {
+            "family": "solid",
+            "name": "chevron-left",
+            "unicode": "uf053"
+         },
+         {
+            "family": "solid",
+            "name": "chevron-right",
+            "unicode": "uf054"
+         },
+         {
+            "family": "solid",
+            "name": "chevron-up",
+            "unicode": "uf077"
+         },
+         {
+            "family": "solid",
+            "name": "code",
+            "unicode": "uf121"
+         },
+         {
+            "family": "solid",
+            "name": "copyright",
+            "unicode": "uf1f9"
+         },
+         {
+            "family": "solid",
+            "name": "download",
+            "unicode": "uf019"
+         },
+         {
+            "family": "solid",
+            "name": "edit",
+            "unicode": "uf044"
+         },
+         {
+            "family": "solid",
+            "name": "ellipsis-h",
+            "unicode": "uf141"
+         },
+         {
+            "family": "solid",
+            "name": "ellipsis-v",
+            "unicode": "uf142"
+         },
+         {
+            "family": "solid",
+            "name": "exclamation",
+            "unicode": "uf12a"
+         },
+         {
+            "family": "solid",
+            "name": "external-link-alt",
+            "unicode": "uf35d"
+         },
+         {
+            "family": "solid",
+            "name": "file",
+            "unicode": "uf15b"
+         },
+         {
+            "family": "solid",
+            "name": "file-alt",
+            "unicode": "uf15c"
+         },
+         {
+            "family": "solid",
+            "name": "file-code",
+            "unicode": "uf1c9"
+         },
+         {
+            "family": "solid",
+            "name": "file-image",
+            "unicode": "uf1c5"
+         },
+         {
+            "family": "solid",
+            "name": "folder",
+            "unicode": "uf07b"
+         },
+         {
+            "family": "solid",
+            "name": "folder-minus",
+            "unicode": "uf65d"
+         },
+         {
+            "family": "solid",
+            "name": "folder-open",
+            "unicode": "uf07c"
+         },
+         {
+            "family": "solid",
+            "name": "folder-plus",
+            "unicode": "uf65e"
+         },
+         {
+            "family": "solid",
+            "name": "font",
+            "unicode": "uf031"
+         },
+         {
+            "family": "solid",
+            "name": "hat-wizard",
+            "unicode": "uf6e8"
+         },
+         {
+            "family": "solid",
+            "name": "icons",
+            "unicode": "uf86d"
+         },
+         {
+            "family": "solid",
+            "name": "image",
+            "unicode": "uf03e"
+         },
+         {
+            "family": "solid",
+            "name": "images",
+            "unicode": "uf302"
+         },
+         {
+            "family": "solid",
+            "name": "inbox",
+            "unicode": "uf01c"
+         },
+         {
+            "family": "solid",
+            "name": "info",
+            "unicode": "uf129"
+         },
+         {
+            "family": "solid",
+            "name": "info-circle",
+            "unicode": "uf05a"
+         },
+         {
+            "family": "solid",
+            "name": "italic",
+            "unicode": "uf033"
+         },
+         {
+            "family": "solid",
+            "name": "keyboard",
+            "unicode": "uf11c"
+         },
+         {
+            "family": "solid",
+            "name": "list",
+            "unicode": "uf03a"
+         },
+         {
+            "family": "solid",
+            "name": "list-alt",
+            "unicode": "uf022"
+         },
+         {
+            "family": "solid",
+            "name": "lock",
+            "unicode": "uf023"
+         },
+         {
+            "family": "solid",
+            "name": "lock-open",
+            "unicode": "uf3c1"
+         },
+         {
+            "family": "solid",
+            "name": "minus",
+            "unicode": "uf068"
+         },
+         {
+            "family": "solid",
+            "name": "palette",
+            "unicode": "uf53f"
+         },
+         {
+            "family": "solid",
+            "name": "pencil-alt",
+            "unicode": "uf303"
+         },
+         {
+            "family": "solid",
+            "name": "plus",
+            "unicode": "uf067"
+         },
+         {
+            "family": "solid",
+            "name": "quote-left",
+            "unicode": "uf10d"
+         },
+         {
+            "family": "solid",
+            "name": "quote-right",
+            "unicode": "uf10e"
+         },
+         {
+            "family": "solid",
+            "name": "sliders-h",
+            "unicode": "uf1de"
+         },
+         {
+            "family": "solid",
+            "name": "sort-down",
+            "unicode": "uf0dd"
+         },
+         {
+            "family": "solid",
+            "name": "sort-up",
+            "unicode": "uf0de"
+         },
+         {
+            "family": "solid",
+            "name": "stream",
+            "unicode": "uf550"
+         },
+         {
+            "family": "solid",
+            "name": "terminal",
+            "unicode": "uf120"
+         },
+         {
+            "family": "solid",
+            "name": "th",
+            "unicode": "uf00a"
+         },
+         {
+            "family": "solid",
+            "name": "th-large",
+            "unicode": "uf009"
+         },
+         {
+            "family": "solid",
+            "name": "th-list",
+            "unicode": "uf00b"
+         },
+         {
+            "family": "solid",
+            "name": "times",
+            "unicode": "uf00d"
+         },
+         {
+            "family": "solid",
+            "name": "trash-alt",
+            "unicode": "uf2ed"
+         },
+         {
+            "family": "solid",
+            "name": "user",
+            "unicode": "uf007"
+         },
+         {
+            "family": "regular",
+            "name": "circle",
+            "unicode": "uf111"
+         },
+         {
+            "family": "brands",
+            "name": "github",
+            "unicode": "uf09b"
+         },
+         {
+            "family": "brands",
+            "name": "github-alt",
+            "unicode": "uf113"
+         },
+         {
+            "family": "brands",
+            "name": "github-square",
+            "unicode": "uf092"
+         }
+      ]
+   },
+   "fontDirty": false,
+   "assetsDirty": false
+}

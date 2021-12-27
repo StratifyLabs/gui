@@ -1,0 +1,72 @@
+{
+  "name": "small",
+  "type": "sizes",
+  "$variables": {
+
+    "$sizePadding": 10,
+    "$sizeGrow": 4,
+    "$sizeShrink": "-4",
+    "$sizeOutlineWidth": 4,
+    "$sizeLineWidth": 1,
+    "$sizeBorderWidth": 4,
+    "$sizeBorderRadius": 8,
+    "$sizeHorizontalLine": 2,
+
+    "$sizeColorWheelArcWidth": 20,
+    "$sizeProgressBarHeight": 20,
+    "$sizeProgressBarRadius": "$sizeBorderRadius",
+
+    "$sizeFormSwitchHeight": 64,
+    "$sizeFormSwitchWidth": "$sizeFormSwitchHeight *2",
+    "$sizeFormSwitchBorderWidth": "$sizeBorderWidth",
+    "$sizeFormSwitchBorderRadius": "LV_RADIUS_CIRCLE",
+
+    "$sizePaddingTiny": "$sizePadding / 3",
+    "$sizePaddingSmall": "$sizePadding / 2",
+    "$sizePaddingMedium": "$sizePadding",
+    "$sizePaddingLarge": "$sizePadding *2",
+
+    "$sizeScrollbar": 12,
+    "$sizeScrollbarPadding": 4,
+
+    "$sizeArcWidth": 15,
+    "$sizeDropdownMax": 500,
+
+    "$sizeModalTranslateY": 50,
+
+    "$sizeCardBorderRadius": "$sizeBorderRadius *2",
+    "$sizeCardBorderWidth": "$sizeBorderWidth",
+    "$sizeCardPadding": "$sizePadding",
+
+    "$sizeCheckboxBorderWidth": "$sizeBorderWidth",
+    "$sizeCheckboxRadius": "$sizeBorderRadius",
+
+    "$sizeButtonPaddingX": "$sizePadding *4",
+    "$sizeButtonPaddingY": "$sizePadding *4",
+    "$sizeButtonBorderWidth": "$sizeBorderWidth",
+    "$sizeButtonBorderRadius": "$sizeBorderRadius",
+
+    "$sizeBadgePaddingX": "$sizePadding *2",
+    "$sizeBadgePaddingY": "$sizePaddingSmall *2",
+    "$sizeBadgeBorderWidth": 0,
+    "$sizeBadgeBorderRadius": "$sizeBorderRadius",
+
+
+    "$sizeButtonPaddingXSmall": "$sizeButtonPaddingX /2",
+    "$sizeButtonPaddingXMedium": "$sizeButtonPaddingX",
+    "$sizeButtonPaddingXLarge": "$sizeButtonPaddingX *2",
+    "$sizeButtonPaddingYSmall": "$sizeButtonPaddingY /2",
+    "$sizeButtonPaddingYMedium": "$sizeButtonPaddingY",
+    "$sizeButtonPaddingYLarge": "$sizeButtonPaddingY *3/2",
+
+    "$sizeBadgePaddingXSmall": "$sizeBadgePaddingX /2",
+    "$sizeBadgePaddingXMedium": "$sizeBadgePaddingX",
+    "$sizeBadgePaddingXLarge": "$sizeBadgePaddingX *2",
+    "$sizeBadgePaddingYSmall": "$sizeBadgePaddingY /2",
+    "$sizeBadgePaddingYMedium": "$sizeBadgePaddingY",
+    "$sizeBadgePaddingYLarge": "$sizeBadgePaddingY *3/2",
+
+    "$sizeFormLabelPadding": "$sizePadding",
+    "$sizeFormFieldBorderWidth": "$sizeBorderWidth /2"
+  }
+}

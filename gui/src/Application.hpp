@@ -9,9 +9,9 @@
 #include <lvgl.hpp>
 #include <window/Types.hpp>
 
-#include "GuiObject.hpp"
+#include "view/ViewObject.hpp"
 
-class Application : public GuiObject {
+class Application : public ModelAccess {
 public:
   static void run(sys::Cli & cli);
 

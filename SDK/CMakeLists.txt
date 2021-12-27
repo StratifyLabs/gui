@@ -72,6 +72,7 @@ sdk_add_subdirectory(CloudAPI v1.1)
 #These are still in pre-release
 sdk_add_subdirectory(WindowAPI main)
 sdk_add_subdirectory(LvglAPI main)
+sdk_add_subdirectory(DesignAPI main)
 
 
 
