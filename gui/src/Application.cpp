@@ -32,8 +32,8 @@ void Application::run(sys::Cli &cli) {
   // mount the assets FS which include the PNG icon
   // this file is distributed with the binary rather than as a separate file
   static lv_fs_drv_t drive;
-  lvgl_api_mount_asset_filesystem(DESIGN_INCBIN_DATA(assetfs), &drive, 'd');
-  // Icon is at d:icon256x256.png
+  lvgl_api_mount_asset_filesystem(DESIGN_INCBIN_DATA(assetfs), &drive, 'a');
+  // Icon is at a:icon256x256.png
 
   // load the PNG decoder
   lvgl_api_initialize_png_decoder();

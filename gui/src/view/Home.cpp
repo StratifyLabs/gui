@@ -30,56 +30,57 @@ void Home::configure(Generic generic) {
 
   // build the GUI using the LvglAPI
   generic.clear_flag(Flags::scrollable)
-    .add(Column()
-           .fill()
-           .add_style("col")
-           .clear_flag(Flags::scrollable)
-           .justify_space_between()
-           .set_row_padding(50)
-           .add(Image().set_source("a:icon256x256.png"))
-           .add(Button()
-                  .add_style("btn_primary")
-                  .add_event_callback(
-                    EventCode::clicked,
-                    [](lv_event_t *) {
-                      Screen::find_screen(Model::Names::github_screen_name)
-                        .load(slide_left);
-                    })
-                  .setup([](Button button) {
-                    setup_button(
-                      button,
-                      icons::fa::code_solid,
-                      Model::Names::github_screen_name,
-                      Color::indigo());
-                  }))
-           .add(Button()
-                  .add_style("btn_secondary")
-                  .add_event_callback(
-                    EventCode::clicked,
-                    [](lv_event_t *) {
-                      Screen::find_screen(Model::Names::files_screen_name)
-                        .load(slide_left);
-                    })
-                  .setup([](Button button) {
-                    setup_button(
-                      button,
-                      icons::fa::folder_open_solid,
-                      Model::Names::files_screen_name,
-                      Color::grey());
-                  }))
-           .add(Button()
-                  .add_style("btn_info")
-                  .add_event_callback(
-                    EventCode::clicked,
-                    [](lv_event_t *) {
-                      Screen::find_screen(Model::Names::about_screen_name)
-                        .load(slide_left);
-                    })
-                  .setup([](Button button) {
-                    setup_button(
-                      button,
-                      icons::fa::info_circle_solid,
-                      Model::Names::about_screen_name,
-                      Color::blue());
-                  })));
+    .add(Container().fill().add(
+      Column()
+        .fill()
+        .add_style("col")
+        .clear_flag(Flags::scrollable)
+        .justify_space_between()
+        .set_row_padding(50)
+        .add(Image().set_source("a:icon256x256.png"))
+        .add(Button()
+               .add_style("btn_primary")
+               .add_event_callback(
+                 EventCode::clicked,
+                 [](lv_event_t *) {
+                   Screen::find_screen(Model::Names::github_screen_name)
+                     .load(slide_left);
+                 })
+               .setup([](Button button) {
+                 setup_button(
+                   button,
+                   icons::fa::code_solid,
+                   Model::Names::github_screen_name,
+                   Color::indigo());
+               }))
+        .add(Button()
+               .add_style("btn_secondary")
+               .add_event_callback(
+                 EventCode::clicked,
+                 [](lv_event_t *) {
+                   Screen::find_screen(Model::Names::files_screen_name)
+                     .load(slide_left);
+                 })
+               .setup([](Button button) {
+                 setup_button(
+                   button,
+                   icons::fa::folder_open_solid,
+                   Model::Names::files_screen_name,
+                   Color::grey());
+               }))
+        .add(Button()
+               .add_style("btn_info")
+               .add_event_callback(
+                 EventCode::clicked,
+                 [](lv_event_t *) {
+                   Screen::find_screen(Model::Names::about_screen_name)
+                     .load(slide_left);
+                 })
+               .setup([](Button button) {
+                 setup_button(
+                   button,
+                   icons::fa::info_circle_solid,
+                   Model::Names::about_screen_name,
+                   Color::blue());
+               }))));
 }

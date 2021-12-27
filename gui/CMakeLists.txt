@@ -18,7 +18,7 @@ sos_sdk_add_subdirectory(DESIGNLAB_SOURCELIST ${CMAKE_CURRENT_SOURCE_DIR}/src/de
 sos_sdk_app_target(RELEASE ${LOCAL_NAME} "" release ${SOS_ARCH})
 
 set(ICON_FILE  icon.icns)
-set(ICON_PATH  ${CMAKE_CURRENT_SOURCE_DIR}/../assets/${ICON_FILE})
+set(ICON_PATH  ${CMAKE_CURRENT_SOURCE_DIR}/../designlab/assets/${ICON_FILE})
 add_executable(${RELEASE_TARGET} MACOSX_BUNDLE ${ICON_PATH})
 target_sources(${RELEASE_TARGET}
   PRIVATE
