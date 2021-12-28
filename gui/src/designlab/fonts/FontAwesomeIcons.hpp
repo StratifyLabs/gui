@@ -11,12 +11,15 @@ namespace icons {
     static constexpr auto angle_up_solid = "\uf106";
     static constexpr auto bars_solid = "\uf0c9";
     static constexpr auto bold_solid = "\uf032";
+    static constexpr auto bug_solid = "\uf188";
+    static constexpr auto chart_line_solid = "\uf201";
     static constexpr auto check_solid = "\uf00c";
     static constexpr auto check_double_solid = "\uf560";
     static constexpr auto chevron_down_solid = "\uf078";
     static constexpr auto chevron_left_solid = "\uf053";
     static constexpr auto chevron_right_solid = "\uf054";
     static constexpr auto chevron_up_solid = "\uf077";
+    static constexpr auto cloud_download_alt_solid = "\uf381";
     static constexpr auto code_solid = "\uf121";
     static constexpr auto copyright_solid = "\uf1f9";
     static constexpr auto download_solid = "\uf019";
@@ -47,6 +50,7 @@ namespace icons {
     static constexpr auto list_alt_solid = "\uf022";
     static constexpr auto lock_solid = "\uf023";
     static constexpr auto lock_open_solid = "\uf3c1";
+    static constexpr auto microchip_solid = "\uf2db";
     static constexpr auto minus_solid = "\uf068";
     static constexpr auto palette_solid = "\uf53f";
     static constexpr auto pencil_alt_solid = "\uf303";

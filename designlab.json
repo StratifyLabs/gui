@@ -10,31 +10,7 @@
    ],
    "assets": [
       {
-         "path": "designlab/fonts/fontawesome/fa-icons.json"
-      },
-      {
-         "path": "designlab/fonts/fontawesome/fa-solid.json"
-      },
-      {
-         "path": "designlab/fonts/fontawesome/fa-regular.json"
-      },
-      {
-         "path": "designlab/fonts/fontawesome/fa-brands.json"
-      },
-      {
-         "path": "designlab/fonts/fontawesome/Font Awesome 5 Free-Solid-900.otf"
-      },
-      {
-         "path": "designlab/fonts/fontawesome/Font Awesome 5 Brands-Regular-400.otf"
-      },
-      {
-         "path": "designlab/fonts/fontawesome/Font Awesome 5 Free-Regular-400.otf"
-      },
-      {
-         "path": "designlab/assets/StratifyLabs-400px.png"
-      },
-      {
-         "path": "designlab/assets/Stratify-Icon-250px.png"
+         "path": "designlab/assets/icon.png"
       }
    ],
    "fonts": [
@@ -108,6 +84,16 @@
          },
          {
             "family": "solid",
+            "name": "bug",
+            "unicode": "uf188"
+         },
+         {
+            "family": "solid",
+            "name": "chart-line",
+            "unicode": "uf201"
+         },
+         {
+            "family": "solid",
             "name": "check",
             "unicode": "uf00c"
          },
@@ -135,6 +121,11 @@
             "family": "solid",
             "name": "chevron-up",
             "unicode": "uf077"
+         },
+         {
+            "family": "solid",
+            "name": "cloud-download-alt",
+            "unicode": "uf381"
          },
          {
             "family": "solid",
@@ -288,6 +279,11 @@
          },
          {
             "family": "solid",
+            "name": "microchip",
+            "unicode": "uf2db"
+         },
+         {
+            "family": "solid",
             "name": "minus",
             "unicode": "uf068"
          },
@@ -393,6 +389,6 @@
          }
       ]
    },
-   "fontDirty": false,
+   "fontDirty": true,
    "assetsDirty": false
 }
