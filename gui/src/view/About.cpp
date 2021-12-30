@@ -6,45 +6,72 @@
 #include <thread.hpp>
 
 #include "About.hpp"
+#include "Files.hpp"
+#include "Github.hpp"
+#include "Home.hpp"
+
+#include "Extras.hpp"
 
 void About::setup(Generic container) {
-
-  static constexpr auto check_updates_spinner = "AboutSpinner";
-
-  Printer::Object about_object(printer(), "About");
-  printer().key(
-    "size",
-    var::GeneralString()
-      .format("%d,%d", container.get_width(), container.get_height()));
 
   container.set_text_font(model().button_font)
     .add_event_callback(EventCode::entered, nullptr)
     .add(
-      Column().fill()
+      Column()
+        .fill()
         .add_style("container")
+        .add(ScreenHeader(ScreenHeader::Construct()
+                            .set_back_clicked_callback(go_back)
+                            .set_title("About")))
+        .add(HorizontalLine())
         .add(Row()
                .fill_width()
-               .add(NakedContainer()
-                      .set_width(NakedContainer::size_from_content)
-                      .set_height(NakedContainer::size_from_content)
-                      .set_padding(20)
-                      .add(Button()
-                             .set_alignment(Alignment::left_middle)
-                             .add_label(icons::fa::chevron_left_solid)
-                             .add_event_callback(EventCode::clicked, go_back)))
-               .add(Label().set_text_as_static("About").set_flex_grow()))
-        .add(Row().set_flex_grow())
-        .add(Container()
-               .add_style(Column::get_style())
-               .set_height(Container::size_from_content)
-               .set_row_padding(20)
-               .fill_width()
-               .add(Label().set_text_as_static("gui"))
-               .add(Label()
-                      .set_text_as_static("version: 0.1")
-                      .set_text_font(Font::find("sourcecode", 50)))
-               .add(Label()
-                      .set_text_as_static("by: Stratify Labs, Inc")
-                      .set_text_font(Font::find(32))))
-        .add(Row().set_flex_grow()));
+               .add(Button(Names::dark_button)
+                      .add_label(
+                        var::KeyString(icons::fa::moon_solid).append(" Dark"))
+                      .add_style("btn_dark")
+                      .add_event_callback(EventCode::clicked, update_theme))
+               .add(Button(Names::light_button)
+                      .add_label(
+                        var::KeyString(icons::fa::sun_solid).append(" Light"))
+                      .add_style("btn_warning")
+                      .add_event_callback(EventCode::clicked, update_theme)))
+        .add(AttributionRow("Version", VERSION))
+        .add(AttributionRow(
+          "Publisher",
+          "Stratify Labs, Inc",
+          "https:://stratifylabs.dev"))
+        .add(AttributionRow(
+          "Theme",
+          "Design Lab",
+          "https://github.com/StratifyLabs/DesignLab"))
+        .add(AttributionRow("Icons", "FontAwesome", "https://fontawesome.com/"))
+        .add(AttributionRow("Graphics", "LVGL", "https://lvgl.io"))
+        .add(AttributionRow("Window", "SDL", "https://www.libsdl.org/"))
+        .add(AttributionRow(
+          "TLS",
+          "mbedtls",
+          "https://github.com/ARMmbed/mbedtls"))
+        .add(AttributionRow(
+          "JSON",
+          "jansson",
+          "https://github.com/akheron/jansson"))
+        .add(AttributionRow(
+          "Framework",
+          "Stratify Labs API",
+          "https://github.com/StratifyLabs/API")));
+}
+
+void About::update_theme(lv_event_t *e) {
+  Model::Scope model_scope;
+  const auto is_dark = Event(e).target().name() == Names::dark_button;
+  const auto &theme = is_dark ? model().dark_theme : model().light_theme;
+  Display(model().runtime->display()).set_theme(theme);
+  model().is_dark_theme = is_dark;
+  model().is_theme_updated = true;
+
+  About::setup(Generic(model().about_screen.get<Generic>().clean()));
+  Files::setup(Generic(model().files_screen.get<Generic>().clean()));
+  Github::setup(Generic(model().github_screen.get<Generic>().clean()));
+  Home::setup(Generic(model().home_screen.get<Generic>().clean()));
 }

@@ -9,7 +9,7 @@
 #include "Extras.hpp"
 #include "Home.hpp"
 
-void Home::configure(Generic generic) {
+void Home::setup(Generic generic) {
   // The current screen is the "default" screen
   // it is automatically created by lvgl
 
@@ -49,7 +49,7 @@ void Home::configure(Generic generic) {
                  .set_name(Model::Names::github_screen_name)
                  .set_clicked_callback(action_card_clicked)
                  .set_icon(icons::fa::github_brands)
-                 .set_style("bg_primary")
+                 .set_style("bg_primary text_primary")
                  .set_description("See the details of Stratify OS on Github.")
                  .set_title("Stratify OS"))
       .fill_width()
@@ -60,7 +60,7 @@ void Home::configure(Generic generic) {
                  .set_name(Model::Names::files_screen_name)
                  .set_clicked_callback(action_card_clicked)
                  .set_icon(icons::fa::folder_open_solid)
-                 .set_style("bg_secondary")
+                 .set_style("bg_secondary text_secondary")
                  .set_description("Select a file on the local filesystem.")
                  .set_title("Filesystem"))
       .fill_width()
@@ -71,10 +71,10 @@ void Home::configure(Generic generic) {
       ActionCard::Construct()
         .set_name(Model::Names::about_screen_name)
         .set_clicked_callback(action_card_clicked)
-        .set_style("bg_info")
+        .set_style("bg_info text_info")
         .set_icon(icons::fa::info_circle_solid)
         .set_description(
-          "Check out the projects that make this application possible.")
+          "See what makes this application possible.")
         .set_title("About"))
       .fill_width()
       .set_height(25_percent));

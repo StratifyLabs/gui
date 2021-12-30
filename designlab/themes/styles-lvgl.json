@@ -116,7 +116,8 @@
       "background_color": "$colorBackground",
       "border_width": 0,
       "text_color": "$colorForeground",
-      "background_opacity": "$opacityCover"
+      "background_opacity": "$opacityCover",
+      "clip_corner": true
     },
     "@naked": {
       "padding": 0,
@@ -138,7 +139,8 @@
       "background_opacity": "$opacityCover",
       "column_padding": "$sizePaddingMedium",
       "width": "LV_SIZE_CONTENT",
-      "height": "LV_SIZE_CONTENT"
+      "height": "LV_SIZE_CONTENT",
+      "clip_corner": true
     },
     "@col": {
       "padding": 0,
@@ -148,7 +150,8 @@
       "background_opacity": "$opacityCover",
       "row_padding": "$sizePaddingMedium",
       "width": "LV_SIZE_CONTENT",
-      "height": "LV_SIZE_CONTENT"
+      "height": "LV_SIZE_CONTENT",
+      "clip_corner": true
     },
     "@bg_primary": {
       "background_color": "$colorPrimary",
@@ -338,6 +341,15 @@
       "row_padding": "$sizePadding",
       "padding": "$sizePadding *2"
     },
+    "@form_error_badge": {
+      "text_font": "$fontFormLabel",
+      "radius": "LV_RADIUS_CIRCLE",
+      "border_width": 0,
+      "horizontal_padding": "$sizePaddingMedium *3",
+      "background_color": "$colorDanger",
+      "background_opacity": "$opaque",
+      "text_color": "$colorDangerText"
+    },
     "@text_light": {
       "text_color": "$colorLight"
     },
@@ -485,7 +497,8 @@
       "column_padding": "$sizePaddingMedium",
       "line_color": "$colorGrey",
       "line_width": 1,
-      "height": "LV_SIZE_CONTENT"
+      "height": "LV_SIZE_CONTENT",
+      "clip_corner": true
     },
     "@list_group": {
       "radius": "$sizeCardBorderRadius",
@@ -743,7 +756,12 @@
       "line_width": "$sizeLineWidth",
       "line_color": "$colorText"
     },
-    "table_cell": {},
+    "table_cell": {
+      "text_color": "$colorForeground",
+      "border_width": "$sizeTableCellBorderWidth",
+      "border_side": "bottom",
+      "border_color": "$colorGrey"
+    },
     "meter_marker": {},
     "meter_indicator": {},
     "calendar_background": {},

@@ -45,7 +45,7 @@ set(LWIP_STRATIFYOS_PATH
   ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/StratifyOS/include
   CACHE INTERNAL "LWIP StratifyOS INCLUDE PATHS")
 
-sdk_add_subdirectory(API v1.2)
+sdk_add_subdirectory(API main)
 include(${BASE_DIRECTORY}/API/libraries/API.cmake)
 
 set(LVGL_API_IS_QT_SIMULATOR OFF CACHE INTERNAL "Enable QT Simulator")

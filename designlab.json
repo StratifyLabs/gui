@@ -97,8 +97,18 @@
          },
          {
             "family": "solid",
+            "name": "cloud-upload-alt",
+            "unicode": "uf382"
+         },
+         {
+            "family": "solid",
             "name": "code",
             "unicode": "uf121"
+         },
+         {
+            "family": "solid",
+            "name": "code-branch",
+            "unicode": "uf126"
          },
          {
             "family": "solid",
@@ -127,8 +137,18 @@
          },
          {
             "family": "solid",
+            "name": "exchange-alt",
+            "unicode": "uf362"
+         },
+         {
+            "family": "solid",
             "name": "exclamation",
             "unicode": "uf12a"
+         },
+         {
+            "family": "solid",
+            "name": "exclamation-triangle",
+            "unicode": "uf071"
          },
          {
             "family": "solid",
@@ -257,6 +277,11 @@
          },
          {
             "family": "solid",
+            "name": "moon",
+            "unicode": "uf186"
+         },
+         {
+            "family": "solid",
             "name": "palette",
             "unicode": "uf53f"
          },
@@ -297,8 +322,18 @@
          },
          {
             "family": "solid",
+            "name": "star",
+            "unicode": "uf005"
+         },
+         {
+            "family": "solid",
             "name": "stream",
             "unicode": "uf550"
+         },
+         {
+            "family": "solid",
+            "name": "sun",
+            "unicode": "uf185"
          },
          {
             "family": "solid",

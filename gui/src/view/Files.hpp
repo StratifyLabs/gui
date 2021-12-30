@@ -10,6 +10,12 @@
 class Files : public ViewObject {
 public:
   static void setup(Generic container);
+
+private:
+  struct Names {
+    DESIGN_DECLARE_NAME(select_file);
+  };
+  static void entered(lv_event_t*e);
 };
 
 #endif // GUI_FILES_HPP

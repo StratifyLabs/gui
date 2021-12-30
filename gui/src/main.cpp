@@ -11,6 +11,7 @@
 #include "Application.hpp"
 
 int main(int argc, char *argv[]) {
+  api::catch_segmentation_fault();
   sys::Cli cli(argc, argv);
 
   Application::run(cli);

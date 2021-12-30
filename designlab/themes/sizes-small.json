@@ -35,8 +35,10 @@
     "$sizeModalTranslateY": 50,
 
     "$sizeCardBorderRadius": "$sizeBorderRadius *2",
-    "$sizeCardBorderWidth": "$sizeBorderWidth",
+    "$sizeCardBorderWidth": "2",
     "$sizeCardPadding": "$sizePadding",
+
+    "$sizeTableCellBorderWidth": "$sizeBorderWidth",
 
     "$sizeCheckboxBorderWidth": "$sizeBorderWidth",
     "$sizeCheckboxRadius": "$sizeBorderRadius",

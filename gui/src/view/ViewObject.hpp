@@ -9,6 +9,8 @@
 #include <thread/Mutex.hpp>
 #include <thread/Thread.hpp>
 
+#include <design/macros.h>
+
 using namespace printer;
 
 #include <lvgl.hpp>

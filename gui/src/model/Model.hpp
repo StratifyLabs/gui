@@ -11,6 +11,8 @@
 #include <printer.hpp>
 #include <design/Worker.hpp>
 
+#include "worker/GithubWorker.hpp"
+
 struct Model {
   struct Names {
     static constexpr auto about_screen_name = "About";
@@ -30,15 +32,17 @@ struct Model {
   lvgl::Theme light_theme;
   lvgl::Theme dark_theme;
 
+  bool is_dark_theme = true;
+  bool is_theme_updated = false;
+
   lvgl::Screen about_screen = lvgl::Screen(Names::about_screen_name);
   lvgl::Screen github_screen = lvgl::Screen(Names::github_screen_name);
   lvgl::Screen files_screen = lvgl::Screen(Names::files_screen_name);
+  lvgl::Screen home_screen = lvgl::Screen((lv_obj_t*)nullptr);
 
   // this can be used to create a thread to process
   // background tasks
-  design::Worker check_update_worker;
-  design::Worker github_worker;
-  design::Worker files_worker;
+  GithubWorker github_worker;
 
   lvgl::Runtime * runtime = nullptr;
 

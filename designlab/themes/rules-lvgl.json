@@ -148,7 +148,6 @@
       "condition": ".table",
       "styles": {
         "default": [
-          "card",
           "padding_zero",
           "radius_none"
         ],
@@ -157,7 +156,6 @@
         "default | scrollbar": "scrollbar",
         "scrolled | scrollbar": "scrollbar_scrolled",
         "default | items": [
-          "background_color_white",
           "padding_normal",
           "table_cell"
         ],

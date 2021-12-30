@@ -59,9 +59,10 @@ void Application::run(sys::Cli &cli) {
     About::setup(Generic(model().about_screen));
     Files::setup(Generic(model().files_screen));
     Github::setup(Generic(model().github_screen));
+    model().home_screen = Screen(screen().object());
   }
 
-  Home::configure(Generic(screen().object()));
+  Home::setup(Generic(screen().object()));
 
   // start the runtime loop
   // use runtime.set_stopped() to exit

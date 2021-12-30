@@ -13,13 +13,17 @@ namespace icons {
     static constexpr auto chevron_right_solid = "\uf054";
     static constexpr auto chevron_up_solid = "\uf077";
     static constexpr auto cloud_download_alt_solid = "\uf381";
+    static constexpr auto cloud_upload_alt_solid = "\uf382";
     static constexpr auto code_solid = "\uf121";
+    static constexpr auto code_branch_solid = "\uf126";
     static constexpr auto copyright_solid = "\uf1f9";
     static constexpr auto download_solid = "\uf019";
     static constexpr auto edit_solid = "\uf044";
     static constexpr auto ellipsis_h_solid = "\uf141";
     static constexpr auto ellipsis_v_solid = "\uf142";
+    static constexpr auto exchange_alt_solid = "\uf362";
     static constexpr auto exclamation_solid = "\uf12a";
+    static constexpr auto exclamation_triangle_solid = "\uf071";
     static constexpr auto external_link_alt_solid = "\uf35d";
     static constexpr auto file_solid = "\uf15b";
     static constexpr auto file_alt_solid = "\uf15c";
@@ -45,6 +49,7 @@ namespace icons {
     static constexpr auto lock_open_solid = "\uf3c1";
     static constexpr auto microchip_solid = "\uf2db";
     static constexpr auto minus_solid = "\uf068";
+    static constexpr auto moon_solid = "\uf186";
     static constexpr auto palette_solid = "\uf53f";
     static constexpr auto pencil_alt_solid = "\uf303";
     static constexpr auto plus_solid = "\uf067";
@@ -53,7 +58,9 @@ namespace icons {
     static constexpr auto sliders_h_solid = "\uf1de";
     static constexpr auto sort_down_solid = "\uf0dd";
     static constexpr auto sort_up_solid = "\uf0de";
+    static constexpr auto star_solid = "\uf005";
     static constexpr auto stream_solid = "\uf550";
+    static constexpr auto sun_solid = "\uf185";
     static constexpr auto terminal_solid = "\uf120";
     static constexpr auto th_solid = "\uf00a";
     static constexpr auto th_large_solid = "\uf009";

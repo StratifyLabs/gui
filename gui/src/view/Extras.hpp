@@ -5,6 +5,8 @@
 #ifndef GUI_EXTRAS_HPP
 #define GUI_EXTRAS_HPP
 
+#include <design/macros.h>
+
 #include <lvgl/ObjectAccess.hpp>
 
 #include "model/Model.hpp"
@@ -30,7 +32,6 @@ private:
     DESIGN_DECLARE_NAME(icon_container);
     DESIGN_DECLARE_NAME(content_container);
     DESIGN_DECLARE_NAME(description_paragraph);
-
   };
 };
 
@@ -55,5 +56,22 @@ private:
     DESIGN_DECLARE_NAME(spinner);
   };
 
+};
+
+class AttributionRow : public lvgl::ObjectAccess<AttributionRow> {
+public:
+  AttributionRow(
+    const char *name,
+    const char *description,
+    const char *external_link = nullptr);
+  AttributionRow(lv_obj_t *object) { m_object = object; }
+
+
+private:
+  struct Names {
+    DESIGN_DECLARE_NAME(external_link_button);
+    DESIGN_DECLARE_NAME(link_row);
+    DESIGN_DECLARE_NAME(dots_label);
+  };
 };
 #endif // GUI_EXTRAS_HPP

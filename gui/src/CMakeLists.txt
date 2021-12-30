@@ -21,4 +21,7 @@ set(SOURCES
 	view/ViewObject.hpp
 
 
+	worker/GithubWorker.cpp
+	worker/GithubWorker.hpp
+
 	PARENT_SCOPE)

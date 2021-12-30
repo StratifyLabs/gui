@@ -9,7 +9,7 @@
 
 class Home : public ViewObject {
 public:
-  static void configure(Generic generic);
+  static void setup(Generic generic);
 
 private:
   struct Names {
