@@ -11,14 +11,10 @@
 #include <design.hpp>
 #include <design/extras/FormList.hpp>
 
+#include "Extras.hpp"
 #include "Github.hpp"
-void Github::setup(Generic container) {
 
-  Printer::Object about_object(printer(), "Github");
-  printer().key(
-    "size",
-    var::GeneralString()
-      .format("%d,%d", container.get_width(), container.get_height()));
+void Github::setup(Generic generic) {
 
   static auto form_list_data = FormList::Data(github_form_list_name);
 
@@ -42,36 +38,22 @@ void Github::setup(Generic container) {
                              .set_value("loading...")
                              .set_type(FormList::ItemType::number);
 
-  container.set_text_font(model().button_font)
-    .add_event_callback(
-      EventCode::entered, nullptr)
-    .add(
-      Column()
-        .add_style(model().container_style)
-        .add(
-          Row()
-            .fill_width()
-            .add(NakedContainer()
-                   .set_width(NakedContainer::size_from_content)
-                   .set_height(NakedContainer::size_from_content)
-                   .set_padding(20)
-                   .add(Button()
-                          .set_alignment(Alignment::left_middle)
-                          .add_label(icons::fa::chevron_left_solid)
-                          .add_event_callback(EventCode::clicked, go_back)))
-            .add(Label().set_text_as_static("Github: Stratify OS").set_flex_grow())
-            .add(Spinner(Spinner::Construct({busy_spinner_name}))
-                   .add_flag(Flags::hidden)
-                   .set_height(75)
-                   .set_width(75)))
-        .add(FormList(form_list_data)
-               .fill_width()
-               .set_flex_grow()
-               .add_item(stars_item)
-               .add_item(forks_item)
-               .add_item(issues_item)
-               .add_item(releases_item)
-               .add_item(pulls_item)));
+  generic.fill()
+    .add_event_callback(EventCode::entered, nullptr)
+    .add(Column()
+           .fill()
+           .add_style("container")
+           .add(ScreenHeader(ScreenHeader::Construct()
+                               .set_title("Github: StratifyOS")
+                               .set_back_clicked_callback(go_back)))
+           .add(FormList(form_list_data)
+                  .fill_width()
+                  .set_flex_grow()
+                  .add_item(stars_item)
+                  .add_item(forks_item)
+                  .add_item(issues_item)
+                  .add_item(releases_item)
+                  .add_item(pulls_item)));
 }
 
 void *Github::update_github_thread_function(void *) {

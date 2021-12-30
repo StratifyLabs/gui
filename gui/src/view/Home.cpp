@@ -4,6 +4,9 @@
 
 #include <design.hpp>
 
+#include "designlab/fonts/FontAwesomeIcons.hpp"
+
+#include "Extras.hpp"
 #include "Home.hpp"
 
 void Home::configure(Generic generic) {
@@ -30,57 +33,55 @@ void Home::configure(Generic generic) {
 
   // build the GUI using the LvglAPI
   generic.clear_flag(Flags::scrollable)
-    .add(Container().fill().add(
-      Column()
-        .fill()
-        .add_style("col")
-        .clear_flag(Flags::scrollable)
-        .justify_space_between()
-        .set_row_padding(50)
-        .add(Image().set_source("a:icon256x256.png"))
-        .add(Button()
-               .add_style("btn_primary")
-               .add_event_callback(
-                 EventCode::clicked,
-                 [](lv_event_t *) {
-                   Screen::find_screen(Model::Names::github_screen_name)
-                     .load(slide_left);
-                 })
-               .setup([](Button button) {
-                 setup_button(
-                   button,
-                   icons::fa::code_solid,
-                   Model::Names::github_screen_name,
-                   Color::indigo());
-               }))
-        .add(Button()
-               .add_style("btn_secondary")
-               .add_event_callback(
-                 EventCode::clicked,
-                 [](lv_event_t *) {
-                   Screen::find_screen(Model::Names::files_screen_name)
-                     .load(slide_left);
-                 })
-               .setup([](Button button) {
-                 setup_button(
-                   button,
-                   icons::fa::folder_open_solid,
-                   Model::Names::files_screen_name,
-                   Color::grey());
-               }))
-        .add(Button()
-               .add_style("btn_info")
-               .add_event_callback(
-                 EventCode::clicked,
-                 [](lv_event_t *) {
-                   Screen::find_screen(Model::Names::about_screen_name)
-                     .load(slide_left);
-                 })
-               .setup([](Button button) {
-                 setup_button(
-                   button,
-                   icons::fa::info_circle_solid,
-                   Model::Names::about_screen_name,
-                   Color::blue());
-               }))));
+    .add(Container(Names::container)
+           .fill()
+           .add(Column(Names::column)
+                  .fill()
+                  .add_style("col")
+                  .clear_flag(Flags::scrollable)
+                  .justify_space_between()
+                  .add(Image().set_source("a:icon-256x256.png"))));
+
+  auto column = generic.find<Column>(Names::column);
+
+  column.add(
+    ActionCard(ActionCard::Construct()
+                 .set_name(Model::Names::github_screen_name)
+                 .set_clicked_callback(action_card_clicked)
+                 .set_icon(icons::fa::github_brands)
+                 .set_style("bg_primary")
+                 .set_description("See the details of Stratify OS on Github.")
+                 .set_title("Stratify OS"))
+      .fill_width()
+      .set_height(25_percent));
+
+  column.add(
+    ActionCard(ActionCard::Construct()
+                 .set_name(Model::Names::files_screen_name)
+                 .set_clicked_callback(action_card_clicked)
+                 .set_icon(icons::fa::folder_open_solid)
+                 .set_style("bg_secondary")
+                 .set_description("Select a file on the local filesystem.")
+                 .set_title("Filesystem"))
+      .fill_width()
+      .set_height(25_percent));
+
+  column.add(
+    ActionCard(
+      ActionCard::Construct()
+        .set_name(Model::Names::about_screen_name)
+        .set_clicked_callback(action_card_clicked)
+        .set_style("bg_info")
+        .set_icon(icons::fa::info_circle_solid)
+        .set_description(
+          "Check out the projects that make this application possible.")
+        .set_title("About"))
+      .fill_width()
+      .set_height(25_percent));
+}
+
+void Home::action_card_clicked(lv_event_t *e) {
+  const auto name = Event(e).target().name();
+  Model::Scope model_scope;
+  Screen::find_screen(name).load(model().slide_left);
 }

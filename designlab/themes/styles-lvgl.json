@@ -112,7 +112,7 @@
       "width": "LV_PCT(100)"
     },
     "@container": {
-      "padding": "$sizePaddingMedium",
+      "padding": "$sizePaddingMedium *3",
       "background_color": "$colorBackground",
       "border_width": 0,
       "text_color": "$colorForeground",
@@ -286,6 +286,7 @@
     "@paragraph": {
       "text_font": "$fontBodyMedium",
       "width": "LV_PCT(100)",
+      "top_padding": "$sizePadding",
       "bottom_padding": "$sizePadding"
     },
     "@form": {

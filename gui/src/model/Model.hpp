@@ -5,6 +5,10 @@
 #ifndef GUI_MODEL_HPP
 #define GUI_MODEL_HPP
 
+#include <lvgl/Theme.hpp>
+#include <lvgl/Runtime.hpp>
+#include <lvgl/Screen.hpp>
+#include <printer.hpp>
 #include <design/Worker.hpp>
 
 struct Model {
@@ -21,14 +25,14 @@ struct Model {
 
   API_SINGLETON(Model);
 
-  static constexpr u32 animation_period_milliseconds = 200;
+  static constexpr u32 animation_period_milliseconds = 80;
 
   lvgl::Theme light_theme;
   lvgl::Theme dark_theme;
 
-  Screen about_screen = Screen(Names::about_screen_name);
-  Screen github_screen = Screen(Names::github_screen_name);
-  Screen files_screen = Screen(Names::files_screen_name);
+  lvgl::Screen about_screen = lvgl::Screen(Names::about_screen_name);
+  lvgl::Screen github_screen = lvgl::Screen(Names::github_screen_name);
+  lvgl::Screen files_screen = lvgl::Screen(Names::files_screen_name);
 
   // this can be used to create a thread to process
   // background tasks
@@ -36,22 +40,20 @@ struct Model {
   design::Worker github_worker;
   design::Worker files_worker;
 
-  Runtime * runtime = nullptr;
+  lvgl::Runtime * runtime = nullptr;
 
   // We will use this to print debug messages on the Terminal
   printer::YamlPrinter printer;
 
-  Screen::Transition slide_right = {
-    .animation = Screen::LoadAnimation::move_right,
+  lvgl::Screen::Transition slide_right = {
+    .animation = lvgl::Screen::LoadAnimation::move_right,
     .period = animation_period_milliseconds * 1_milliseconds};
 
-  Font button_font = Font::find(48).get_font();
+  lvgl::Screen::Transition slide_left = {
+    .animation = lvgl::Screen::LoadAnimation::move_left,
+    .period = animation_period_milliseconds * 1_milliseconds};
 
-  Style container_style = Style()
-                            .set_vertical_padding(50)
-                            .set_horizontal_padding(50)
-                            .set_height(100_percent)
-                            .set_width(100_percent);
+  lvgl::Font button_font = lvgl::Font::find(48).get_font();
 
 private:
   friend Scope;

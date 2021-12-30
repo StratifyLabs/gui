@@ -11,6 +11,9 @@
    "assets": [
       {
          "path": "designlab/assets/icon.png"
+      },
+      {
+         "path": "designlab/assets/icon-256x256.png"
       }
    ],
    "fonts": [
@@ -52,41 +55,6 @@
       "name": "icons",
       "path": "",
       "range": [
-         {
-            "family": "solid",
-            "name": "angle-down",
-            "unicode": "uf107"
-         },
-         {
-            "family": "solid",
-            "name": "angle-left",
-            "unicode": "uf104"
-         },
-         {
-            "family": "solid",
-            "name": "angle-right",
-            "unicode": "uf105"
-         },
-         {
-            "family": "solid",
-            "name": "angle-up",
-            "unicode": "uf106"
-         },
-         {
-            "family": "solid",
-            "name": "bars",
-            "unicode": "uf0c9"
-         },
-         {
-            "family": "solid",
-            "name": "bold",
-            "unicode": "uf032"
-         },
-         {
-            "family": "solid",
-            "name": "bug",
-            "unicode": "uf188"
-         },
          {
             "family": "solid",
             "name": "chart-line",
@@ -389,6 +357,6 @@
          }
       ]
    },
-   "fontDirty": true,
+   "fontDirty": false,
    "assetsDirty": false
 }

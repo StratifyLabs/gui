@@ -27,6 +27,7 @@ protected:
 
 
   static void go_back(lv_event_t*){
+    Model::Scope model_scope;
     Screen::find_screen("default").load(
       model().slide_right);
   }

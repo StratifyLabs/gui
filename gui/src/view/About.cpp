@@ -20,8 +20,8 @@ void About::setup(Generic container) {
   container.set_text_font(model().button_font)
     .add_event_callback(EventCode::entered, nullptr)
     .add(
-      Column()
-        .add_style(model().container_style)
+      Column().fill()
+        .add_style("container")
         .add(Row()
                .fill_width()
                .add(NakedContainer()

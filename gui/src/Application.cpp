@@ -20,7 +20,7 @@ void Application::run(sys::Cli &cli) {
   lvgl::Runtime runtime(
     "gui",
     window::Point(),
-    window::Size(320 * 4, 240 * 4),
+    window::Size(320 * 4, 320 * 4),
     window::Window::Flags::shown | window::Window::Flags::highdpi
       | window::Window::Flags::resizeable);
 

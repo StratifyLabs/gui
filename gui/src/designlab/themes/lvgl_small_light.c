@@ -152,10 +152,10 @@ static const lv_style_t h4_style = {
 };
 
 static const lv_style_const_prop_t container_const_list[] = {
-  { .prop = LV_STYLE_PAD_TOP, .value = { .num = 10 } },
-  { .prop = LV_STYLE_PAD_BOTTOM, .value = { .num = 10 } },
-  { .prop = LV_STYLE_PAD_LEFT, .value = { .num = 10 } },
-  { .prop = LV_STYLE_PAD_RIGHT, .value = { .num = 10 } },
+  { .prop = LV_STYLE_PAD_TOP, .value = { .num = 10 *3 } },
+  { .prop = LV_STYLE_PAD_BOTTOM, .value = { .num = 10 *3 } },
+  { .prop = LV_STYLE_PAD_LEFT, .value = { .num = 10 *3 } },
+  { .prop = LV_STYLE_PAD_RIGHT, .value = { .num = 10 *3 } },
   { .prop = LV_STYLE_BG_COLOR, .value = { .color = { .full= 0xffeeeeee } } },
   { .prop = LV_STYLE_BORDER_WIDTH, .value = { .num = 0 } },
   { .prop = LV_STYLE_TEXT_COLOR, .value = { .color = { .full= 0xff222222 } } },
@@ -334,7 +334,7 @@ static const lv_style_t bg_light_style = {
 };
 
 static const lv_style_const_prop_t bg_dark_const_list[] = {
-  { .prop = LV_STYLE_BG_COLOR, .value = { .color = { .full= 0xff222222 } } },
+  { .prop = LV_STYLE_BG_COLOR, .value = { .color = { .full= 0xff444444 } } },
   { .prop = LV_STYLE_PROP_INV, .value = { .num = 0 } }
 };
 
@@ -436,8 +436,8 @@ static const lv_style_t btn_light_style = {
 };
 
 static const lv_style_const_prop_t btn_dark_const_list[] = {
-  { .prop = LV_STYLE_BG_COLOR, .value = { .color = { .full= 0xff222222 } } },
-  { .prop = LV_STYLE_BORDER_COLOR, .value = { .color = { .full= 0xff222222 } } },
+  { .prop = LV_STYLE_BG_COLOR, .value = { .color = { .full= 0xff444444 } } },
+  { .prop = LV_STYLE_BORDER_COLOR, .value = { .color = { .full= 0xff444444 } } },
   { .prop = LV_STYLE_TEXT_COLOR, .value = { .color = { .full= 0xffeeeeee } } },
   { .prop = LV_STYLE_PROP_INV, .value = { .num = 0 } }
 };
@@ -578,7 +578,7 @@ static const lv_style_t btn_outline_light_style = {
 
 static const lv_style_const_prop_t btn_outline_dark_const_list[] = {
   { .prop = LV_STYLE_BG_COLOR, .value = { .color = { .full= 0xffeeeeee } } },
-  { .prop = LV_STYLE_BORDER_COLOR, .value = { .color = { .full= 0xff222222 } } },
+  { .prop = LV_STYLE_BORDER_COLOR, .value = { .color = { .full= 0xff444444 } } },
   { .prop = LV_STYLE_TEXT_COLOR, .value = { .color = { .full= 0xff888888 } } },
   { .prop = LV_STYLE_BORDER_WIDTH, .value = { .num = 4 } },
   { .prop = LV_STYLE_PAD_TOP, .value = { .num = 10 *4 - 4 } },
@@ -595,6 +595,7 @@ static const lv_style_t btn_outline_dark_style = {
 static const lv_style_const_prop_t paragraph_const_list[] = {
   { .prop = LV_STYLE_TEXT_FONT, .value = { .ptr = (void*)&montserrat_r_32 } },
   { .prop = LV_STYLE_WIDTH, .value = { .num = LV_PCT(100) } },
+  { .prop = LV_STYLE_PAD_TOP, .value = { .num = 10 } },
   { .prop = LV_STYLE_PAD_BOTTOM, .value = { .num = 10 } },
   { .prop = LV_STYLE_PROP_INV, .value = { .num = 0 } }
 };
@@ -762,7 +763,7 @@ static const lv_style_t text_light_style = {
 };
 
 static const lv_style_const_prop_t text_dark_const_list[] = {
-  { .prop = LV_STYLE_TEXT_COLOR, .value = { .color = { .full= 0xff222222 } } },
+  { .prop = LV_STYLE_TEXT_COLOR, .value = { .color = { .full= 0xff444444 } } },
   { .prop = LV_STYLE_PROP_INV, .value = { .num = 0 } }
 };
 
@@ -1433,7 +1434,7 @@ static const lv_style_t background_color_secondary_muted_style = {
 static const lv_style_const_prop_t background_color_grey_const_list[] = {
   { .prop = LV_STYLE_BG_COLOR, .value = { .color = { .full= 0xff888888 } } },
   { .prop = LV_STYLE_BG_OPA, .value = { .num = 255 } },
-  { .prop = LV_STYLE_TEXT_COLOR, .value = { .color = { .full= 0xff222222 } } },
+  { .prop = LV_STYLE_TEXT_COLOR, .value = { .color = { .full= 0xff444444 } } },
   { .prop = LV_STYLE_PAD_TOP, .value = { .num = 10 / 2 } },
   { .prop = LV_STYLE_PAD_BOTTOM, .value = { .num = 10 / 2 } },
   { .prop = LV_STYLE_PAD_LEFT, .value = { .num = 10 / 2 } },
@@ -1450,7 +1451,7 @@ static const lv_style_t background_color_grey_style = {
 static const lv_style_const_prop_t background_color_white_const_list[] = {
   { .prop = LV_STYLE_BG_COLOR, .value = { .color = { .full= 0xffffffff } } },
   { .prop = LV_STYLE_OPA, .value = { .num = 255 } },
-  { .prop = LV_STYLE_TEXT_COLOR, .value = { .color = { .full= 0xff222222 } } },
+  { .prop = LV_STYLE_TEXT_COLOR, .value = { .color = { .full= 0xff444444 } } },
   { .prop = LV_STYLE_PROP_INV, .value = { .num = 0 } }
 };
 

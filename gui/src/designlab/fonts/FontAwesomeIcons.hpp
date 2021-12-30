@@ -5,13 +5,6 @@
 
 namespace icons {
   namespace fa {
-    static constexpr auto angle_down_solid = "\uf107";
-    static constexpr auto angle_left_solid = "\uf104";
-    static constexpr auto angle_right_solid = "\uf105";
-    static constexpr auto angle_up_solid = "\uf106";
-    static constexpr auto bars_solid = "\uf0c9";
-    static constexpr auto bold_solid = "\uf032";
-    static constexpr auto bug_solid = "\uf188";
     static constexpr auto chart_line_solid = "\uf201";
     static constexpr auto check_solid = "\uf00c";
     static constexpr auto check_double_solid = "\uf560";
