@@ -13,7 +13,6 @@
 #include "Files.hpp"
 void Files::setup(Generic generic) {
 
-  printf("setup files\n");
   static auto file_system_window_data
     = FileSystemWindow::Data(Names::select_file)
         .set_base_path("/")
@@ -38,5 +37,4 @@ void Files::setup(Generic generic) {
 }
 
 void Files::entered(lv_event_t *e) {
-  printf("Entered Files\n");
 }

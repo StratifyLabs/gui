@@ -513,6 +513,8 @@ e.g. "stm32f769xx.h" or "stm32f429xx.h"*/
 #define LV_USE_GRID     1
 
 #define LV_USE_PNG 1
+#define LV_USE_GPU_SDL 0
+#define LV_USE_EXTERNAL_RENDERER LV_USE_GPU_SDL
 
 /*==================
 * EXAMPLES
