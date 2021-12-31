@@ -61,3 +61,27 @@ void Github::entered(lv_event_t *e) {
 
   model().github_worker.start_work(model().runtime);
 }
+
+void Github::set_items_to_loading(void *) {
+  Model::Scope model_scope;
+  auto &model = ModelAccess::model();
+  auto form_list
+    = model.github_screen.find<design::FormList>(Github::Names::form_list);
+  for (const auto name : Github::item_name_list) {
+    form_list.update_item_value(name, "loading...");
+  }
+}
+
+void Github::set_spinner_busy(bool *value) {
+  Model::Scope model_scope;
+  model()
+    .github_screen.find<ScreenHeader>(Github::Names::header_row)
+    .set_busy(*value);
+}
+
+void Github::update_item(const Github::UpdateItem *item) {
+  Model::Scope model_scope;
+  model()
+    .github_screen.find<design::FormList>(Github::Names::form_list)
+    .update_item_value(item->item_name, item->value);
+}

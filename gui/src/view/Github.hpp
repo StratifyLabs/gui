@@ -31,7 +31,16 @@ private:
     Names::stars,
     Names::forks};
 
+  struct UpdateItem {
+    const char *item_name;
+    var::NumberString value;
+  };
+
   static void entered(lv_event_t *);
+
+  static void set_items_to_loading(void*);
+  static void set_spinner_busy(bool* value);
+  static void update_item(const UpdateItem* value);
 };
 
 #endif // GUI_GITHUB_HPP

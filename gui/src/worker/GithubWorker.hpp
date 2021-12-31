@@ -27,11 +27,8 @@ private:
   }
 
   json::JsonValue get_url(inet::HttpSecureClient & secure_client, const char * url);
-  void update_item(const char * item_name, var::NumberString value);
   void update_count(inet::HttpSecureClient & secure_client, const char * url, const char * item_name);
   void work_in_background();
-  void set_items_to_loading();
-  static void set_spinner_busy_runtime_task(bool * value);
 
 };
 

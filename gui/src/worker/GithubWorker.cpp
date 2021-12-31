@@ -10,11 +10,11 @@
 void GithubWorker::work_in_background() {
   {
     bool value = true;
-    push_task_to_runtime<bool>(&value, set_spinner_busy_runtime_task);
-    wait_runtime_task();
+    push_task_to_runtime<bool>(&value, Github::set_spinner_busy)
+      .wait_runtime_task();
   }
 
-  set_items_to_loading();
+  push_task_to_runtime(Github::set_items_to_loading).wait_runtime_task();
 
   HttpSecureClient secure_client;
   secure_client.connect("api.github.com");
@@ -23,17 +23,26 @@ void GithubWorker::work_in_background() {
     = get_url(secure_client, "/repos/StratifyLabs/StratifyOS").to_object();
 
   if (api::ExecutionContext::is_success()) {
-    update_item("Forks", NumberString(details.at("forks_count").to_integer()));
+    {
+      const auto item = Github::UpdateItem{
+        "Forks",
+        NumberString(details.at("forks_count").to_integer())};
+      push_task_to_runtime(&item, Github::update_item).wait_runtime_task();
+    }
 
-    update_item(
-      "Stars",
-      NumberString(details.at("stargazers_count").to_integer()));
+    {
+      const auto item = Github::UpdateItem{
+        "Stars",
+        NumberString(details.at("stargazers_count").to_integer())};
+      push_task_to_runtime(&item, Github::update_item).wait_runtime_task();
+    }
   }
 
   update_count(
     secure_client,
     "/repos/StratifyLabs/StratifyOS/issues",
     "Issues");
+
   update_count(
     secure_client,
     "/repos/StratifyLabs/StratifyOS/releases",
@@ -43,8 +52,8 @@ void GithubWorker::work_in_background() {
 
   {
     bool value = false;
-    push_task_to_runtime<bool>(&value, set_spinner_busy_runtime_task);
-    wait_runtime_task();
+    push_task_to_runtime<bool>(&value, Github::set_spinner_busy)
+      .wait_runtime_task();
   }
 }
 
@@ -67,50 +76,8 @@ void GithubWorker::update_count(
 
   if (is_success()) {
     const u32 count = result.to_array().count();
-    update_item(item_name, NumberString(count));
+    const auto item = Github::UpdateItem{item_name, NumberString(count)};
+    push_task_to_runtime<const Github::UpdateItem>(&item, Github::update_item)
+      .wait_runtime_task();
   }
-}
-
-void GithubWorker::update_item(const char *item_name, var::NumberString value) {
-  struct Context {
-    const char *item_name;
-    var::NumberString value;
-  };
-
-  auto issue_context = Context{item_name, value};
-
-  // this is run in a thread, runtime->push() will
-  // execute a callback in the main thread as part
-  // of the regular loop event updates
-  // the graphics CANNOT be accessed outside the main thread
-  push_task_to_runtime<Context>(&issue_context, [](Context *context) {
-    Model::Scope model_scope;
-    auto &model = ModelAccess::model();
-    model.github_screen.find<design::FormList>(Github::Names::form_list)
-      .update_item_value(context->item_name, context->value);
-  });
-
-  wait_runtime_task();
-}
-
-void GithubWorker::set_items_to_loading() {
-  bool value = true;
-  push_task_to_runtime<bool>(&value, [](bool *value) {
-    Model::Scope model_scope;
-    auto &model = ModelAccess::model();
-    auto form_list
-      = model.github_screen.find<design::FormList>(Github::Names::form_list);
-    for (const auto name : Github::item_name_list) {
-      form_list.update_item_value(name, "loading...");
-    }
-  });
-
-  wait_runtime_task();
-}
-
-void GithubWorker::set_spinner_busy_runtime_task(bool *value) {
-  Model::Scope model_scope;
-  auto &model = ModelAccess::model();
-  model.github_screen.find<ScreenHeader>(Github::Names::header_row)
-    .set_busy(*value);
 }
