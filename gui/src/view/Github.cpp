@@ -58,7 +58,7 @@ void Github::setup(Generic generic) {
 
 void Github::entered(lv_event_t *e) {
   Model::Scope model_scope;
-
+  model().github_worker.set_associated_object(Event(e).target().object());
   model().github_worker.start_work(model().runtime);
 }
 
