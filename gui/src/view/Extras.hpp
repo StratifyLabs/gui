@@ -5,7 +5,7 @@
 #ifndef GUI_EXTRAS_HPP
 #define GUI_EXTRAS_HPP
 
-#include <design/macros.h>
+#include <design/macros.hpp>
 
 #include <lvgl/ObjectAccess.hpp>
 

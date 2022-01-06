@@ -5,7 +5,7 @@
 #include <design.hpp>
 #include <thread.hpp>
 
-#include <design/extras/FileSystemWindow.hpp>
+#include <design/extras/FileSystemCard.hpp>
 #include <design/extras/Form.hpp>
 
 #include "Extras.hpp"
@@ -14,12 +14,12 @@
 void Files::setup(Generic generic) {
 
   static auto file_system_window_data
-    = FileSystemWindow::Data(Names::select_file)
+    = FileSystemCard::Data(Names::select_file)
         .set_base_path("/")
         .set_select_file(true)
         .set_select_folder(false)
         .set_absolute_path()
-        .set_base_path(FileSystemWindow::root_drive_path())
+        .set_base_path(FileSystemCard::root_drive_path())
         .set_animation_time(0_seconds);
 
   generic.add_event_callback(EventCode::entered, entered)

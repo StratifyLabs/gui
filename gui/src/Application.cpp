@@ -1,7 +1,7 @@
 #include <design.hpp>
 #include <lvgl_api.h>
 
-#include <design/macros.h>
+#include <design/macros.hpp>
 
 #include "Application.hpp"
 

@@ -9,7 +9,7 @@
 #include <thread/Mutex.hpp>
 #include <thread/Thread.hpp>
 
-#include <design/macros.h>
+#include <design/macros.hpp>
 
 using namespace printer;
 

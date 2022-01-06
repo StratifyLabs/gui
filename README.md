@@ -1,5 +1,7 @@
 # gui
 
+![macOS Screenshot](docs/gui-macos.png)
+
 The **gui** project is a graphical user interface template project. It has the following features:
 
 - Lightweight: distributable application binaries are as small as 5MB
@@ -15,7 +17,7 @@ The **gui** project contains built-in support for:
 - [InetAPI](https://github.com/StratifyLabs/InetAPI): `HTTP`, `HTTPS`, `TLS` based on `mbedtls`, and BSD sockets
 - [JsonAPI](https://github.com/StratifyLabs/JsonAPI): based on [jansson library](https://github.com/akheron/jansson)
 - [CryptoAPI](https://github.com/StratifyLabs/CryptoAPI): AES, ECDSA, ECDH, and SHA256
-- [Graphics API](https://github.com/StratifyLabs/LvglAPI): based on [lvgl](https://lvgl.io)
+- [GraphicsAPI](https://github.com/StratifyLabs/LvglAPI): based on [lvgl](https://lvgl.io)
 - [WindowAPI](https://github.com/StratifyLabs/WindowAPI): based on [libsdl](https://www.libsdl.org/)
 - [Filesystems, Threads, Data Management, Timers, Testing, Printing](https://github.com/StratifyLabs/API): Stratify Labs API
   framework
