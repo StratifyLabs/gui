@@ -11,8 +11,6 @@
 #include <printer.hpp>
 #include <design/Worker.hpp>
 
-#include "worker/GithubWorker.hpp"
-
 struct Model {
   struct Names {
     static constexpr auto about_screen_name = "About";
@@ -42,8 +40,6 @@ struct Model {
 
   // this can be used to create a thread to process
   // background tasks
-  GithubWorker github_worker;
-
   lvgl::Runtime * runtime = nullptr;
 
   // We will use this to print debug messages on the Terminal
