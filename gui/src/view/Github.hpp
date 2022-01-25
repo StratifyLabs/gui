@@ -78,13 +78,8 @@ private:
     Names::stars,
     Names::forks};
 
-
-
   Github(Data &data);
   static void entered(lv_event_t *);
-
-
-
 };
 
 #endif // GUI_GITHUB_HPP
