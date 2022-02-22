@@ -1,7 +1,7 @@
 /*******************************************************************************
  * Size: 20 px
  * Bpp: 8
- * Opts: --bpp=8 --size=20 --format=lvgl --output=gui/src/designlab/fonts/sourcecode_r_20.c --font=designlab/fonts/SourceCode/SourceCodePro-Regular.ttf --range=0x20-0x7F --no-compress
+ * Opts: --bpp=8 --size=20 --format=lvgl --output=/Users/tgil/gitv4/gui/gui/src/designlab/fonts/sourcecode_r_20.c --font=/Users/tgil/gitv4/gui/designlab/fonts/SourceCode/SourceCodePro-Regular.ttf --range=0x20-0x7F --no-compress
  ******************************************************************************/
 
 #ifdef LV_LVGL_H_INCLUDE_SIMPLE

@@ -1,8 +1,6 @@
 
 
 #include "fonts.h"
-#include <lvgl.h>
-#include <lvgl_api.h>
 
 
 extern const lv_font_t montserrat_r_28;
@@ -18,7 +16,7 @@ extern const lv_font_t montserrat_sb_52;
 extern const lv_font_t montserrat_sb_60;
 
 
-static const lvgl_api_font_descriptor_t lvgl_font_list[] = {
+const lvgl_api_font_descriptor_t lvgl_font_list[11] = {
   { .name = "montserrat-r-28", .font = &montserrat_r_28},
   { .name = "montserrat-r-32", .font = &montserrat_r_32},
   { .name = "montserrat-r-36", .font = &montserrat_r_36},
@@ -33,6 +31,9 @@ static const lvgl_api_font_descriptor_t lvgl_font_list[] = {
 };
 
 
+
+#if defined __link
+
 static const lvgl_api_font_descriptor_t *get_font(int offset){
   const int count = sizeof(lvgl_font_list) / sizeof(lvgl_api_font_descriptor_t);
   if(offset >= 0 && offset < count){
@@ -43,3 +44,7 @@ static const lvgl_api_font_descriptor_t *get_font(int offset){
 void fonts_initialize(){
   lvgl_api_set_font_callback(get_font);
 }
+
+#endif
+
+

@@ -22,6 +22,9 @@
     "$fontHeaderSmall": "&montserrat_sb_36",
     "$fontCodeSmall": "&sourcecode_r_12",
     "$fontCodeMedium": "&sourcecode_r_16",
-    "$fontCodeLarge": "&sourcecode_r_20"
+    "$fontCodeLarge": "&sourcecode_r_20",
+
+    "$fontToastTitle": "&montserrat_sb_36",
+    "$fontToastMessage": "&montserrat_r_36"
   }
 }

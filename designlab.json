@@ -2,10 +2,10 @@
    "source": "gui/src",
    "themes": [
       {
-         "path": "designlab/themes/lvgl-small-light.json"
+         "path": "designlab/themes/lvgl-default-light.json"
       },
       {
-         "path": "designlab/themes/lvgl-small-dark.json"
+         "path": "designlab/themes/lvgl-default-dark.json"
       }
    ],
    "assets": [
@@ -23,9 +23,7 @@
          "style": "regular",
          "range": "0x20-0x7F",
          "bitsPerPixel": "8",
-         "sizesStart": "28",
-         "sizesSteps": "4",
-         "sizesTotal": "3",
+         "sizes": "28,32,36",
          "icons": "true"
       },
       {
@@ -34,9 +32,7 @@
          "style": "regular",
          "range": "0x20-0x7F",
          "bitsPerPixel": "8",
-         "sizesStart": "12",
-         "sizesSteps": "4",
-         "sizesTotal": "3",
+         "sizes": "12,16,20",
          "icons": "false"
       },
       {
@@ -45,9 +41,7 @@
          "style": "semi_bold",
          "range": "0x20-0x7F",
          "bitsPerPixel": "8",
-         "sizesStart": "28",
-         "sizesSteps": "8",
-         "sizesTotal": "5",
+         "sizes": "28,36,44,52,60",
          "icons": "true"
       }
    ],

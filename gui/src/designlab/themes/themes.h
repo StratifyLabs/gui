@@ -14,10 +14,10 @@ extern "C" {
 
 
 lv_theme_t *
-lvgl_small_dark_theme_initialize(lv_disp_t *disp, lv_theme_t *parent);
+lvgl_default_dark_theme_initialize(lv_disp_t *disp, lv_theme_t *parent);
 
 lv_theme_t *
-lvgl_small_light_theme_initialize(lv_disp_t *disp, lv_theme_t *parent);
+lvgl_default_light_theme_initialize(lv_disp_t *disp, lv_theme_t *parent);
 
 #if defined __cplusplus
 }

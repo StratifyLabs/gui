@@ -500,6 +500,58 @@
       "height": "LV_SIZE_CONTENT",
       "clip_corner": true
     },
+    "@toast": {
+      "radius": "$sizeCardBorderRadius",
+      "background_opacity": "$opacityCover",
+      "background_color": "$colorBackground",
+      "border_color": "$colorGrey",
+      "border_width": "$sizeCardBorderWidth",
+      "text_color": "$colorForeground",
+      "border_post": true,
+      "padding": "$sizePadding",
+      "row_padding": "$sizePadding",
+      "column_padding": "$sizePadding",
+      "line_color": "$colorGrey",
+      "line_width": 1,
+      "height": "LV_SIZE_CONTENT",
+      "width": "$sizeToastWidth",
+      "clip_corner": true
+    },
+    "@toast_top_right": {
+      "alignment": "top_right",
+      "x": "$sizeToastOffset * -1",
+      "y": "$sizeToastOffset"
+    },
+    "@toast_top_left": {
+      "alignment": "top_left",
+      "x": "$sizeToastOffset",
+      "y": "$sizeToastOffset"
+    },
+    "@toast_top": {
+      "alignment": "top_middle",
+      "y": "$sizeToastOffset"
+    },
+
+    "@toast_bottom_right": {
+      "alignment": "bottom_right",
+      "x": "$sizeToastOffset *-1",
+      "y": "$sizeToastOffset *-1"
+    },
+    "@toast_bottom_left": {
+      "alignment": "bottom_left",
+      "x": "$sizeToastOffset",
+      "y": "$sizeToastOffset *-1"
+    },
+    "@toast_bottom": {
+      "alignment": "bottom_middle",
+      "y": "$sizeToastOffset *-1"
+    },
+    "@toast_title": {
+      "text_font": "$fontToastTitle"
+    },
+    "@toast_messsage": {
+      "text_font": "$fontToastMessage"
+    },
     "@list_group": {
       "radius": "$sizeCardBorderRadius",
       "background_opacity": "$opacityCover",

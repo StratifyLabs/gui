@@ -1,12 +1,12 @@
 {
   "type": "theme",
   "version": 0,
-  "colors": "colors-dark.json",
-  "sizes": "sizes-small.json",
+  "colors": "colors-light.json",
+  "sizes": "sizes-default.json",
   "styles": "styles-lvgl.json",
-  "fonts": "fonts-small.json",
+  "fonts": "fonts-default.json",
   "rules": "rules-lvgl.json",
-  "name": "lvgl_small_dark",
+  "name": "lvgl_default_light",
   "directory": "../app/src/designlab/themes",
   "header": "themes.h"
 }

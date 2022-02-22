@@ -50,9 +50,9 @@ void Application::run(sys::Cli &cli) {
     // This can be based on windows, tiles, screens, tabs or whatever you deem
     // to be appropriate
     model().light_theme
-      = Theme(lvgl_small_light_theme_initialize(runtime.display(), nullptr));
+      = Theme(lvgl_default_light_theme_initialize(runtime.display(), nullptr));
     model().dark_theme
-      = Theme(lvgl_small_dark_theme_initialize(runtime.display(), nullptr));
+      = Theme(lvgl_default_dark_theme_initialize(runtime.display(), nullptr));
 
     Display(runtime.display()).set_theme(model().dark_theme);
 
