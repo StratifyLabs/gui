@@ -11,10 +11,10 @@ include(sos-sdk)
 
 
 
-set(CLI_PROJECT_VERSION 0.1 CACHE INTERNAL "gui application version")
+set(GUI_PROJECT_VERSION 0.1 CACHE INTERNAL "gui application version")
 project(gui
 	LANGUAGES CXX C
-	VERSION ${CLI_PROJECT_VERSION}
+	VERSION ${GUI_PROJECT_VERSION}
 	)
 
 include(CTest)
