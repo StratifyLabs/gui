@@ -21,8 +21,6 @@ Github::Github(Data &data) {
     data.worker = std::move(UpdateWorker(model().runtime).set_associated_object(object()));
   }
 
-  printf("github object %p\n", object());
-
   static auto form_list_data = FormList::Data(Names::form_list);
 
   static auto issues_item = FormList::ItemData(Names::issues)

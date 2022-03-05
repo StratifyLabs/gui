@@ -46,8 +46,8 @@
     "$sizeCheckboxBorderWidth": "$sizeBorderWidth",
     "$sizeCheckboxRadius": "$sizeBorderRadius",
 
-    "$sizeButtonPaddingX": "$sizePadding *4",
-    "$sizeButtonPaddingY": "$sizePadding *4",
+    "$sizeButtonPaddingX": "$sizePadding *2",
+    "$sizeButtonPaddingY": "$sizePadding *2",
     "$sizeButtonBorderWidth": "$sizeBorderWidth",
     "$sizeButtonBorderRadius": "$sizeBorderRadius",
 
