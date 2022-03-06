@@ -36,6 +36,8 @@ All library dependencies are automatically cloned and built with your applicatio
 
 You can build the project with the following commands:
 
+> On Windows, you might need to do `cmake -DGENERATOR=Ninja -P bootstrap.cmake` depending on what the default generator is on your system.
+
 ```bash
 git clone https://github.com/StratifyLabs/gui.git
 cd gui
