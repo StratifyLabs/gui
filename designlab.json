@@ -386,6 +386,6 @@
          }
       ]
    },
-   "fontDirty": false,
+   "fontDirty": true,
    "assetsDirty": false
 }
