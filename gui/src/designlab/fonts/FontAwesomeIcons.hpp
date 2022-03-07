@@ -51,6 +51,7 @@ namespace icons {
     static constexpr auto minus_solid = "\uf068";
     static constexpr auto moon_solid = "\uf186";
     static constexpr auto palette_solid = "\uf53f";
+    static constexpr auto parachute_box_solid = "\uf4cd";
     static constexpr auto pencil_alt_solid = "\uf303";
     static constexpr auto plus_solid = "\uf067";
     static constexpr auto quote_left_solid = "\uf10d";
@@ -123,6 +124,7 @@ namespace icons {
 #define ICONS_FA_MINUS_SOLID "\uf068"
 #define ICONS_FA_MOON_SOLID "\uf186"
 #define ICONS_FA_PALETTE_SOLID "\uf53f"
+#define ICONS_FA_PARACHUTE_BOX_SOLID "\uf4cd"
 #define ICONS_FA_PENCIL_ALT_SOLID "\uf303"
 #define ICONS_FA_PLUS_SOLID "\uf067"
 #define ICONS_FA_QUOTE_LEFT_SOLID "\uf10d"

@@ -42,35 +42,42 @@ static const lv_style_transition_dsc_t transition_normal = {
   .props = transition_property_list,
   .user_data = NULL,
   .path_xcb = lv_anim_path_linear,
-  .time = 100,
+  .time = 40,
+  .delay = 0
+};
+static const lv_style_transition_dsc_t transition_slow = {
+  .props = transition_property_list,
+  .user_data = NULL,
+  .path_xcb = lv_anim_path_linear,
+  .time = 250,
   .delay = 0
 };
 static const lv_style_transition_dsc_t transition_slide_in = {
   .props = transition_property_list,
   .user_data = NULL,
   .path_xcb = lv_anim_path_ease_out,
-  .time = 250,
+  .time = 90,
   .delay = 0
 };
 static const lv_style_transition_dsc_t transition_slide_out = {
   .props = transition_property_list,
   .user_data = NULL,
   .path_xcb = lv_anim_path_ease_in,
-  .time = 250,
+  .time = 90,
   .delay = 0
 };
 static const lv_style_transition_dsc_t transition_delayed = {
   .props = transition_property_list,
   .user_data = NULL,
   .path_xcb = lv_anim_path_linear,
-  .time = 100,
+  .time = 40,
   .delay = 50
 };
 static const lv_style_transition_dsc_t transition_long_delayed = {
   .props = transition_property_list,
   .user_data = NULL,
   .path_xcb = lv_anim_path_linear,
-  .time = 100,
+  .time = 40,
   .delay = 800
 };
 static lv_color_t dark_filter_callback(const lv_color_filter_dsc_t * filter_descriptor, lv_color_t color, lv_opa_t opacity){
@@ -770,6 +777,43 @@ static const lv_style_const_prop_t form_error_badge_const_list[] = {
 
 static const lv_style_t form_error_badge_style = {
   .v_p = { .const_props = form_error_badge_const_list },
+  .has_group = 0xff,
+  .is_const = 1
+};
+
+static const lv_style_const_prop_t loading_circle_const_list[] = {
+  { .prop = LV_STYLE_TRANSITION, .value = { .ptr = (void*)&transition_slow } },
+  { .prop = LV_STYLE_RADIUS, .value = { .num = 8 *2 } },
+  { .prop = LV_STYLE_BG_OPA, .value = { .num = 255 } },
+  { .prop = LV_STYLE_BG_COLOR, .value = { .color = LV_COLOR_MAKE(0x66,0x66,0x66)  } },
+  { .prop = LV_STYLE_BORDER_WIDTH, .value = { .num = 0 } },
+  { .prop = LV_STYLE_BORDER_POST, .value = { .num = 1 } },
+  { .prop = LV_STYLE_PAD_TOP, .value = { .num = 0 } },
+  { .prop = LV_STYLE_PAD_BOTTOM, .value = { .num = 0 } },
+  { .prop = LV_STYLE_PAD_LEFT, .value = { .num = 0 } },
+  { .prop = LV_STYLE_PAD_RIGHT, .value = { .num = 0 } },
+  { .prop = LV_STYLE_HEIGHT, .value = { .num = LV_PCT(66) } },
+  { .prop = LV_STYLE_WIDTH, .value = { .num = LV_PCT(66) } },
+  { .prop = LV_STYLE_CLIP_CORNER, .value = { .num = 1 } },
+  { .prop = LV_STYLE_PROP_INV, .value = { .num = 0 } }
+};
+
+static const lv_style_t loading_circle_style = {
+  .v_p = { .const_props = loading_circle_const_list },
+  .has_group = 0xff,
+  .is_const = 1
+};
+
+static const lv_style_const_prop_t loading_circle_active_const_list[] = {
+  { .prop = LV_STYLE_TRANSITION, .value = { .ptr = (void*)&transition_slow } },
+  { .prop = LV_STYLE_HEIGHT, .value = { .num = LV_PCT(90) } },
+  { .prop = LV_STYLE_WIDTH, .value = { .num = LV_PCT(90) } },
+  { .prop = LV_STYLE_BG_COLOR, .value = { .color = LV_COLOR_MAKE(0xff,0xff,0xff)  } },
+  { .prop = LV_STYLE_PROP_INV, .value = { .num = 0 } }
+};
+
+static const lv_style_t loading_circle_active_style = {
+  .v_p = { .const_props = loading_circle_active_const_list },
   .has_group = 0xff,
   .is_const = 1
 };
@@ -2293,6 +2337,8 @@ static const lvgl_api_style_descriptor_t lvgl_default_dark_style_descriptor_list
   { .name = "form_dropdown", .style = &form_dropdown_style },
   { .name = "form_dropdown_list", .style = &form_dropdown_list_style },
   { .name = "form_error_badge", .style = &form_error_badge_style },
+  { .name = "loading_circle", .style = &loading_circle_style },
+  { .name = "loading_circle_active", .style = &loading_circle_active_style },
   { .name = "text_light", .style = &text_light_style },
   { .name = "text_dark", .style = &text_dark_style },
   { .name = "text_primary", .style = &text_primary_style },

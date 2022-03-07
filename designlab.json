@@ -281,6 +281,11 @@
          },
          {
             "family": "solid",
+            "name": "parachute-box",
+            "unicode": "uf4cd"
+         },
+         {
+            "family": "solid",
             "name": "pencil-alt",
             "unicode": "uf303"
          },
@@ -386,6 +391,6 @@
          }
       ]
    },
-   "fontDirty": true,
+   "fontDirty": false,
    "assetsDirty": false
 }
