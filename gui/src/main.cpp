@@ -4,6 +4,9 @@
 
 //This must be included to handle
 //SDL's main changing scheme
+#if defined __win32
+#define SDL_MAIN_HANDLED
+#endif
 #include <SDL_main.h>
 
 #include <sys/Cli.hpp>

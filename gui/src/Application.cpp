@@ -10,21 +10,33 @@
 #include "view/Github.hpp"
 #include "view/Home.hpp"
 
-#include "designlab/themes/themes.h"
 #include "designlab/fonts/fonts.h"
+#include "designlab/themes/themes.h"
 
-INCBIN(assetfs,  "../gui/src/designlab/assets/assets.assetfs");
+INCBIN(assetfs, "../gui/src/designlab/assets/assets.assetfs");
 
 void Application::run(sys::Cli &cli) {
+
+  static constexpr auto multiplier =
+#if __win32
+    2
+#else
+    4
+#endif
+    ;
 
   lvgl::Runtime runtime(
     "gui",
     window::Point(),
-    window::Size(320 * 4, 320 * 4),
-    window::Window::Flags::shown | window::Window::Flags::highdpi
-      | window::Window::Flags::resizeable);
+    window::Size(320 * multiplier, 320 * multiplier),
+    window::Window::Flags::shown |
+#if !__win32
+      window::Window::Flags::highdpi |
+#endif
+      window::Window::Flags::resizeable);
 
-  runtime.window().set_minimum_size(window::Size(480, 360));
+  runtime.window().set_minimum_size(
+    window::Size(480 * multiplier / 4, 360 * multiplier / 4));
 
   // make the fonts available to `Font::find()`
   fonts_initialize();
