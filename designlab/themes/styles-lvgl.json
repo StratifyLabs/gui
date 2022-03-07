@@ -3,8 +3,9 @@
   "type": "styles",
   "version": 0,
   "$variables": {
-    "$transitionPeriodMilliseconds": 100,
-    "$transitionSlidePeriodMilliseconds": 250,
+    "$transitionPeriodMilliseconds": 40,
+    "$transitionSlidePeriodMilliseconds": 90,
+    "$transitionSlowPeriodMilliseconds": 250,
     "$radiusCircle": "0x7fff",
     "$opacity20": 51,
     "$opacity40": 102,
@@ -36,6 +37,14 @@
       "property_list": "transition_property_list",
       "path": "linear",
       "period": "$transitionPeriodMilliseconds",
+      "delay": 0
+    },
+    "$transitionSlow": {
+      "name": "transition_slow",
+      "type": "transitionDescriptor",
+      "property_list": "transition_property_list",
+      "path": "linear",
+      "period": "$transitionSlowPeriodMilliseconds",
       "delay": 0
     },
     "$transitionSlideIn": {
@@ -349,6 +358,24 @@
       "background_color": "$colorDanger",
       "background_opacity": "$opaque",
       "text_color": "$colorDangerText"
+    },
+    "@loading_circle": {
+      "transition": "$transitionSlow",
+      "radius": "$sizeCardBorderRadius",
+      "background_opacity": "$opacityCover",
+      "background_color": "$colorGrey",
+      "border_width": 0,
+      "border_post": true,
+      "padding": 0,
+      "height": "$sizeLoadingCircle",
+      "width": "$sizeLoadingCircle",
+      "clip_corner": true
+    },
+    "@loading_circle_active": {
+      "transition": "$transitionSlow",
+      "height": "$sizeLoadingCircleActive",
+      "width": "$sizeLoadingCircleActive",
+      "background_color": "$colorForeground"
     },
     "@text_light": {
       "text_color": "$colorLight"
