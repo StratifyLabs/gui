@@ -45,6 +45,9 @@
 
     "$sizeCheckboxBorderWidth": "$sizeBorderWidth",
     "$sizeCheckboxRadius": "$sizeBorderRadius",
+    
+    "$sizeLoadingCircle": "LV_PCT(66)",
+    "$sizeLoadingCircleActive": "LV_PCT(90)",
 
     "$sizeButtonPaddingX": "$sizePadding *2",
     "$sizeButtonPaddingY": "$sizePadding *2",
