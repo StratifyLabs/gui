@@ -28,8 +28,9 @@ void Application::run(sys::Cli &cli) {
   lvgl::Runtime runtime(
     "gui",
     window::Point(),
-    window::Size(320 * multiplier, 320 * multiplier),
+    window::Size(800, 480),
     window::Window::Flags::shown |
+      window::Window::Flags::fullscreen_desktop |
 #if !__win32
       window::Window::Flags::highdpi |
 #endif
