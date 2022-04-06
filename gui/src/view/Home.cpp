@@ -33,14 +33,15 @@ void Home::setup(Generic generic) {
 
   // build the GUI using the LvglAPI
   generic.clear_flag(Flags::scrollable)
-    .add(Container(Names::container)
-           .fill()
-           .add(Column(Names::column)
-                  .fill()
-                  .add_style("col")
-                  .clear_flag(Flags::scrollable)
-                  .justify_space_between()
-                  .add(Image().set_source("a:icon-256x256.png"))));
+    .add(
+      Container(Names::container)
+        .fill()
+        .add(Column(Names::column)
+               .fill()
+               .add_style("col")
+               .clear_flag(Flags::scrollable)
+               .justify_space_between()
+               .add(Image().set_source("a:icon-256x256.png").set_zoom(0.5f))));
 
   auto column = generic.find<Column>(Names::column);
 
@@ -52,8 +53,8 @@ void Home::setup(Generic generic) {
                  .set_style("bg_primary text_primary")
                  .set_description("See the details of Stratify OS on Github.")
                  .set_title("Stratify OS"))
-      .fill_width()
-      .set_height(25_percent));
+      .set_width(95_percent)
+      .set_height(20_percent));
 
   column.add(
     ActionCard(ActionCard::Construct()
@@ -63,21 +64,19 @@ void Home::setup(Generic generic) {
                  .set_style("bg_secondary text_secondary")
                  .set_description("Select a file on the local filesystem.")
                  .set_title("Filesystem"))
-      .fill_width()
-      .set_height(25_percent));
+      .set_width(95_percent)
+      .set_height(20_percent));
 
   column.add(
-    ActionCard(
-      ActionCard::Construct()
-        .set_name(Model::Names::about_screen_name)
-        .set_clicked_callback(action_card_clicked)
-        .set_style("bg_info text_info")
-        .set_icon(icons::fa::info_circle_solid)
-        .set_description(
-          "See what makes this application possible.")
-        .set_title("About"))
-      .fill_width()
-      .set_height(25_percent));
+    ActionCard(ActionCard::Construct()
+                 .set_name(Model::Names::about_screen_name)
+                 .set_clicked_callback(action_card_clicked)
+                 .set_style("bg_info text_info")
+                 .set_icon(icons::fa::info_circle_solid)
+                 .set_description("See what makes this application possible.")
+                 .set_title("About"))
+      .set_width(95_percent)
+      .set_height(20_percent));
 }
 
 void Home::action_card_clicked(lv_event_t *e) {

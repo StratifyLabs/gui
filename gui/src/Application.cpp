@@ -17,6 +17,9 @@ INCBIN(assetfs, "../gui/src/designlab/assets/assets.assetfs");
 
 void Application::run(sys::Cli &cli) {
 
+  static constexpr size_t window_width = 480;
+  static constexpr size_t window_height = 360;
+
   static constexpr auto multiplier =
 #if __win32
     2
@@ -28,16 +31,16 @@ void Application::run(sys::Cli &cli) {
   lvgl::Runtime runtime(
     "gui",
     window::Point(),
-    window::Size(800, 480),
-    window::Window::Flags::shown |
-      window::Window::Flags::fullscreen_desktop |
+    window::Size(window_width, window_height),
+    window::Window::Flags::shown
 #if !__win32
-      window::Window::Flags::highdpi |
+  | window::Window::Flags::highdpi
 #endif
-      window::Window::Flags::resizeable);
+       | window::Window::Flags::resizeable
+    );
 
   runtime.window().set_minimum_size(
-    window::Size(480 * multiplier / 4, 360 * multiplier / 4));
+    window::Size(window_width * multiplier / 4, window_height * multiplier / 4));
 
   // make the fonts available to `Font::find()`
   fonts_initialize();
@@ -63,9 +66,9 @@ void Application::run(sys::Cli &cli) {
     // This can be based on windows, tiles, screens, tabs or whatever you deem
     // to be appropriate
     model().light_theme
-      = Theme(lvgl_default_light_theme_initialize(runtime.display(), nullptr));
+      = Theme(default_light_medium_theme_initialize(runtime.display(), nullptr));
     model().dark_theme
-      = Theme(lvgl_default_dark_theme_initialize(runtime.display(), nullptr));
+      = Theme(default_dark_small_theme_initialize(runtime.display(), nullptr));
 
     Display(runtime.display()).set_theme(model().dark_theme);
 

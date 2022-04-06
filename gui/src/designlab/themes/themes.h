@@ -14,10 +14,19 @@ extern "C" {
 
 
 lv_theme_t *
-lvgl_default_dark_theme_initialize(lv_disp_t *disp, lv_theme_t *parent);
+default_light_medium_theme_initialize(lv_disp_t *disp, lv_theme_t *parent);
 
 lv_theme_t *
-lvgl_default_light_theme_initialize(lv_disp_t *disp, lv_theme_t *parent);
+default_dark_medium_theme_initialize(lv_disp_t *disp, lv_theme_t *parent);
+
+lv_theme_t *
+default_dark_small_theme_initialize(lv_disp_t *disp, lv_theme_t *parent);
+
+lv_theme_t *
+default_light_highdpi_theme_initialize(lv_disp_t *disp, lv_theme_t *parent);
+
+lv_theme_t *
+default_dark_highdpi_theme_initialize(lv_disp_t *disp, lv_theme_t *parent);
 
 #if defined __cplusplus
 }

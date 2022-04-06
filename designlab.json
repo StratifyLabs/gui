@@ -2,10 +2,19 @@
    "source": "gui/src",
    "themes": [
       {
-         "path": "designlab/themes/lvgl-default-light.json"
+         "path": "SDK/dependencies/DesignAPI/themes/default/theme-dark-medium.json"
       },
       {
-         "path": "designlab/themes/lvgl-default-dark.json"
+         "path": "SDK/dependencies/DesignAPI/themes/default/theme-dark-small.json"
+      },
+      {
+         "path": "SDK/dependencies/DesignAPI/themes/default/theme-light-medium.json"
+      },
+      {
+         "path": "SDK/dependencies/DesignAPI/themes/default/theme-dark-highdpi.json"
+      },
+      {
+         "path": "SDK/dependencies/DesignAPI/themes/default/theme-light-highdpi.json"
       }
    ],
    "assets": [
@@ -23,7 +32,7 @@
          "style": "regular",
          "range": "0x20-0x7F",
          "bitsPerPixel": "8",
-         "sizes": "28,32,36",
+         "userSizes": "12",
          "icons": "true"
       },
       {
@@ -32,7 +41,7 @@
          "style": "regular",
          "range": "0x20-0x7F",
          "bitsPerPixel": "8",
-         "sizes": "12,16,20",
+         "userSizes": "12",
          "icons": "false"
       },
       {
@@ -41,7 +50,7 @@
          "style": "semi_bold",
          "range": "0x20-0x7F",
          "bitsPerPixel": "8",
-         "sizes": "28,36,44,52,60",
+         "userSizes": "12",
          "icons": "true"
       }
    ],
@@ -392,5 +401,6 @@
       ]
    },
    "fontDirty": false,
-   "assetsDirty": false
+   "assetsDirty": false,
+   "components": []
 }

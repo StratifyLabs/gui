@@ -11,7 +11,7 @@ extern "C" {
 #if defined __link
 void fonts_initialize();
 #else
-extern const lvgl_api_font_descriptor_t lvgl_font_list[11];
+extern const lvgl_api_font_descriptor_t lvgl_font_list[];
 #endif
 
 #if defined __cplusplus
