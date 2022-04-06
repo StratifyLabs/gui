@@ -60,6 +60,8 @@ void Application::run(sys::Cli &cli) {
     Model::Scope model_scope;
     model().runtime = &runtime;
 
+    model().icon_path = "a:icon-128x128.png";
+
     Printer::Object root_object(printer(), "gui");
     printer().key("starting", cli.get_name());
     // This is where we create our top level navigation system

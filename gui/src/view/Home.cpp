@@ -13,6 +13,8 @@ void Home::setup(Generic generic) {
   // The current screen is the "default" screen
   // it is automatically created by lvgl
 
+  Model::Scope ms;
+
   static const auto button_style
     = Style().fill_width().set_height(20_percent).set_border_width(20);
 
@@ -41,7 +43,7 @@ void Home::setup(Generic generic) {
                .add_style("col")
                .clear_flag(Flags::scrollable)
                .justify_space_between()
-               .add(Image().set_source("a:icon-256x256.png").set_zoom(0.5f))));
+               .add(Image().set_source(model().icon_path))));
 
   auto column = generic.find<Column>(Names::column);
 
@@ -54,7 +56,7 @@ void Home::setup(Generic generic) {
                  .set_description("See the details of Stratify OS on Github.")
                  .set_title("Stratify OS"))
       .set_width(95_percent)
-      .set_height(20_percent));
+      .set_height(25_percent));
 
   column.add(
     ActionCard(ActionCard::Construct()
@@ -65,7 +67,7 @@ void Home::setup(Generic generic) {
                  .set_description("Select a file on the local filesystem.")
                  .set_title("Filesystem"))
       .set_width(95_percent)
-      .set_height(20_percent));
+      .set_height(25_percent));
 
   column.add(
     ActionCard(ActionCard::Construct()
@@ -76,7 +78,7 @@ void Home::setup(Generic generic) {
                  .set_description("See what makes this application possible.")
                  .set_title("About"))
       .set_width(95_percent)
-      .set_height(20_percent));
+      .set_height(25_percent));
 }
 
 void Home::action_card_clicked(lv_event_t *e) {

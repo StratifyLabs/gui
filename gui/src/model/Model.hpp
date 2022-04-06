@@ -37,6 +37,8 @@ struct Model {
   bool is_dark_theme = true;
   bool is_theme_updated = false;
 
+  const char * icon_path = nullptr;
+
   lvgl::Screen about_screen = lvgl::Screen(Names::about_screen_name);
   lvgl::Screen github_screen = lvgl::Screen(Names::github_screen_name);
   lvgl::Screen files_screen = lvgl::Screen(Names::files_screen_name);

@@ -54,10 +54,18 @@ ScreenHeader::ScreenHeader(const ScreenHeader::Construct &options) {
         .add_label(icons::fa::chevron_left_solid)
         .add_event_callback(EventCode::clicked, options.back_clicked_callback));
   add(Heading2(options.title).set_flex_grow());
+
   add(Spinner(Spinner::Construct().set_name(Names::spinner))
-        .add_flag(Flags::hidden)
-        .set_width(75)
-        .set_height(75));
+                      .add_flag(Flags::hidden)
+                      .set_width(20)
+                      .set_height(20));
+
+  setup([](ScreenHeader screen_header) {
+    screen_header.update_layout();
+    const auto heading_size
+      = screen_header.find<Button>(Names::back_button).get_height();
+    screen_header.find<Spinner>(Names::spinner).set_width(heading_size).set_height(heading_size);
+  });
 }
 
 ScreenHeader &ScreenHeader::set_busy(bool value) {

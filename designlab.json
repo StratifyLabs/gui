@@ -2,19 +2,22 @@
    "source": "gui/src",
    "themes": [
       {
-         "path": "SDK/dependencies/DesignAPI/themes/default/theme-dark-medium.json"
+         "path": "SDK/dependencies/DesignAPI/themes/default/theme-dark-small.json"
       },
       {
-         "path": "SDK/dependencies/DesignAPI/themes/default/theme-dark-small.json"
+         "path": "SDK/dependencies/DesignAPI/themes/default/theme-light-small.json"
+      },
+      {
+         "path": "SDK/dependencies/DesignAPI/themes/default/theme-dark-medium.json"
       },
       {
          "path": "SDK/dependencies/DesignAPI/themes/default/theme-light-medium.json"
       },
       {
-         "path": "SDK/dependencies/DesignAPI/themes/default/theme-dark-highdpi.json"
+         "path": "SDK/dependencies/DesignAPI/themes/default/theme-dark-large.json"
       },
       {
-         "path": "SDK/dependencies/DesignAPI/themes/default/theme-light-highdpi.json"
+         "path": "SDK/dependencies/DesignAPI/themes/default/theme-light-large.json"
       }
    ],
    "assets": [
@@ -23,6 +26,9 @@
       },
       {
          "path": "designlab/assets/icon-256x256.png"
+      },
+      {
+         "path": "designlab/assets/icon-128x128.png"
       }
    ],
    "fonts": [
