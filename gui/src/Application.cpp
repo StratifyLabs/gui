@@ -34,7 +34,7 @@ void Application::run(sys::Cli &cli) {
     window::Size(window_width, window_height),
     window::Window::Flags::shown
 #if !__win32
-  | window::Window::Flags::highdpi
+  //| window::Window::Flags::highdpi
 #endif
        | window::Window::Flags::resizeable
     );
