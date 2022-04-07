@@ -12,6 +12,7 @@ sudo apt install ninja-build
 sudo apt install libsdl-dev
 sudo apt install libssl-dev
 
+
 mkdir build_cmake
 cd build_cmake
 wget https://github.com/Kitware/CMake/releases/download/v3.21.2/cmake-3.21.2.tar.gz

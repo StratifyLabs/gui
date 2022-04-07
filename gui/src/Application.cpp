@@ -36,7 +36,7 @@ void Application::run(sys::Cli &cli) {
 #if !__win32
   //| window::Window::Flags::highdpi
 #endif
-       | window::Window::Flags::fullscreen
+       | window::Window::Flags::resizeable
     );
 
   runtime.window().set_minimum_size(
