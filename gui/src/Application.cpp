@@ -70,7 +70,7 @@ void Application::run(sys::Cli &cli) {
     model().light_theme
       = Theme(default_light_medium_theme_initialize(runtime.display(), nullptr));
     model().dark_theme
-      = Theme(default_dark_medium_theme_initialize(runtime.display(), nullptr));
+      = Theme(default_dark_small_theme_initialize(runtime.display(), nullptr));
 
     Display(runtime.display()).set_theme(model().dark_theme);
 
