@@ -1,4 +1,5 @@
 #include <design.hpp>
+#include <sys/System.hpp>
 #include <lvgl_api.h>
 
 #include <design/macros.hpp>
@@ -38,6 +39,10 @@ void Application::run(sys::Cli &cli) {
 #endif
        | window::Window::Flags::resizeable
     );
+
+  if( sys::System().is_processor_arm32() && sys::System().is_linux() ) {
+    window::Window::show_cursor(false);
+  }
 
   runtime.window().set_minimum_size(
     window::Size(window_width * multiplier / 4, window_height * multiplier / 4));
