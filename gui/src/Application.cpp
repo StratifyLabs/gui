@@ -17,8 +17,8 @@ INCBIN(assetfs, "../gui/src/designlab/assets/assets.assetfs");
 
 void Application::run(sys::Cli &cli) {
 
-  static constexpr size_t window_width = 480;
-  static constexpr size_t window_height = 360;
+  static constexpr size_t window_width = 800;
+  static constexpr size_t window_height = 480;
 
   static constexpr auto multiplier =
 #if __win32
