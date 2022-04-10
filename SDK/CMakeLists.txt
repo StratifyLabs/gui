@@ -70,6 +70,9 @@ sdk_add_subdirectory(CryptoAPI v1.2)
 sdk_add_subdirectory(CloudAPI v1.1)
 
 #These are still in pre-release
+if(LINUX_HAL_API)
+  sdk_add_subdirectory(LinuxHalAPI main)
+endif()
 sdk_add_subdirectory(WindowAPI main)
 sdk_add_subdirectory(LvglAPI main)
 sdk_add_subdirectory(DesignAPI main)

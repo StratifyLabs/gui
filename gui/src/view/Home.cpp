@@ -9,7 +9,9 @@
 #include "Extras.hpp"
 #include "Home.hpp"
 
-void Home::setup(Generic generic) {
+Home::Home(const char *name) {
+  construct_object(name);
+  fill();
   // The current screen is the "default" screen
   // it is automatically created by lvgl
 
@@ -18,36 +20,31 @@ void Home::setup(Generic generic) {
   static const auto button_style
     = Style().fill_width().set_height(20_percent).set_border_width(20);
 
-  static auto setup_button =
-    [](Button button, const char *icon, const char *screen_name, Color color) {
-      button.add_style(button_style)
-        .set_horizontal_padding(20)
-        .add_style(Row::get_style())
-        .add_style(Row::get_style())
-        .add(Label().set_text_as_static(icon).set_right_padding(20))
-        .add(Label().set_text_as_static(screen_name).set_flex_grow())
-        .add(Label().set_text_as_static(icons::fa::chevron_right_solid));
-    };
+  static const auto width = 45_percent;
+  static const auto height = 45_percent;
 
   static auto slide_left = Screen::Transition(
     {.animation = Screen::LoadAnimation::move_left,
      .period = Model::animation_period_milliseconds * 1_milliseconds});
 
-  // build the GUI using the LvglAPI
-  generic.clear_flag(Flags::scrollable)
-    .add(
-      Container(Names::container)
-        .fill()
-        .add(Column(Names::column)
-               .fill()
-               .add_style("col")
-               .clear_flag(Flags::scrollable)
-               .justify_space_between()
-               .add(Image().set_source(model().icon_path))));
+  clear_flag(Flags::scrollable)
+    .add(Container(Names::container)
+           .fill()
+           .add(NakedContainer(Names::column)
+                  .fill()
+                  .set_flex_flow(FlexFlow::row_wrap)
+                  .set_flex_align(SetFlexAlign())
+                  .clear_flag(Flags::scrollable)));
 
-  auto column = generic.find<Column>(Names::column);
+  auto content = find<Column>(Names::column);
 
-  column.add(
+  content.add(NakedContainer().set_width(width).set_height(height).add(
+    Image()
+      .set_source(model().icon_path)
+      .center()
+      .set_zoom(model().image_scale)));
+
+  content.add(
     ActionCard(ActionCard::Construct()
                  .set_name(Model::Names::github_screen_name)
                  .set_clicked_callback(action_card_clicked)
@@ -55,10 +52,10 @@ void Home::setup(Generic generic) {
                  .set_style("bg_primary text_primary")
                  .set_description("See the details of Stratify OS on Github.")
                  .set_title("Stratify OS"))
-      .set_width(95_percent)
-      .set_height(25_percent));
+      .set_width(width)
+      .set_height(height));
 
-  column.add(
+  content.add(
     ActionCard(ActionCard::Construct()
                  .set_name(Model::Names::files_screen_name)
                  .set_clicked_callback(action_card_clicked)
@@ -66,10 +63,10 @@ void Home::setup(Generic generic) {
                  .set_style("bg_secondary text_secondary")
                  .set_description("Select a file on the local filesystem.")
                  .set_title("Filesystem"))
-      .set_width(95_percent)
-      .set_height(25_percent));
+      .set_width(width)
+      .set_height(height));
 
-  column.add(
+  content.add(
     ActionCard(ActionCard::Construct()
                  .set_name(Model::Names::about_screen_name)
                  .set_clicked_callback(action_card_clicked)
@@ -77,8 +74,8 @@ void Home::setup(Generic generic) {
                  .set_icon(icons::fa::info_circle_solid)
                  .set_description("See what makes this application possible.")
                  .set_title("About"))
-      .set_width(95_percent)
-      .set_height(25_percent));
+      .set_width(width)
+      .set_height(height));
 }
 
 void Home::action_card_clicked(lv_event_t *e) {

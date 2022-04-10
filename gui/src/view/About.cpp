@@ -12,9 +12,12 @@
 
 #include "Extras.hpp"
 
-void About::setup(Generic container) {
+About::About(const char *name) {
+  construct_object(name);
+  fill();
+  add_style("container");
 
-  container.set_text_font(model().button_font)
+  set_text_font(model().button_font)
     .add_event_callback(EventCode::entered, nullptr)
     .add(
       Column()

@@ -38,6 +38,7 @@ struct Model {
   bool is_theme_updated = false;
 
   const char * icon_path = nullptr;
+  float image_scale = 1.0f;
 
   lvgl::Screen about_screen = lvgl::Screen(Names::about_screen_name);
   lvgl::Screen github_screen = lvgl::Screen(Names::github_screen_name);

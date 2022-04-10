@@ -7,11 +7,15 @@
 
 #include "ViewObject.hpp"
 
-class Home : public ViewObject {
+class Home : public ViewObject, public lvgl::ObjectAccess<Home> {
 public:
-  static void setup(Generic generic);
+  static void setup(Generic generic){
+    generic.add(Home());
+  }
 
 private:
+  LVGL_OBJECT_ACCESS_DECLARE_CONSTRUCTOR(Home);
+
   struct Names {
     DESIGN_DECLARE_NAME(container);
     DESIGN_DECLARE_NAME(column);

@@ -16,9 +16,11 @@
 
 Github::Github(Data &data) {
   construct_object(data.cast_as_name());
+  add_style("container");
   {
     Model::Scope ms;
-    data.worker = std::move(UpdateWorker(model().runtime).set_associated_object(object()));
+    data.worker = std::move(
+      UpdateWorker(model().runtime).set_associated_object(object()));
   }
 
   static auto form_list_data = FormList::Data(Names::form_list);

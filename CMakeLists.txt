@@ -11,7 +11,7 @@ include(sos-sdk)
 
 
 
-set(GUI_PROJECT_VERSION 0.1 CACHE INTERNAL "gui application version")
+set(GUI_PROJECT_VERSION 0.2 CACHE INTERNAL "gui application version")
 project(gui
 	LANGUAGES CXX C
 	VERSION ${GUI_PROJECT_VERSION}
@@ -20,6 +20,7 @@ project(gui
 include(CTest)
 
 set(SOS_SDK_PULL_TARGET pull)
+option(LINUX_HAL_API "use the raspberry/linux hal API" OFF)
 
 add_custom_target(pull
 	COMMAND git pull

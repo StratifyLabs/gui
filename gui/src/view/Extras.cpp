@@ -50,21 +50,23 @@ ScreenHeader::ScreenHeader(const ScreenHeader::Construct &options) {
   fill_width();
   set_height(ScreenHeader::size_from_content);
   add(Button(Names::back_button)
-        .add_style("btn_primary btn_md")
+        .add_style("btn_primary btn_lg")
         .add_label(icons::fa::chevron_left_solid)
         .add_event_callback(EventCode::clicked, options.back_clicked_callback));
   add(Heading2(options.title).set_flex_grow());
 
   add(Spinner(Spinner::Construct().set_name(Names::spinner))
-                      .add_flag(Flags::hidden)
-                      .set_width(20)
-                      .set_height(20));
+        .add_flag(Flags::hidden)
+        .set_width(20)
+        .set_height(20));
 
   setup([](ScreenHeader screen_header) {
     screen_header.update_layout();
     const auto heading_size
       = screen_header.find<Button>(Names::back_button).get_height();
-    screen_header.find<Spinner>(Names::spinner).set_width(heading_size).set_height(heading_size);
+    screen_header.find<Spinner>(Names::spinner)
+      .set_width(heading_size)
+      .set_height(heading_size);
   });
 }
 
@@ -88,32 +90,18 @@ AttributionRow::AttributionRow(
     .fill_width()
     .add(Heading3(name).set_width(size_from_content))
     .add(Label(Names::dots_label)
-           .set_text((var::String(". ") * 200).cstring())
-           .set_alignment(Alignment::bottom_left)
+           .set_text((var::String(". ") * 300).cstring())
            .set_long_mode(Label::LongMode::clip)
            .set_flex_grow())
-    .add(Row(Names::link_row)
-           .set_height(size_from_content)
-           .set_width(size_from_content)
-           .add(Heading3(description).set_width(size_from_content)));
+    .add(Heading3(description).set_width(size_from_content));
 
   if (external_link != nullptr) {
-    find<Row>(Names::link_row)
-      .add(Button(external_link)
-             .add_style("btn_light btn_sm")
-             .add_label(icons::fa::external_link_alt_solid)
-             .add_event_callback(EventCode::clicked, [](lv_event_t *e) {
-               const auto url = Event(e).target().name();
-               sys::System::launch_browser(url);
-             }));
+    add(Button(external_link)
+          .add_style("btn_light btn_sm")
+          .add_label(icons::fa::external_link_alt_solid)
+          .add_event_callback(EventCode::clicked, [](lv_event_t *e) {
+            const auto url = Event(e).target().name();
+            sys::System::launch_browser(url);
+          }));
   }
-
-  setup([](AttributionRow attribution_row) {
-    const auto text_height = attribution_row.update_layout().get_height();
-    auto current_height
-      = attribution_row.find<Label>(Names::dots_label).get_height();
-    attribution_row.find<Label>(Names::dots_label)
-      .set_top_padding(text_height - current_height - 10)
-      .set_height(text_height);
-  });
 }
