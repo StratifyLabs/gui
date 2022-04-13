@@ -104,8 +104,5 @@ else()
   endif()
 endif()
 
-if(IS_BUILD_AND_TEST)
-
-endif()
 
 
