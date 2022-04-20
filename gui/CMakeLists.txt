@@ -58,7 +58,3 @@ set_target_properties(${RELEASE_TARGET}
   MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/MacOSXBundleInfo.plist.in
   )
 
-
-install(
-  PROGRAMS ${CMAKE_CURRENT_SOURCE_DIR}/build_release_link/${LOCAL_NAME}_release_link.elf${SOS_SDK_EXEC_SUFFIX}
-  DESTINATION ${SOS_SDK_PATH}/bin RENAME ${LOCAL_NAME}${SOS_SDK_EXEC_SUFFIX})

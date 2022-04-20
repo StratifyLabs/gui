@@ -1,7 +1,7 @@
 .idea/
 cmake_link/
 cmake_arm/
-cmake_rpi_link/
+cmake_*_link/
 SDK/dependencies/
 SDK/StratifyLabs-SDK/
 gui/src/assetfs/data.assetfs
