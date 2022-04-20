@@ -28,7 +28,7 @@ void Application::run(sys::Cli &cli) {
   static constexpr size_t window_width = 800;
   static constexpr size_t window_height = 480;
 
-  const auto window_size = window::Size(window_width, window_height);
+  const auto window_size = window::Size(window_width*scale, window_height*scale);
 
   lvgl::Runtime runtime(
     "gui",
