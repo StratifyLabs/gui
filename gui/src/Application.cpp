@@ -14,29 +14,28 @@
 #include "designlab/fonts/fonts.h"
 #include "designlab/themes/themes.h"
 
-#define USE_SMALL_THEME 1
+#if defined __macosx
+#define USE_HIGHDPI 1
+#else
+#define USE_HIGHDPI 0
+#endif
 
 INCBIN(assetfs, "../gui/src/designlab/assets/assets.assetfs");
 
 void Application::run(sys::Cli &cli) {
 
+  static constexpr size_t scale = (USE_HIGHDPI + 1);
   static constexpr size_t window_width = 800;
   static constexpr size_t window_height = 480;
 
-  static constexpr auto multiplier =
-#if __win32
-    2
-#else
-    4
-#endif
-    ;
+  const auto window_size = window::Size(window_width, window_height);
 
   lvgl::Runtime runtime(
     "gui",
     window::Point(),
-    window::Size(window_width, window_height),
+    window_size,
     window::Window::Flags::shown
-#if USE_SMALL_THEME == 0
+#if USE_HIGHDPI
       | window::Window::Flags::highdpi
 #endif
       | window::Window::Flags::resizeable);
@@ -45,9 +44,8 @@ void Application::run(sys::Cli &cli) {
     window::Window::show_cursor(false);
   }
 
-  runtime.window().set_minimum_size(window::Size(
-    window_width * multiplier / 4,
-    window_height * multiplier / 4));
+  runtime.window().set_minimum_size(
+    window::Size(window_width, window_height));
 
   // make the fonts available to `Font::find()`
   fonts_initialize();
@@ -75,7 +73,7 @@ void Application::run(sys::Cli &cli) {
     // This can be based on windows, tiles, screens, tabs or whatever you deem
     // to be appropriate
 
-#if USE_SMALL_THEME
+#if !USE_HIGHDPI
     model().light_theme
       = Theme(default_light_small_theme_initialize(runtime.display(), nullptr));
     model().dark_theme
