@@ -4,8 +4,10 @@
 
 //This must be included to handle
 //SDL's main changing scheme
+#if defined __link
 #define SDL_MAIN_HANDLED
 #include <SDL_main.h>
+#endif
 
 #include <sys/Cli.hpp>
 

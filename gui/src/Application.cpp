@@ -20,17 +20,43 @@
 #define USE_HIGHDPI 0
 #endif
 
+#if defined __link
 INCBIN(assetfs, "../gui/src/designlab/assets/assets.assetfs");
+#endif
 
 void Application::run(sys::Cli &cli) {
 
+  initialize(cli);
+
+  // model cannot be touched until all lvgl initialization is complete
+  // it is initialized on first access
+  auto * runtime = [](){
+    Model::Scope model_scope;
+    Display(model().runtime->display()).set_theme(model().dark_theme);
+
+    About::setup(Generic(model().about_screen));
+    Files::setup(Generic(model().files_screen));
+    Github::setup(Generic(model().github_screen));
+    model().home_screen = Screen(screen().object());
+    return model().runtime;
+  }();
+
+  Home::setup(Generic(screen().object()));
+
+  // start the runtime loop
+  // use runtime.set_stopped() to exit
+  runtime->loop();
+}
+
+void Application::initialize(const sys::Cli &cli) {
+#if defined __link
   static constexpr size_t scale = (USE_HIGHDPI + 1);
   static constexpr size_t window_width = 800;
   static constexpr size_t window_height = 480;
 
   const auto window_size = window::Size(window_width*scale, window_height*scale);
 
-  lvgl::Runtime runtime(
+  static lvgl::Runtime runtime(
     "gui",
     window::Point(),
     window_size,
@@ -59,8 +85,6 @@ void Application::run(sys::Cli &cli) {
   // load the PNG decoder
   lvgl_api_initialize_png_decoder();
 
-  // model cannot be touched until all lvgl initialization is complete
-  // it is initialized on first access
   {
     Model::Scope model_scope;
     model().runtime = &runtime;
@@ -87,17 +111,22 @@ void Application::run(sys::Cli &cli) {
 
 #endif
 
-    Display(runtime.display()).set_theme(model().dark_theme);
 
-    About::setup(Generic(model().about_screen));
-    Files::setup(Generic(model().files_screen));
-    Github::setup(Generic(model().github_screen));
-    model().home_screen = Screen(screen().object());
   }
+#else
+  // on Stratify OS the system provides
+  // the fonts, themes, display size, etc
+  static lvgl::Runtime runtime;
+  {
+    Model::Scope model_scope;
 
-  Home::setup(Generic(screen().object()));
+    model().icon_path = "/assets/icon-256x256.png";
+    model().image_scale = 0.5f;
 
-  // start the runtime loop
-  // use runtime.set_stopped() to exit
-  runtime.loop();
+    // grab the light and dark themes for the model
+    model().runtime = &runtime;
+    model().light_theme = Theme::find("light");
+    model().dark_theme = Theme::find("dark");
+  }
+#endif
 }

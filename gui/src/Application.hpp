@@ -7,7 +7,6 @@
 
 #include <sys/Cli.hpp>
 #include <lvgl.hpp>
-#include <window/Types.hpp>
 
 #include "view/ViewObject.hpp"
 
@@ -15,8 +14,8 @@ class Application : public ModelAccess {
 public:
   static void run(sys::Cli & cli);
 
-
-
+private:
+  static void initialize(const sys::Cli &cli);
 };
 
 

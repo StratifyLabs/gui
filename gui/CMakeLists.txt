@@ -1,7 +1,6 @@
 
 set(DEPENDENCIES
   DesignAPI
-  WindowAPI
   InetAPI
   JsonAPI
   TestAPI
@@ -10,22 +9,26 @@ set(DEPENDENCIES
   VarAPI
   ThreadAPI)
 
-set(LOCAL_NAME ${PROJECT_NAME})
+set(LOCAL_NAME gui)
 
 sos_sdk_add_subdirectory(PRIVATE_SOURCELIST ${CMAKE_CURRENT_SOURCE_DIR}/src)
-sos_sdk_add_subdirectory(DESIGNLAB_SOURCELIST ${CMAKE_CURRENT_SOURCE_DIR}/src/designlab)
+if(SOS_IS_LINK)
+  list(APPEND DEPENDENCIES WindowAPI)
+  sos_sdk_add_subdirectory(DESIGNLAB_SOURCELIST ${CMAKE_CURRENT_SOURCE_DIR}/src/designlab)
+else()
+  set(DESIGNLAB_SOURCELIST "")
+endif()
 
 sos_sdk_app_target(RELEASE ${LOCAL_NAME} "" release ${SOS_ARCH})
 
-set(ICON_FILE  icon.icns)
-set(ICON_PATH  ${CMAKE_CURRENT_SOURCE_DIR}/../designlab/assets/${ICON_FILE})
+set(ICON_FILE icon.icns)
+set(ICON_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../designlab/assets/${ICON_FILE})
 add_executable(${RELEASE_TARGET} MACOSX_BUNDLE ${ICON_PATH})
 target_sources(${RELEASE_TARGET}
   PRIVATE
   ${PRIVATE_SOURCELIST}
   ${DESIGNLAB_SOURCELIST}
   )
-
 
 target_compile_definitions(${RELEASE_TARGET}
   PRIVATE
@@ -44,7 +47,7 @@ target_compile_options(${RELEASE_TARGET}
 
 set_property(TARGET ${RELEASE_TARGET} PROPERTY CXX_STANDARD 17)
 
-sos_sdk_app_add_arch_targets("${RELEASE_OPTIONS}" "${DEPENDENCIES}" 0)
+sos_sdk_app_add_arch_targets("${RELEASE_OPTIONS}" "${DEPENDENCIES}" 262144)
 
 set_source_files_properties(${ICON_PATH} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
 set_target_properties(${RELEASE_TARGET}
@@ -57,7 +60,6 @@ set_target_properties(${RELEASE_TARGET}
   MACOSX_BUNDLE_ICON_FILE ${ICON_FILE}
   MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/MacOSXBundleInfo.plist.in
   )
-
 
 install(
   PROGRAMS ${CMAKE_CURRENT_SOURCE_DIR}/build_release_link/${LOCAL_NAME}_release_link.elf${SOS_SDK_EXEC_SUFFIX}

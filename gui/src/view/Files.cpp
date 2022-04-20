@@ -19,7 +19,9 @@ void Files::setup(Generic generic) {
         .set_select_file(true)
         .set_select_folder(false)
         .set_absolute_path()
+#if defined __link
         .set_drop_symbol(icons::fa::parachute_box_solid)
+#endif
         .set_base_path(FileSystemCard::root_drive_path())
         .set_animation_time(0_seconds);
 

@@ -38,11 +38,13 @@ Home::Home(const char *name) {
 
   auto content = find<Column>(Names::column);
 
+#if defined __link || 1
   content.add(NakedContainer().set_width(width).set_height(height).add(
     Image()
       .set_source(model().icon_path)
       .center()
       .set_zoom(model().image_scale)));
+#endif
 
   content.add(
     ActionCard(ActionCard::Construct()
