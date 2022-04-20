@@ -59,7 +59,7 @@ Home::Home(const char *name) {
     ActionCard(ActionCard::Construct()
                  .set_name(Model::Names::files_screen_name)
                  .set_clicked_callback(action_card_clicked)
-                 .set_icon(icons::fa::folder_open_solid)
+                 .set_icon(icons::fa::folder_solid)
                  .set_style("bg_secondary text_secondary")
                  .set_description("Select a file on the local filesystem.")
                  .set_title("Filesystem"))
