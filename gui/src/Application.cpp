@@ -120,7 +120,7 @@ void Application::initialize(const sys::Cli &cli) {
   {
     Model::Scope model_scope;
 
-    model().icon_path = "/assets/icon-256x256.png";
+    model().icon_path = "S:/assets/icon.png";
     model().image_scale = 0.5f;
 
     // grab the light and dark themes for the model

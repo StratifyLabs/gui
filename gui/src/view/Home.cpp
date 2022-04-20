@@ -38,13 +38,11 @@ Home::Home(const char *name) {
 
   auto content = find<Column>(Names::column);
 
-#if defined __link || 1
   content.add(NakedContainer().set_width(width).set_height(height).add(
     Image()
       .set_source(model().icon_path)
       .center()
       .set_zoom(model().image_scale)));
-#endif
 
   content.add(
     ActionCard(ActionCard::Construct()
@@ -61,7 +59,7 @@ Home::Home(const char *name) {
     ActionCard(ActionCard::Construct()
                  .set_name(Model::Names::files_screen_name)
                  .set_clicked_callback(action_card_clicked)
-                 .set_icon(icons::fa::folder_open_solid)
+                 .set_icon(icons::fa::folder_solid)
                  .set_style("bg_secondary text_secondary")
                  .set_description("Select a file on the local filesystem.")
                  .set_title("Filesystem"))
