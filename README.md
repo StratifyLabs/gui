@@ -30,7 +30,7 @@ To build `gui` on your computer you need to install:
 - `cmake`: 3.19 or higher
 - A compiler (MinGW on Windows, clang on macOS or GCC on Linux)
 
-All library dependencies are automatically cloned and built with your application.
+All other dependencies are automatically cloned and built with your application.
 
 ## Building
 
