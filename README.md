@@ -7,7 +7,7 @@ The **gui** project is a graphical user interface template project. It has the f
 - Lightweight: distributable application binaries are as small as 5MB
 - C and C++: the application code is C++ with various supporting libraries written in C and C++
 - No changes to any system files (all build files and dependencies are contained)
-- Cross-platform with support for macOS, windows, ubuntu, and [StratifyOS](https://github.com/StratifyLabs/StratifyOS).
+- Cross-platform with support for macOS, windows, ubuntu, [raspbery pi](RPI.md), and [StratifyOS](https://github.com/StratifyLabs/StratifyOS).
 - Permissive licenses for all libraries (MIT, BSD, zlib, apache)
 
 ## API Features
