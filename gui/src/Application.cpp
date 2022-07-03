@@ -54,6 +54,7 @@ void Application::initialize(const sys::Cli &cli) {
     window::Window::Flags flags;
     const char *dark_theme;
     const char *light_theme;
+    const char *icon_path;
   };
 
   const auto settings = []() {
@@ -64,7 +65,8 @@ void Application::initialize(const sys::Cli &cli) {
         .minimum_size = default_size.get_half(),
         .flags = window::Window::Flags::highdpi,
         .dark_theme = "default-dark-medium",
-        .light_theme = "default-light-medium"};
+        .light_theme = "default-light-medium",
+        .icon_path = "a:icon-256x256.png"};
     }
     {
       const auto default_size = window::Size(800, 480);
@@ -73,7 +75,8 @@ void Application::initialize(const sys::Cli &cli) {
         .minimum_size = default_size.get_half(),
         .flags = window::Window::Flags::null,
         .dark_theme = "default-dark-medium",
-        .light_theme = "default-light-medium"};
+        .light_theme = "default-light-medium",
+        .icon_path = "a:icon-128x128.png"};
     }
   }();
 
@@ -107,15 +110,12 @@ void Application::initialize(const sys::Cli &cli) {
     Model::Scope model_scope;
     model().runtime = &runtime;
 
-    model().icon_path = "a:icon-256x256.png";
+    model().icon_path = settings.icon_path;
 
     Printer::Object root_object(printer(), "gui");
     printer().key("starting", cli.get_name());
-    // This is where we create our top level navigation system
-    // This can be based on windows, tiles, screens, tabs or whatever you deem
-    // to be appropriate
-    model().light_theme = Theme::find(settings.dark_theme);(
-    model().dark_theme = Theme::find(settings.light_theme));
+    model().light_theme = Theme::find(settings.light_theme);
+    model().dark_theme = Theme::find(settings.dark_theme);
   }
 #else
   // on Stratify OS the system provides
