@@ -1,5 +1,5 @@
-#include <design.hpp>
-#include <lvgl_api.h>
+
+#include <lvgl/Theme.hpp>
 #include <sys/System.hpp>
 
 #include <design/macros.hpp>
@@ -14,15 +14,12 @@
 #include "designlab/fonts/fonts.h"
 #include "designlab/themes/themes.h"
 
-#if defined __macosx
-#define USE_HIGHDPI 1
-#else
-#define USE_HIGHDPI 0
-#endif
-
 #if defined __link
 INCBIN(assetfs, "../gui/src/designlab/assets/assets.assetfs");
 #endif
+
+using namespace lvgl;
+using namespace design;
 
 void Application::run(sys::Cli &cli) {
 
@@ -30,7 +27,7 @@ void Application::run(sys::Cli &cli) {
 
   // model cannot be touched until all lvgl initialization is complete
   // it is initialized on first access
-  auto * runtime = [](){
+  auto *runtime = []() {
     Model::Scope model_scope;
     Display(model().runtime->display()).set_theme(model().dark_theme);
 
@@ -50,31 +47,52 @@ void Application::run(sys::Cli &cli) {
 
 void Application::initialize(const sys::Cli &cli) {
 #if defined __link
-  static constexpr size_t scale = (USE_HIGHDPI + 1);
-  static constexpr size_t window_width = 800;
-  static constexpr size_t window_height = 480;
 
-  const auto window_size = window::Size(window_width*scale, window_height*scale);
+  struct Settings {
+    window::Size default_size;
+    window::Size minimum_size;
+    window::Window::Flags flags;
+    const char *dark_theme;
+    const char *light_theme;
+  };
+
+  const auto settings = []() {
+    if (sys::System().is_macosx()) {
+      const auto default_size = window::Size(1600, 800);
+      return Settings{
+        .default_size = default_size,
+        .minimum_size = default_size.get_half(),
+        .flags = window::Window::Flags::highdpi,
+        .dark_theme = "default-dark-medium",
+        .light_theme = "default-light-medium"};
+    }
+    {
+      const auto default_size = window::Size(800, 480);
+      return Settings{
+        .default_size = default_size,
+        .minimum_size = default_size.get_half(),
+        .flags = window::Window::Flags::null,
+        .dark_theme = "default-dark-medium",
+        .light_theme = "default-light-medium"};
+    }
+  }();
 
   static lvgl::Runtime runtime(
     "gui",
     window::Point(),
-    window_size,
-    window::Window::Flags::shown
-#if USE_HIGHDPI
-      | window::Window::Flags::highdpi
-#endif
+    settings.default_size,
+    window::Window::Flags::shown | settings.flags
       | window::Window::Flags::resizeable);
 
   if (sys::System().is_processor_arm32() && sys::System().is_linux()) {
     window::Window::show_cursor(false);
   }
 
-  runtime.window().set_minimum_size(
-    window::Size(window_width, window_height));
+  runtime.window().set_minimum_size(settings.minimum_size);
 
   // make the fonts available to `Font::find()`
   fonts_initialize();
+  themes_initialize();
 
   // mount the assets FS which include the PNG icon
   // this file is distributed with the binary rather than as a separate file
@@ -96,22 +114,8 @@ void Application::initialize(const sys::Cli &cli) {
     // This is where we create our top level navigation system
     // This can be based on windows, tiles, screens, tabs or whatever you deem
     // to be appropriate
-
-#if !USE_HIGHDPI
-    model().light_theme
-      = Theme(default_light_small_theme_initialize(runtime.display(), nullptr));
-    model().dark_theme
-      = Theme(default_dark_small_theme_initialize(runtime.display(), nullptr));
-    model().image_scale = 0.5f;
-#else
-    model().light_theme = Theme(
-      default_light_medium_theme_initialize(runtime.display(), nullptr));
-    model().dark_theme
-      = Theme(default_dark_medium_theme_initialize(runtime.display(), nullptr));
-
-#endif
-
-
+    model().light_theme = Theme::find(settings.dark_theme);(
+    model().dark_theme = Theme::find(settings.light_theme));
   }
 #else
   // on Stratify OS the system provides

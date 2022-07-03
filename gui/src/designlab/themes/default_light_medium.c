@@ -2767,7 +2767,7 @@ const lvgl_api_style_descriptor_t * default_light_medium_get_style_callback(int 
   return NULL;
 }
 
-lv_theme_t default_light_medium_theme = {
+lv_theme_t themes_default_light_medium = {
   .apply_cb = default_light_medium_apply_callback,
   .parent = NULL,
   .user_data = (void*)default_light_medium_get_style_callback,
@@ -2780,9 +2780,9 @@ lv_theme_t default_light_medium_theme = {
   .flags = 0
 };
 
-lv_theme_t * default_light_medium_theme_initialize(lv_disp_t * disp, lv_theme_t * parent){
-  default_light_medium_theme.disp = disp;
-  default_light_medium_theme.parent = parent;
-  return &default_light_medium_theme;
+lv_theme_t * themes_default_light_medium_initialize(lv_disp_t * disp, lv_theme_t * parent){
+  themes_default_light_medium.disp = disp;
+  themes_default_light_medium.parent = parent;
+  return &themes_default_light_medium;
 }
 

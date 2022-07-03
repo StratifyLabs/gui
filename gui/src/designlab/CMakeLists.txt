@@ -6,6 +6,8 @@ set(SOURCES
   themes/default_light_medium.c
   themes/default_dark_highdpi.c
   themes/default_light_highdpi.c
+  themes/themes.c
+  themes/themes.h
   fonts/fonts.c
   fonts/fonts.h
   fonts/montserrat_r_12.c

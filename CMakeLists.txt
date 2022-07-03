@@ -17,6 +17,8 @@ project(gui
 	VERSION ${GUI_PROJECT_VERSION}
 	)
 
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -D__SANITIZE_THREAD__=0")
+
 include(CTest)
 
 set(SOS_SDK_PULL_TARGET pull)

@@ -53,10 +53,9 @@ if(SOS_IS_ARM)
   sdk_add_subdirectory(HalAPI v1.2)
 endif()
 
-sdk_add_subdirectory(JsonAPI v1.2)
+sdk_add_subdirectory(JsonAPI v1.3)
 sdk_add_subdirectory(InetAPI v1.2)
 sdk_add_subdirectory(CryptoAPI v1.2)
-sdk_add_subdirectory(CloudAPI v1.1)
 
 #These are still in pre-release
 if(LINUX_HAL_API)
