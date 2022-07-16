@@ -9,8 +9,6 @@ set(CMAKE_MODULE_PATH ${SOS_SDK_PATH}/cmake)
 set(CMAKE_TOOLCHAIN_FILE ${CMAKE_MODULE_PATH}/sos-toolchain.cmake)
 include(sos-sdk)
 
-
-
 set(GUI_PROJECT_VERSION 0.2 CACHE INTERNAL "gui application version")
 project(gui
 	LANGUAGES CXX C
@@ -30,5 +28,4 @@ add_custom_target(pull
 
 add_subdirectory(SDK SDK EXCLUDE_FROM_ALL)
 add_subdirectory(gui)
-#add_subdirectory(tests)
 

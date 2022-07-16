@@ -34,7 +34,7 @@ set(LWIP_STRATIFYOS_PATH
   ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/StratifyOS/include
   CACHE INTERNAL "LWIP StratifyOS INCLUDE PATHS")
 
-sdk_add_subdirectory(API main)
+sdk_add_subdirectory(API v1.4)
 include(${BASE_DIRECTORY}/API/libraries/API.cmake)
 
 set(LVGL_API_IS_QT_SIMULATOR OFF CACHE INTERNAL "Enable QT Simulator")
@@ -48,7 +48,7 @@ set(MBEDTLS_CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/config/mbedtls/config.h CACH
 add_subdirectory(dependencies/CMakeSDK CMakeSDK)
 
 if(SOS_IS_ARM)
-  sdk_add_subdirectory(StratifyOS main)
+  sdk_add_subdirectory(StratifyOS v4.2)
   sdk_add_subdirectory(SosAPI v1.2)
   sdk_add_subdirectory(HalAPI v1.2)
 endif()
@@ -58,12 +58,9 @@ sdk_add_subdirectory(InetAPI v1.2)
 sdk_add_subdirectory(CryptoAPI v1.2)
 
 #These are still in pre-release
-if(LINUX_HAL_API)
-  sdk_add_subdirectory(LinuxHalAPI main)
-endif()
-sdk_add_subdirectory(WindowAPI main)
-sdk_add_subdirectory(LvglAPI main)
-sdk_add_subdirectory(DesignAPI main)
+sdk_add_subdirectory(WindowAPI v0.0)
+sdk_add_subdirectory(LvglAPI v0.0)
+sdk_add_subdirectory(DesignAPI v0.0)
 
 
 
