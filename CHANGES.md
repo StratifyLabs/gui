@@ -1,3 +1,3 @@
-# Version 0.0
+# Version 0.0.0
 
-This project is in a pre-release state.
+First release built with branches WindowAPI v0.0, LvglAPI v0.0, and DesignAPI v0.0.
