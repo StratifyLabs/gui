@@ -10,7 +10,7 @@ file(MAKE_DIRECTORY ${BASE_DIRECTORY})
 message(STATUS "Base directory ${BASE_DIRECTORY}")
 
 macro(sdk_add_subdirectory NAME BRANCH)
-  sos_sdk_git_clone_or_pull_branch(${BASE_DIRECTORY} ${NAME} https://github.com/StratifyLabs/${NAME}.git ${BRANCH})
+  cmsdk_git_clone_or_pull_branch(${BASE_DIRECTORY} ${NAME} https://github.com/StratifyLabs/${NAME}.git ${BRANCH})
   add_subdirectory(${BASE_DIRECTORY}/${NAME} ${NAME} EXCLUDE_FROM_ALL)
 endmacro()
 
@@ -47,7 +47,7 @@ set(MBEDTLS_CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/config/mbedtls/config.h CACH
 
 add_subdirectory(dependencies/CMakeSDK CMakeSDK)
 
-if(SOS_IS_ARM)
+if(CMSDK_IS_ARM)
   sdk_add_subdirectory(StratifyOS v4.2)
   sdk_add_subdirectory(SosAPI v1.2)
   sdk_add_subdirectory(HalAPI v1.2)

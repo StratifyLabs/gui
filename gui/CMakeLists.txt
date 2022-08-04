@@ -11,15 +11,15 @@ set(DEPENDENCIES
 
 set(LOCAL_NAME gui)
 
-sos_sdk_add_subdirectory(PRIVATE_SOURCELIST ${CMAKE_CURRENT_SOURCE_DIR}/src)
+cmsdk_add_subdirectory(PRIVATE_SOURCELIST ${CMAKE_CURRENT_SOURCE_DIR}/src)
 if(SOS_IS_LINK)
   list(APPEND DEPENDENCIES WindowAPI)
-  sos_sdk_add_subdirectory(DESIGNLAB_SOURCELIST ${CMAKE_CURRENT_SOURCE_DIR}/src/designlab)
+  cmsdk_add_subdirectory(DESIGNLAB_SOURCELIST ${CMAKE_CURRENT_SOURCE_DIR}/src/designlab)
 else()
   set(DESIGNLAB_SOURCELIST "")
 endif()
 
-sos_sdk_app_target(RELEASE ${LOCAL_NAME} "" release ${SOS_ARCH})
+cmsdk_app_target(RELEASE ${LOCAL_NAME} "" release ${CMSDK_ARCH})
 
 set(ICON_FILE icon.icns)
 set(ICON_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../designlab/assets/${ICON_FILE})
@@ -47,7 +47,7 @@ target_compile_options(${RELEASE_TARGET}
 
 set_property(TARGET ${RELEASE_TARGET} PROPERTY CXX_STANDARD 17)
 
-sos_sdk_app_add_arch_targets("${RELEASE_OPTIONS}" "${DEPENDENCIES}" 262144)
+cmsdk_app_add_arch_targets("${RELEASE_OPTIONS}" "${DEPENDENCIES}" 262144)
 
 set_source_files_properties(${ICON_PATH} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
 set_target_properties(${RELEASE_TARGET}
