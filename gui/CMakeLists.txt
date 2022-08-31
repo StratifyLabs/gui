@@ -12,7 +12,7 @@ set(DEPENDENCIES
 set(LOCAL_NAME gui)
 
 cmsdk_add_subdirectory(PRIVATE_SOURCELIST ${CMAKE_CURRENT_SOURCE_DIR}/src)
-if(SOS_IS_LINK)
+if(CMSDK_IS_LINK)
   list(APPEND DEPENDENCIES WindowAPI)
   cmsdk_add_subdirectory(DESIGNLAB_SOURCELIST ${CMAKE_CURRENT_SOURCE_DIR}/src/designlab)
 else()

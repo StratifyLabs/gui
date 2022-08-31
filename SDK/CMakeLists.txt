@@ -34,7 +34,7 @@ set(LWIP_STRATIFYOS_PATH
   ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/StratifyOS/include
   CACHE INTERNAL "LWIP StratifyOS INCLUDE PATHS")
 
-sdk_add_subdirectory(API v1.4)
+sdk_add_subdirectory(API feature/cmsdk-port-v2.0)
 include(${BASE_DIRECTORY}/API/libraries/API.cmake)
 
 set(LVGL_API_IS_QT_SIMULATOR OFF CACHE INTERNAL "Enable QT Simulator")
@@ -53,14 +53,14 @@ if(CMSDK_IS_ARM)
   sdk_add_subdirectory(HalAPI v1.2)
 endif()
 
-sdk_add_subdirectory(JsonAPI v1.3)
-sdk_add_subdirectory(InetAPI v1.2)
-sdk_add_subdirectory(CryptoAPI v1.2)
+sdk_add_subdirectory(JsonAPI feature/cmsdk-port-v2.0)
+sdk_add_subdirectory(InetAPI feature/cmsdk-port-v2.0)
+sdk_add_subdirectory(CryptoAPI feature/cmsdk-port-v2.0)
 
 #These are still in pre-release
-sdk_add_subdirectory(WindowAPI v0.0)
-sdk_add_subdirectory(LvglAPI v0.0)
-sdk_add_subdirectory(DesignAPI v0.0)
+sdk_add_subdirectory(WindowAPI feature/cmsdk-port-v2.0)
+sdk_add_subdirectory(LvglAPI feature/cmsdk-port-v2.0)
+sdk_add_subdirectory(DesignAPI feature/cmsdk-port-v2.0)
 
 
 
