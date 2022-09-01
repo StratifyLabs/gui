@@ -115,7 +115,7 @@ static const lv_style_const_prop_t h1_const_list[] = {
 static const lv_style_t h1_style = {
   .v_p = { .const_props = h1_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t h2_const_list[] = {
@@ -129,7 +129,7 @@ static const lv_style_const_prop_t h2_const_list[] = {
 static const lv_style_t h2_style = {
   .v_p = { .const_props = h2_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t h3_const_list[] = {
@@ -143,7 +143,7 @@ static const lv_style_const_prop_t h3_const_list[] = {
 static const lv_style_t h3_style = {
   .v_p = { .const_props = h3_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t h4_const_list[] = {
@@ -157,7 +157,7 @@ static const lv_style_const_prop_t h4_const_list[] = {
 static const lv_style_t h4_style = {
   .v_p = { .const_props = h4_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t container_const_list[] = {
@@ -176,7 +176,7 @@ static const lv_style_const_prop_t container_const_list[] = {
 static const lv_style_t container_style = {
   .v_p = { .const_props = container_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t naked_const_list[] = {
@@ -193,7 +193,7 @@ static const lv_style_const_prop_t naked_const_list[] = {
 static const lv_style_t naked_style = {
   .v_p = { .const_props = naked_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_font_small_const_list[] = {
@@ -204,7 +204,7 @@ static const lv_style_const_prop_t text_font_small_const_list[] = {
 static const lv_style_t text_font_small_style = {
   .v_p = { .const_props = text_font_small_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_font_large_const_list[] = {
@@ -215,7 +215,7 @@ static const lv_style_const_prop_t text_font_large_const_list[] = {
 static const lv_style_t text_font_large_style = {
   .v_p = { .const_props = text_font_large_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t row_const_list[] = {
@@ -237,7 +237,7 @@ static const lv_style_const_prop_t row_const_list[] = {
 static const lv_style_t row_style = {
   .v_p = { .const_props = row_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t col_const_list[] = {
@@ -259,7 +259,7 @@ static const lv_style_const_prop_t col_const_list[] = {
 static const lv_style_t col_style = {
   .v_p = { .const_props = col_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t bg_primary_const_list[] = {
@@ -271,7 +271,7 @@ static const lv_style_const_prop_t bg_primary_const_list[] = {
 static const lv_style_t bg_primary_style = {
   .v_p = { .const_props = bg_primary_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t bg_secondary_const_list[] = {
@@ -283,7 +283,7 @@ static const lv_style_const_prop_t bg_secondary_const_list[] = {
 static const lv_style_t bg_secondary_style = {
   .v_p = { .const_props = bg_secondary_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t bg_warning_const_list[] = {
@@ -295,7 +295,7 @@ static const lv_style_const_prop_t bg_warning_const_list[] = {
 static const lv_style_t bg_warning_style = {
   .v_p = { .const_props = bg_warning_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t bg_info_const_list[] = {
@@ -307,7 +307,7 @@ static const lv_style_const_prop_t bg_info_const_list[] = {
 static const lv_style_t bg_info_style = {
   .v_p = { .const_props = bg_info_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t bg_danger_const_list[] = {
@@ -319,7 +319,7 @@ static const lv_style_const_prop_t bg_danger_const_list[] = {
 static const lv_style_t bg_danger_style = {
   .v_p = { .const_props = bg_danger_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t bg_success_const_list[] = {
@@ -331,7 +331,7 @@ static const lv_style_const_prop_t bg_success_const_list[] = {
 static const lv_style_t bg_success_style = {
   .v_p = { .const_props = bg_success_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t bg_light_const_list[] = {
@@ -342,7 +342,7 @@ static const lv_style_const_prop_t bg_light_const_list[] = {
 static const lv_style_t bg_light_style = {
   .v_p = { .const_props = bg_light_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t bg_dark_const_list[] = {
@@ -353,7 +353,7 @@ static const lv_style_const_prop_t bg_dark_const_list[] = {
 static const lv_style_t bg_dark_style = {
   .v_p = { .const_props = bg_dark_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_primary_const_list[] = {
@@ -366,7 +366,7 @@ static const lv_style_const_prop_t btn_primary_const_list[] = {
 static const lv_style_t btn_primary_style = {
   .v_p = { .const_props = btn_primary_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_secondary_const_list[] = {
@@ -379,7 +379,7 @@ static const lv_style_const_prop_t btn_secondary_const_list[] = {
 static const lv_style_t btn_secondary_style = {
   .v_p = { .const_props = btn_secondary_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_warning_const_list[] = {
@@ -392,7 +392,7 @@ static const lv_style_const_prop_t btn_warning_const_list[] = {
 static const lv_style_t btn_warning_style = {
   .v_p = { .const_props = btn_warning_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_info_const_list[] = {
@@ -405,7 +405,7 @@ static const lv_style_const_prop_t btn_info_const_list[] = {
 static const lv_style_t btn_info_style = {
   .v_p = { .const_props = btn_info_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_danger_const_list[] = {
@@ -418,7 +418,7 @@ static const lv_style_const_prop_t btn_danger_const_list[] = {
 static const lv_style_t btn_danger_style = {
   .v_p = { .const_props = btn_danger_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_success_const_list[] = {
@@ -431,7 +431,7 @@ static const lv_style_const_prop_t btn_success_const_list[] = {
 static const lv_style_t btn_success_style = {
   .v_p = { .const_props = btn_success_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_light_const_list[] = {
@@ -444,7 +444,7 @@ static const lv_style_const_prop_t btn_light_const_list[] = {
 static const lv_style_t btn_light_style = {
   .v_p = { .const_props = btn_light_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_dark_const_list[] = {
@@ -457,7 +457,7 @@ static const lv_style_const_prop_t btn_dark_const_list[] = {
 static const lv_style_t btn_dark_style = {
   .v_p = { .const_props = btn_dark_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_outline_default_const_list[] = {
@@ -473,7 +473,7 @@ static const lv_style_const_prop_t btn_outline_default_const_list[] = {
 static const lv_style_t btn_outline_default_style = {
   .v_p = { .const_props = btn_outline_default_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_outline_primary_const_list[] = {
@@ -489,7 +489,7 @@ static const lv_style_const_prop_t btn_outline_primary_const_list[] = {
 static const lv_style_t btn_outline_primary_style = {
   .v_p = { .const_props = btn_outline_primary_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_outline_secondary_const_list[] = {
@@ -505,7 +505,7 @@ static const lv_style_const_prop_t btn_outline_secondary_const_list[] = {
 static const lv_style_t btn_outline_secondary_style = {
   .v_p = { .const_props = btn_outline_secondary_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_outline_warning_const_list[] = {
@@ -521,7 +521,7 @@ static const lv_style_const_prop_t btn_outline_warning_const_list[] = {
 static const lv_style_t btn_outline_warning_style = {
   .v_p = { .const_props = btn_outline_warning_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_outline_info_const_list[] = {
@@ -537,7 +537,7 @@ static const lv_style_const_prop_t btn_outline_info_const_list[] = {
 static const lv_style_t btn_outline_info_style = {
   .v_p = { .const_props = btn_outline_info_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_outline_danger_const_list[] = {
@@ -553,7 +553,7 @@ static const lv_style_const_prop_t btn_outline_danger_const_list[] = {
 static const lv_style_t btn_outline_danger_style = {
   .v_p = { .const_props = btn_outline_danger_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_outline_success_const_list[] = {
@@ -569,7 +569,7 @@ static const lv_style_const_prop_t btn_outline_success_const_list[] = {
 static const lv_style_t btn_outline_success_style = {
   .v_p = { .const_props = btn_outline_success_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_outline_light_const_list[] = {
@@ -585,7 +585,7 @@ static const lv_style_const_prop_t btn_outline_light_const_list[] = {
 static const lv_style_t btn_outline_light_style = {
   .v_p = { .const_props = btn_outline_light_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_outline_dark_const_list[] = {
@@ -601,7 +601,7 @@ static const lv_style_const_prop_t btn_outline_dark_const_list[] = {
 static const lv_style_t btn_outline_dark_style = {
   .v_p = { .const_props = btn_outline_dark_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t paragraph_const_list[] = {
@@ -615,7 +615,7 @@ static const lv_style_const_prop_t paragraph_const_list[] = {
 static const lv_style_t paragraph_style = {
   .v_p = { .const_props = paragraph_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t form_const_list[] = {
@@ -630,7 +630,7 @@ static const lv_style_const_prop_t form_const_list[] = {
 static const lv_style_t form_style = {
   .v_p = { .const_props = form_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t form_row_const_list[] = {
@@ -642,7 +642,7 @@ static const lv_style_const_prop_t form_row_const_list[] = {
 static const lv_style_t form_row_style = {
   .v_p = { .const_props = form_row_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t form_col_const_list[] = {
@@ -654,7 +654,7 @@ static const lv_style_const_prop_t form_col_const_list[] = {
 static const lv_style_t form_col_style = {
   .v_p = { .const_props = form_col_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t form_label_const_list[] = {
@@ -669,7 +669,7 @@ static const lv_style_const_prop_t form_label_const_list[] = {
 static const lv_style_t form_label_style = {
   .v_p = { .const_props = form_label_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t form_field_const_list[] = {
@@ -685,7 +685,7 @@ static const lv_style_const_prop_t form_field_const_list[] = {
 static const lv_style_t form_field_style = {
   .v_p = { .const_props = form_field_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t form_switch_const_list[] = {
@@ -699,7 +699,7 @@ static const lv_style_const_prop_t form_switch_const_list[] = {
 static const lv_style_t form_switch_style = {
   .v_p = { .const_props = form_switch_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t form_hint_const_list[] = {
@@ -715,7 +715,7 @@ static const lv_style_const_prop_t form_hint_const_list[] = {
 static const lv_style_t form_hint_style = {
   .v_p = { .const_props = form_hint_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t form_filesystem_const_list[] = {
@@ -726,7 +726,7 @@ static const lv_style_const_prop_t form_filesystem_const_list[] = {
 static const lv_style_t form_filesystem_style = {
   .v_p = { .const_props = form_filesystem_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t form_dropdown_const_list[] = {
@@ -742,7 +742,7 @@ static const lv_style_const_prop_t form_dropdown_const_list[] = {
 static const lv_style_t form_dropdown_style = {
   .v_p = { .const_props = form_dropdown_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t form_dropdown_list_const_list[] = {
@@ -760,7 +760,7 @@ static const lv_style_const_prop_t form_dropdown_list_const_list[] = {
 static const lv_style_t form_dropdown_list_style = {
   .v_p = { .const_props = form_dropdown_list_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t form_error_badge_const_list[] = {
@@ -778,7 +778,7 @@ static const lv_style_const_prop_t form_error_badge_const_list[] = {
 static const lv_style_t form_error_badge_style = {
   .v_p = { .const_props = form_error_badge_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t loading_circle_const_list[] = {
@@ -801,7 +801,7 @@ static const lv_style_const_prop_t loading_circle_const_list[] = {
 static const lv_style_t loading_circle_style = {
   .v_p = { .const_props = loading_circle_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t loading_circle_active_const_list[] = {
@@ -815,7 +815,7 @@ static const lv_style_const_prop_t loading_circle_active_const_list[] = {
 static const lv_style_t loading_circle_active_style = {
   .v_p = { .const_props = loading_circle_active_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_light_const_list[] = {
@@ -826,7 +826,7 @@ static const lv_style_const_prop_t text_light_const_list[] = {
 static const lv_style_t text_light_style = {
   .v_p = { .const_props = text_light_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_dark_const_list[] = {
@@ -837,7 +837,7 @@ static const lv_style_const_prop_t text_dark_const_list[] = {
 static const lv_style_t text_dark_style = {
   .v_p = { .const_props = text_dark_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_primary_const_list[] = {
@@ -848,7 +848,7 @@ static const lv_style_const_prop_t text_primary_const_list[] = {
 static const lv_style_t text_primary_style = {
   .v_p = { .const_props = text_primary_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_secondary_const_list[] = {
@@ -859,7 +859,7 @@ static const lv_style_const_prop_t text_secondary_const_list[] = {
 static const lv_style_t text_secondary_style = {
   .v_p = { .const_props = text_secondary_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_info_const_list[] = {
@@ -870,7 +870,7 @@ static const lv_style_const_prop_t text_info_const_list[] = {
 static const lv_style_t text_info_style = {
   .v_p = { .const_props = text_info_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_warning_const_list[] = {
@@ -881,7 +881,7 @@ static const lv_style_const_prop_t text_warning_const_list[] = {
 static const lv_style_t text_warning_style = {
   .v_p = { .const_props = text_warning_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_danger_const_list[] = {
@@ -892,7 +892,7 @@ static const lv_style_const_prop_t text_danger_const_list[] = {
 static const lv_style_t text_danger_style = {
   .v_p = { .const_props = text_danger_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_success_const_list[] = {
@@ -903,7 +903,7 @@ static const lv_style_const_prop_t text_success_const_list[] = {
 static const lv_style_t text_success_style = {
   .v_p = { .const_props = text_success_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_color_primary_const_list[] = {
@@ -914,7 +914,7 @@ static const lv_style_const_prop_t text_color_primary_const_list[] = {
 static const lv_style_t text_color_primary_style = {
   .v_p = { .const_props = text_color_primary_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_color_secondary_const_list[] = {
@@ -925,7 +925,7 @@ static const lv_style_const_prop_t text_color_secondary_const_list[] = {
 static const lv_style_t text_color_secondary_style = {
   .v_p = { .const_props = text_color_secondary_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_color_info_const_list[] = {
@@ -936,7 +936,7 @@ static const lv_style_const_prop_t text_color_info_const_list[] = {
 static const lv_style_t text_color_info_style = {
   .v_p = { .const_props = text_color_info_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_color_warning_const_list[] = {
@@ -947,7 +947,7 @@ static const lv_style_const_prop_t text_color_warning_const_list[] = {
 static const lv_style_t text_color_warning_style = {
   .v_p = { .const_props = text_color_warning_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_color_danger_const_list[] = {
@@ -958,7 +958,7 @@ static const lv_style_const_prop_t text_color_danger_const_list[] = {
 static const lv_style_t text_color_danger_style = {
   .v_p = { .const_props = text_color_danger_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_color_success_const_list[] = {
@@ -969,7 +969,7 @@ static const lv_style_const_prop_t text_color_success_const_list[] = {
 static const lv_style_t text_color_success_style = {
   .v_p = { .const_props = text_color_success_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_sm_const_list[] = {
@@ -984,7 +984,7 @@ static const lv_style_const_prop_t btn_sm_const_list[] = {
 static const lv_style_t btn_sm_style = {
   .v_p = { .const_props = btn_sm_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_md_const_list[] = {
@@ -999,7 +999,7 @@ static const lv_style_const_prop_t btn_md_const_list[] = {
 static const lv_style_t btn_md_style = {
   .v_p = { .const_props = btn_md_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t btn_lg_const_list[] = {
@@ -1014,7 +1014,7 @@ static const lv_style_const_prop_t btn_lg_const_list[] = {
 static const lv_style_t btn_lg_style = {
   .v_p = { .const_props = btn_lg_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t badge_const_list[] = {
@@ -1034,7 +1034,7 @@ static const lv_style_const_prop_t badge_const_list[] = {
 static const lv_style_t badge_style = {
   .v_p = { .const_props = badge_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t rounded_pill_const_list[] = {
@@ -1045,7 +1045,7 @@ static const lv_style_const_prop_t rounded_pill_const_list[] = {
 static const lv_style_t rounded_pill_style = {
   .v_p = { .const_props = rounded_pill_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t badge_sm_const_list[] = {
@@ -1060,7 +1060,7 @@ static const lv_style_const_prop_t badge_sm_const_list[] = {
 static const lv_style_t badge_sm_style = {
   .v_p = { .const_props = badge_sm_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t badge_md_const_list[] = {
@@ -1075,7 +1075,7 @@ static const lv_style_const_prop_t badge_md_const_list[] = {
 static const lv_style_t badge_md_style = {
   .v_p = { .const_props = badge_md_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t badge_lg_const_list[] = {
@@ -1090,7 +1090,7 @@ static const lv_style_const_prop_t badge_lg_const_list[] = {
 static const lv_style_t badge_lg_style = {
   .v_p = { .const_props = badge_lg_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t screen_const_list[] = {
@@ -1105,7 +1105,7 @@ static const lv_style_const_prop_t screen_const_list[] = {
 static const lv_style_t screen_style = {
   .v_p = { .const_props = screen_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t scrollbar_const_list[] = {
@@ -1123,7 +1123,7 @@ static const lv_style_const_prop_t scrollbar_const_list[] = {
 static const lv_style_t scrollbar_style = {
   .v_p = { .const_props = scrollbar_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t scrollbar_scrolled_const_list[] = {
@@ -1135,7 +1135,7 @@ static const lv_style_const_prop_t scrollbar_scrolled_const_list[] = {
 static const lv_style_t scrollbar_scrolled_style = {
   .v_p = { .const_props = scrollbar_scrolled_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t slide_over_from_right_hidden_const_list[] = {
@@ -1147,7 +1147,7 @@ static const lv_style_const_prop_t slide_over_from_right_hidden_const_list[] = {
 static const lv_style_t slide_over_from_right_hidden_style = {
   .v_p = { .const_props = slide_over_from_right_hidden_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t slide_over_from_right_const_list[] = {
@@ -1159,7 +1159,7 @@ static const lv_style_const_prop_t slide_over_from_right_const_list[] = {
 static const lv_style_t slide_over_from_right_style = {
   .v_p = { .const_props = slide_over_from_right_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t modal_const_list[] = {
@@ -1174,7 +1174,7 @@ static const lv_style_const_prop_t modal_const_list[] = {
 static const lv_style_t modal_style = {
   .v_p = { .const_props = modal_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t modal_enabled_const_list[] = {
@@ -1186,7 +1186,7 @@ static const lv_style_const_prop_t modal_enabled_const_list[] = {
 static const lv_style_t modal_enabled_style = {
   .v_p = { .const_props = modal_enabled_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t modal_content_const_list[] = {
@@ -1198,7 +1198,7 @@ static const lv_style_const_prop_t modal_content_const_list[] = {
 static const lv_style_t modal_content_style = {
   .v_p = { .const_props = modal_content_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t modal_content_enabled_const_list[] = {
@@ -1211,7 +1211,7 @@ static const lv_style_const_prop_t modal_content_enabled_const_list[] = {
 static const lv_style_t modal_content_enabled_style = {
   .v_p = { .const_props = modal_content_enabled_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t card_const_list[] = {
@@ -1238,7 +1238,7 @@ static const lv_style_const_prop_t card_const_list[] = {
 static const lv_style_t card_style = {
   .v_p = { .const_props = card_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t toast_const_list[] = {
@@ -1266,7 +1266,7 @@ static const lv_style_const_prop_t toast_const_list[] = {
 static const lv_style_t toast_style = {
   .v_p = { .const_props = toast_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t toast_top_right_const_list[] = {
@@ -1279,7 +1279,7 @@ static const lv_style_const_prop_t toast_top_right_const_list[] = {
 static const lv_style_t toast_top_right_style = {
   .v_p = { .const_props = toast_top_right_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t toast_top_left_const_list[] = {
@@ -1292,7 +1292,7 @@ static const lv_style_const_prop_t toast_top_left_const_list[] = {
 static const lv_style_t toast_top_left_style = {
   .v_p = { .const_props = toast_top_left_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t toast_top_const_list[] = {
@@ -1304,7 +1304,7 @@ static const lv_style_const_prop_t toast_top_const_list[] = {
 static const lv_style_t toast_top_style = {
   .v_p = { .const_props = toast_top_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t toast_bottom_right_const_list[] = {
@@ -1317,7 +1317,7 @@ static const lv_style_const_prop_t toast_bottom_right_const_list[] = {
 static const lv_style_t toast_bottom_right_style = {
   .v_p = { .const_props = toast_bottom_right_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t toast_bottom_left_const_list[] = {
@@ -1330,7 +1330,7 @@ static const lv_style_const_prop_t toast_bottom_left_const_list[] = {
 static const lv_style_t toast_bottom_left_style = {
   .v_p = { .const_props = toast_bottom_left_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t toast_bottom_const_list[] = {
@@ -1342,7 +1342,7 @@ static const lv_style_const_prop_t toast_bottom_const_list[] = {
 static const lv_style_t toast_bottom_style = {
   .v_p = { .const_props = toast_bottom_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t toast_title_const_list[] = {
@@ -1353,7 +1353,7 @@ static const lv_style_const_prop_t toast_title_const_list[] = {
 static const lv_style_t toast_title_style = {
   .v_p = { .const_props = toast_title_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t toast_messsage_const_list[] = {
@@ -1364,7 +1364,7 @@ static const lv_style_const_prop_t toast_messsage_const_list[] = {
 static const lv_style_t toast_messsage_style = {
   .v_p = { .const_props = toast_messsage_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t list_group_const_list[] = {
@@ -1390,7 +1390,7 @@ static const lv_style_const_prop_t list_group_const_list[] = {
 static const lv_style_t list_group_style = {
   .v_p = { .const_props = list_group_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t list_group_flush_const_list[] = {
@@ -1414,7 +1414,7 @@ static const lv_style_const_prop_t list_group_flush_const_list[] = {
 static const lv_style_t list_group_flush_style = {
   .v_p = { .const_props = list_group_flush_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t card_header_const_list[] = {
@@ -1435,7 +1435,7 @@ static const lv_style_const_prop_t card_header_const_list[] = {
 static const lv_style_t card_header_style = {
   .v_p = { .const_props = card_header_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t primary_card_const_list[] = {
@@ -1448,7 +1448,7 @@ static const lv_style_const_prop_t primary_card_const_list[] = {
 static const lv_style_t primary_card_style = {
   .v_p = { .const_props = primary_card_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t primary_card_header_const_list[] = {
@@ -1461,7 +1461,7 @@ static const lv_style_const_prop_t primary_card_header_const_list[] = {
 static const lv_style_t primary_card_header_style = {
   .v_p = { .const_props = primary_card_header_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t primary_card_body_const_list[] = {
@@ -1475,7 +1475,7 @@ static const lv_style_const_prop_t primary_card_body_const_list[] = {
 static const lv_style_t primary_card_body_style = {
   .v_p = { .const_props = primary_card_body_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t primary_card_footer_const_list[] = {
@@ -1488,7 +1488,7 @@ static const lv_style_const_prop_t primary_card_footer_const_list[] = {
 static const lv_style_t primary_card_footer_style = {
   .v_p = { .const_props = primary_card_footer_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t card_body_const_list[] = {
@@ -1506,7 +1506,7 @@ static const lv_style_const_prop_t card_body_const_list[] = {
 static const lv_style_t card_body_style = {
   .v_p = { .const_props = card_body_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t card_footer_const_list[] = {
@@ -1526,7 +1526,7 @@ static const lv_style_const_prop_t card_footer_const_list[] = {
 static const lv_style_t card_footer_style = {
   .v_p = { .const_props = card_footer_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t darker_const_list[] = {
@@ -1538,7 +1538,7 @@ static const lv_style_const_prop_t darker_const_list[] = {
 static const lv_style_t darker_style = {
   .v_p = { .const_props = darker_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t hline_const_list[] = {
@@ -1552,7 +1552,7 @@ static const lv_style_const_prop_t hline_const_list[] = {
 static const lv_style_t hline_style = {
   .v_p = { .const_props = hline_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t button_const_list[] = {
@@ -1573,7 +1573,7 @@ static const lv_style_const_prop_t button_const_list[] = {
 static const lv_style_t button_style = {
   .v_p = { .const_props = button_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t background_color_primary_const_list[] = {
@@ -1585,7 +1585,7 @@ static const lv_style_const_prop_t background_color_primary_const_list[] = {
 static const lv_style_t background_color_primary_style = {
   .v_p = { .const_props = background_color_primary_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t background_color_primary_muted_const_list[] = {
@@ -1597,7 +1597,7 @@ static const lv_style_const_prop_t background_color_primary_muted_const_list[] =
 static const lv_style_t background_color_primary_muted_style = {
   .v_p = { .const_props = background_color_primary_muted_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t background_color_secondary_const_list[] = {
@@ -1609,7 +1609,7 @@ static const lv_style_const_prop_t background_color_secondary_const_list[] = {
 static const lv_style_t background_color_secondary_style = {
   .v_p = { .const_props = background_color_secondary_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t background_color_secondary_muted_const_list[] = {
@@ -1622,7 +1622,7 @@ static const lv_style_const_prop_t background_color_secondary_muted_const_list[]
 static const lv_style_t background_color_secondary_muted_style = {
   .v_p = { .const_props = background_color_secondary_muted_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t background_color_grey_const_list[] = {
@@ -1639,7 +1639,7 @@ static const lv_style_const_prop_t background_color_grey_const_list[] = {
 static const lv_style_t background_color_grey_style = {
   .v_p = { .const_props = background_color_grey_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t background_color_white_const_list[] = {
@@ -1652,7 +1652,7 @@ static const lv_style_const_prop_t background_color_white_const_list[] = {
 static const lv_style_t background_color_white_style = {
   .v_p = { .const_props = background_color_white_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t pressed_const_list[] = {
@@ -1664,7 +1664,7 @@ static const lv_style_const_prop_t pressed_const_list[] = {
 static const lv_style_t pressed_style = {
   .v_p = { .const_props = pressed_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t disabled_const_list[] = {
@@ -1676,7 +1676,7 @@ static const lv_style_const_prop_t disabled_const_list[] = {
 static const lv_style_t disabled_style = {
   .v_p = { .const_props = disabled_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t padding_zero_const_list[] = {
@@ -1690,7 +1690,7 @@ static const lv_style_const_prop_t padding_zero_const_list[] = {
 static const lv_style_t padding_zero_style = {
   .v_p = { .const_props = padding_zero_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t padding_tiny_const_list[] = {
@@ -1704,7 +1704,7 @@ static const lv_style_const_prop_t padding_tiny_const_list[] = {
 static const lv_style_t padding_tiny_style = {
   .v_p = { .const_props = padding_tiny_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t padding_small_const_list[] = {
@@ -1718,7 +1718,7 @@ static const lv_style_const_prop_t padding_small_const_list[] = {
 static const lv_style_t padding_small_style = {
   .v_p = { .const_props = padding_small_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t padding_normal_const_list[] = {
@@ -1732,7 +1732,7 @@ static const lv_style_const_prop_t padding_normal_const_list[] = {
 static const lv_style_t padding_normal_style = {
   .v_p = { .const_props = padding_normal_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t padding_gap_const_list[] = {
@@ -1747,7 +1747,7 @@ static const lv_style_const_prop_t padding_gap_const_list[] = {
 static const lv_style_t padding_gap_style = {
   .v_p = { .const_props = padding_gap_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t line_space_large_const_list[] = {
@@ -1757,7 +1757,7 @@ static const lv_style_const_prop_t line_space_large_const_list[] = {
 static const lv_style_t line_space_large_style = {
   .v_p = { .const_props = line_space_large_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_align_center_const_list[] = {
@@ -1768,7 +1768,7 @@ static const lv_style_const_prop_t text_align_center_const_list[] = {
 static const lv_style_t text_align_center_style = {
   .v_p = { .const_props = text_align_center_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t outline_border_primary_const_list[] = {
@@ -1779,7 +1779,7 @@ static const lv_style_const_prop_t outline_border_primary_const_list[] = {
 static const lv_style_t outline_border_primary_style = {
   .v_p = { .const_props = outline_border_primary_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t outline_border_secondary_const_list[] = {
@@ -1793,7 +1793,7 @@ static const lv_style_const_prop_t outline_border_secondary_const_list[] = {
 static const lv_style_t outline_border_secondary_style = {
   .v_p = { .const_props = outline_border_secondary_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t circle_const_list[] = {
@@ -1804,7 +1804,7 @@ static const lv_style_const_prop_t circle_const_list[] = {
 static const lv_style_t circle_style = {
   .v_p = { .const_props = circle_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t radius_none_const_list[] = {
@@ -1814,7 +1814,7 @@ static const lv_style_const_prop_t radius_none_const_list[] = {
 static const lv_style_t radius_none_style = {
   .v_p = { .const_props = radius_none_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t clip_corner_const_list[] = {
@@ -1825,7 +1825,7 @@ static const lv_style_const_prop_t clip_corner_const_list[] = {
 static const lv_style_t clip_corner_style = {
   .v_p = { .const_props = clip_corner_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t progress_bar_background_const_list[] = {
@@ -1839,7 +1839,7 @@ static const lv_style_const_prop_t progress_bar_background_const_list[] = {
 static const lv_style_t progress_bar_background_style = {
   .v_p = { .const_props = progress_bar_background_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t progress_bar_indicator_const_list[] = {
@@ -1851,7 +1851,7 @@ static const lv_style_const_prop_t progress_bar_indicator_const_list[] = {
 static const lv_style_t progress_bar_indicator_style = {
   .v_p = { .const_props = progress_bar_indicator_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t grow_const_list[] = {
@@ -1863,7 +1863,7 @@ static const lv_style_const_prop_t grow_const_list[] = {
 static const lv_style_t grow_style = {
   .v_p = { .const_props = grow_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t shrink_const_list[] = {
@@ -1875,7 +1875,7 @@ static const lv_style_const_prop_t shrink_const_list[] = {
 static const lv_style_t shrink_style = {
   .v_p = { .const_props = shrink_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t transition_delayed_const_list[] = {
@@ -1886,7 +1886,7 @@ static const lv_style_const_prop_t transition_delayed_const_list[] = {
 static const lv_style_t transition_delayed_style = {
   .v_p = { .const_props = transition_delayed_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t transition_normal_const_list[] = {
@@ -1897,7 +1897,7 @@ static const lv_style_const_prop_t transition_normal_const_list[] = {
 static const lv_style_t transition_normal_style = {
   .v_p = { .const_props = transition_normal_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t animation_const_list[] = {
@@ -1908,7 +1908,7 @@ static const lv_style_const_prop_t animation_const_list[] = {
 static const lv_style_t animation_style = {
   .v_p = { .const_props = animation_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t knob_const_list[] = {
@@ -1925,7 +1925,7 @@ static const lv_style_const_prop_t knob_const_list[] = {
 static const lv_style_t knob_style = {
   .v_p = { .const_props = knob_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t indicator_const_list[] = {
@@ -1935,7 +1935,7 @@ static const lv_style_const_prop_t indicator_const_list[] = {
 static const lv_style_t indicator_style = {
   .v_p = { .const_props = indicator_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t arc_indicator_const_list[] = {
@@ -1948,7 +1948,7 @@ static const lv_style_const_prop_t arc_indicator_const_list[] = {
 static const lv_style_t arc_indicator_style = {
   .v_p = { .const_props = arc_indicator_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t arc_indicator_primary_const_list[] = {
@@ -1959,7 +1959,7 @@ static const lv_style_const_prop_t arc_indicator_primary_const_list[] = {
 static const lv_style_t arc_indicator_primary_style = {
   .v_p = { .const_props = arc_indicator_primary_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t chart_series_const_list[] = {
@@ -1974,7 +1974,7 @@ static const lv_style_const_prop_t chart_series_const_list[] = {
 static const lv_style_t chart_series_style = {
   .v_p = { .const_props = chart_series_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t chart_indicator_const_list[] = {
@@ -1989,7 +1989,7 @@ static const lv_style_const_prop_t chart_indicator_const_list[] = {
 static const lv_style_t chart_indicator_style = {
   .v_p = { .const_props = chart_indicator_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t chart_ticks_const_list[] = {
@@ -1999,7 +1999,7 @@ static const lv_style_const_prop_t chart_ticks_const_list[] = {
 static const lv_style_t chart_ticks_style = {
   .v_p = { .const_props = chart_ticks_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t chart_background_const_list[] = {
@@ -2012,7 +2012,7 @@ static const lv_style_const_prop_t chart_background_const_list[] = {
 static const lv_style_t chart_background_style = {
   .v_p = { .const_props = chart_background_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t dropdown_list_const_list[] = {
@@ -2023,7 +2023,7 @@ static const lv_style_const_prop_t dropdown_list_const_list[] = {
 static const lv_style_t dropdown_list_style = {
   .v_p = { .const_props = dropdown_list_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t checkbox_marker_const_list[] = {
@@ -2042,7 +2042,7 @@ static const lv_style_const_prop_t checkbox_marker_const_list[] = {
 static const lv_style_t checkbox_marker_style = {
   .v_p = { .const_props = checkbox_marker_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t checkbox_marker_checked_const_list[] = {
@@ -2055,7 +2055,7 @@ static const lv_style_const_prop_t checkbox_marker_checked_const_list[] = {
 static const lv_style_t checkbox_marker_checked_style = {
   .v_p = { .const_props = checkbox_marker_checked_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t switch_knob_const_list[] = {
@@ -2066,7 +2066,7 @@ static const lv_style_const_prop_t switch_knob_const_list[] = {
 static const lv_style_t switch_knob_style = {
   .v_p = { .const_props = switch_knob_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t line_const_list[] = {
@@ -2078,7 +2078,7 @@ static const lv_style_const_prop_t line_const_list[] = {
 static const lv_style_t line_style = {
   .v_p = { .const_props = line_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t table_cell_const_list[] = {
@@ -2092,7 +2092,7 @@ static const lv_style_const_prop_t table_cell_const_list[] = {
 static const lv_style_t table_cell_style = {
   .v_p = { .const_props = table_cell_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t meter_marker_const_list[] = {
@@ -2102,7 +2102,7 @@ static const lv_style_const_prop_t meter_marker_const_list[] = {
 static const lv_style_t meter_marker_style = {
   .v_p = { .const_props = meter_marker_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t meter_indicator_const_list[] = {
@@ -2112,7 +2112,7 @@ static const lv_style_const_prop_t meter_indicator_const_list[] = {
 static const lv_style_t meter_indicator_style = {
   .v_p = { .const_props = meter_indicator_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t calendar_background_const_list[] = {
@@ -2122,7 +2122,7 @@ static const lv_style_const_prop_t calendar_background_const_list[] = {
 static const lv_style_t calendar_background_style = {
   .v_p = { .const_props = calendar_background_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t calendar_day_const_list[] = {
@@ -2132,7 +2132,7 @@ static const lv_style_const_prop_t calendar_day_const_list[] = {
 static const lv_style_t calendar_day_style = {
   .v_p = { .const_props = calendar_day_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t colorwheel_main_const_list[] = {
@@ -2143,7 +2143,7 @@ static const lv_style_const_prop_t colorwheel_main_const_list[] = {
 static const lv_style_t colorwheel_main_style = {
   .v_p = { .const_props = colorwheel_main_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t message_box_background_const_list[] = {
@@ -2153,7 +2153,7 @@ static const lv_style_const_prop_t message_box_background_const_list[] = {
 static const lv_style_t message_box_background_style = {
   .v_p = { .const_props = message_box_background_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t message_box_button_background_const_list[] = {
@@ -2163,7 +2163,7 @@ static const lv_style_const_prop_t message_box_button_background_const_list[] = 
 static const lv_style_t message_box_button_background_style = {
   .v_p = { .const_props = message_box_button_background_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t keyboard_button_background_const_list[] = {
@@ -2173,7 +2173,7 @@ static const lv_style_const_prop_t keyboard_button_background_const_list[] = {
 static const lv_style_t keyboard_button_background_style = {
   .v_p = { .const_props = keyboard_button_background_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t list_background_const_list[] = {
@@ -2187,7 +2187,7 @@ static const lv_style_const_prop_t list_background_const_list[] = {
 static const lv_style_t list_background_style = {
   .v_p = { .const_props = list_background_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t list_button_const_list[] = {
@@ -2207,7 +2207,7 @@ static const lv_style_const_prop_t list_button_const_list[] = {
 static const lv_style_t list_button_style = {
   .v_p = { .const_props = list_button_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t list_item_grow_const_list[] = {
@@ -2217,7 +2217,7 @@ static const lv_style_const_prop_t list_item_grow_const_list[] = {
 static const lv_style_t list_item_grow_style = {
   .v_p = { .const_props = list_item_grow_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t list_label_const_list[] = {
@@ -2228,7 +2228,7 @@ static const lv_style_const_prop_t list_label_const_list[] = {
 static const lv_style_t list_label_style = {
   .v_p = { .const_props = list_label_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t tab_background_focus_const_list[] = {
@@ -2238,7 +2238,7 @@ static const lv_style_const_prop_t tab_background_focus_const_list[] = {
 static const lv_style_t tab_background_focus_style = {
   .v_p = { .const_props = tab_background_focus_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_area_cursor_const_list[] = {
@@ -2256,7 +2256,7 @@ static const lv_style_const_prop_t text_area_cursor_const_list[] = {
 static const lv_style_t text_area_cursor_style = {
   .v_p = { .const_props = text_area_cursor_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t text_area_placeholder_const_list[] = {
@@ -2266,7 +2266,7 @@ static const lv_style_const_prop_t text_area_placeholder_const_list[] = {
 static const lv_style_t text_area_placeholder_style = {
   .v_p = { .const_props = text_area_placeholder_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t tab_button_const_list[] = {
@@ -2276,7 +2276,7 @@ static const lv_style_const_prop_t tab_button_const_list[] = {
 static const lv_style_t tab_button_style = {
   .v_p = { .const_props = tab_button_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lv_style_const_prop_t led_const_list[] = {
@@ -2286,7 +2286,7 @@ static const lv_style_const_prop_t led_const_list[] = {
 static const lv_style_t led_style = {
   .v_p = { .const_props = led_const_list },
   .has_group = 0xff,
-  .is_const = 1
+
 };
 
 static const lvgl_api_style_descriptor_t lvgl_default_dark_style_descriptor_list[] = {

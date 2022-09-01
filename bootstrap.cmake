@@ -7,7 +7,7 @@ file(REMOVE_RECURSE ${DEPENDENCIES_DIRECTORY}/CMakeSDK)
 message(STATUS "cloning CMakeSDK project")
 
 execute_process(
-  COMMAND git clone --branch dev/v2.0 https://github.com/StratifyLabs/CMakeSDK.git
+  COMMAND git clone --branch v2.0 https://github.com/StratifyLabs/CMakeSDK.git
   WORKING_DIRECTORY ${DEPENDENCIES_DIRECTORY}
 )
 
