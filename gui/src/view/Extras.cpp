@@ -2,13 +2,35 @@
 // Created by Tyler Gilbert on 12/30/21.
 //
 
-#include <design.hpp>
-#include <lvgl.hpp>
-
 #include <sys/System.hpp>
 
-#include "Extras.hpp"
+#include <lvgl/Button.hpp>
+#include <lvgl/Spinner.hpp>
+#include <design/Grid.hpp>
+#include <design/Typography.hpp>
+#include <design/HorizontalLine.hpp>
+
 #include "designlab/fonts/FontAwesomeIcons.hpp"
+
+#include "Extras.hpp"
+
+using namespace lvgl;
+using namespace design;
+
+namespace {
+struct Names {
+  DESIGN_DECLARE_NAME(row);
+  DESIGN_DECLARE_NAME(icon_container);
+  DESIGN_DECLARE_NAME(content_container);
+  DESIGN_DECLARE_NAME(description_paragraph);
+  DESIGN_DECLARE_NAME(title_heading);
+  DESIGN_DECLARE_NAME(back_button);
+  DESIGN_DECLARE_NAME(spinner);
+  DESIGN_DECLARE_NAME(external_link_button);
+  DESIGN_DECLARE_NAME(link_row);
+  DESIGN_DECLARE_NAME(dots_label);
+};
+}
 
 ActionCard::ActionCard(const ActionCard::Construct &options) {
   construct_object(options.name);
@@ -18,13 +40,11 @@ ActionCard::ActionCard(const ActionCard::Construct &options) {
       .fill()
       .add(Container(Names::icon_container).set_width(20_percent).fill_height())
       .add(Container(Names::content_container).set_flex_grow().fill_height()));
-
   auto icon_container = find<Container>(Names::icon_container);
   icon_container
     .add(
       Heading1(options.icon).set_text_alignment(TextAlignment::center).center())
     .add_style(options.style);
-
   auto content_container = find<Container>(Names::content_container);
   content_container.add_style(Column::get_style());
   content_container.add(Heading3(options.title))
@@ -54,12 +74,10 @@ ScreenHeader::ScreenHeader(const ScreenHeader::Construct &options) {
         .add_label(icons::fa::chevron_left_solid)
         .add_event_callback(EventCode::clicked, options.back_clicked_callback));
   add(Heading2(options.title).set_flex_grow());
-
   add(Spinner(Spinner::Construct().set_name(Names::spinner))
         .add_flag(Flags::hidden)
         .set_width(20)
         .set_height(20));
-
   setup([](ScreenHeader screen_header) {
     screen_header.update_layout();
     const auto heading_size

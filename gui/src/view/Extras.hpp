@@ -12,9 +12,8 @@
 #include "model/Model.hpp"
 
 
-class ActionCard : public lvgl::ObjectAccess<ActionCard>, public ModelAccess {
+class ActionCard : public lvgl::ObjectAccess<ActionCard> {
 public:
-
   struct Construct {
     API_PUBLIC_MEMBER_AZ(description,Construct,const char*, "");
     API_PUBLIC_MEMBER_AZ(icon,Construct,const char*, "");
@@ -23,39 +22,20 @@ public:
     API_PUBLIC_MEMBER_AZ(style,Construct,const char*, "");
     API_PUBLIC_MEMBER_AZ(clicked_callback,Construct,lvgl::Event::Callback, nullptr);
   };
-
-  ActionCard(const Construct & options);
-  ActionCard(lv_obj_t * object){ m_object = object; }
-private:
-  struct Names {
-    DESIGN_DECLARE_NAME(row);
-    DESIGN_DECLARE_NAME(icon_container);
-    DESIGN_DECLARE_NAME(content_container);
-    DESIGN_DECLARE_NAME(description_paragraph);
-  };
+  explicit ActionCard(const Construct & options);
+  explicit ActionCard(lv_obj_t * object){ m_object = object; }
 };
 
-class ScreenHeader : public lvgl::ObjectAccess<ScreenHeader>, public ModelAccess {
+class ScreenHeader : public lvgl::ObjectAccess<ScreenHeader> {
 public:
-
   struct Construct {
     API_PUBLIC_MEMBER_AZ(name,Construct,const char*, "");
     API_PUBLIC_MEMBER_AZ(title,Construct,const char*, "");
     API_PUBLIC_MEMBER_AZ(back_clicked_callback,Construct,lvgl::Event::Callback, nullptr);
   };
-
-  ScreenHeader(const Construct & options);
-  ScreenHeader(lv_obj_t * object){ m_object = object; }
-
+  explicit ScreenHeader(const Construct & options);
+  explicit ScreenHeader(lv_obj_t * object){ m_object = object; }
   ScreenHeader & set_busy(bool value = true);
-private:
-  struct Names {
-    DESIGN_DECLARE_NAME(row);
-    DESIGN_DECLARE_NAME(title_heading);
-    DESIGN_DECLARE_NAME(back_button);
-    DESIGN_DECLARE_NAME(spinner);
-  };
-
 };
 
 class AttributionRow : public lvgl::ObjectAccess<AttributionRow> {
@@ -64,14 +44,6 @@ public:
     const char *name,
     const char *description,
     const char *external_link = nullptr);
-  AttributionRow(lv_obj_t *object) { m_object = object; }
-
-
-private:
-  struct Names {
-    DESIGN_DECLARE_NAME(external_link_button);
-    DESIGN_DECLARE_NAME(link_row);
-    DESIGN_DECLARE_NAME(dots_label);
-  };
+  explicit AttributionRow(lv_obj_t *object) { m_object = object; }
 };
 #endif // GUI_EXTRAS_HPP

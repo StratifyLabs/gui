@@ -22,10 +22,6 @@ struct Model {
     static constexpr auto files_screen_name = "Files";
   };
 
-  class Scope : public design::ModelScope {
-  public:
-    Scope() : design::ModelScope(Model::instance().model_scope_options) {}
-  };
 
   API_SINGLETON(Model);
 
@@ -63,21 +59,22 @@ struct Model {
   lvgl::Font button_font = lvgl::Font::find(48).get_font();
 
 private:
+  class Scope : public design::ModelScope {
+  public:
+    Scope() : design::ModelScope(Model::instance().model_scope_options) {}
+  };
   friend Scope;
-  friend class ModelAccess;
+  friend class ModelInScope;
   design::ModelScope::Construct model_scope_options;
 };
 
-class ModelAccess : public api::ExecutionContext {
+struct ModelInScope {
+  Model::Scope scope;
 public:
-  static Model &model() {
-    // make sure the caller has locked the model
-    Model &result = Model::instance();
-    API_ASSERT(result.model_scope_options.is_available());
-    return Model::instance();
-  }
-
-  static Printer &printer() { return model().printer; }
+  Model & instance = Model::instance();
 };
+
+
+
 
 #endif // GUI_MODEL_HPP

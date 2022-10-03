@@ -28,14 +28,14 @@ void Application::run(sys::Cli &cli) {
   // model cannot be touched until all lvgl initialization is complete
   // it is initialized on first access
   auto *runtime = []() {
-    Model::Scope model_scope;
-    Display(model().runtime->display()).set_theme(model().dark_theme);
+    auto model = ModelInScope();
+    Display(model.instance.runtime->display()).set_theme(model.instance.dark_theme);
 
-    About::setup(Generic(model().about_screen));
-    Files::setup(Generic(model().files_screen));
-    Github::setup(Generic(model().github_screen));
-    model().home_screen = Screen(screen().object());
-    return model().runtime;
+    About::setup(Generic(model.instance.about_screen));
+    Files::setup(Generic(model.instance.files_screen));
+    Github::setup(Generic(model.instance.github_screen));
+    model.instance.home_screen = Screen(screen().object());
+    return model.instance.runtime;
   }();
 
   Home::setup(Generic(screen().object()));
@@ -107,30 +107,26 @@ void Application::initialize(const sys::Cli &cli) {
   lvgl_api_initialize_png_decoder();
 
   {
-    Model::Scope model_scope;
-    model().runtime = &runtime;
-
-    model().icon_path = settings.icon_path;
-
-    Printer::Object root_object(printer(), "gui");
-    printer().key("starting", cli.get_name());
-    model().light_theme = Theme::find(settings.light_theme);
-    model().dark_theme = Theme::find(settings.dark_theme);
+    auto model = ModelInScope();
+    model.instance.runtime = &runtime;
+    model.instance.icon_path = settings.icon_path;
+    Printer::Object root_object(model.instance.printer, "gui");
+    model.instance.printer.key("starting", cli.get_name());
+    model.instance.light_theme = Theme::find(settings.light_theme);
+    model.instance.dark_theme = Theme::find(settings.dark_theme);
   }
 #else
   // on Stratify OS the system provides
   // the fonts, themes, display size, etc
   static lvgl::Runtime runtime;
   {
-    Model::Scope model_scope;
-
-    model().icon_path = "S:/assets/icon.png";
-    model().image_scale = 0.5f;
-
+    auto model = ModelInScope();
+    model.instance.icon_path = "S:/assets/icon.png";
+    model.instance.image_scale = 0.5f;
     // grab the light and dark themes for the model
-    model().runtime = &runtime;
-    model().light_theme = Theme::find("light");
-    model().dark_theme = Theme::find("dark");
+    model.instance.runtime = &runtime;
+    model.instance.light_theme = Theme::find("light");
+    model.instance.dark_theme = Theme::find("dark");
   }
 #endif
 }

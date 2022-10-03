@@ -10,7 +10,7 @@
 
 #include "view/ViewObject.hpp"
 
-class Application : public ModelAccess {
+class Application {
 public:
   static void run(sys::Cli & cli);
 

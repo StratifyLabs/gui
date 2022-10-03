@@ -18,20 +18,14 @@ using namespace printer;
 #include "designlab/fonts/FontAwesomeIcons.hpp"
 #include "model/Model.hpp"
 
-class ViewObject : public ModelAccess {
+class ViewObject {
 public:
 
 protected:
-  struct Worker {
-    thread::Thread thread;
-    thread::Mutex mutex;
-  };
-
-
   static void go_back(lv_event_t*){
-    Model::Scope model_scope;
+    auto model = ModelInScope();
     Screen::find_screen("default").load(
-      model().slide_right);
+      model.instance.slide_right);
   }
 };
 
