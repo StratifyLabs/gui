@@ -9,7 +9,7 @@
 #include "Extras.hpp"
 #include "ViewObject.hpp"
 
-class Github : public ViewObject, public lvgl::ObjectAccess<Github> {
+class Github : public lvgl::ObjectAccess<Github> {
 public:
   static void setup(Generic container);
   LVGL_OBJECT_ACCESS_CONSTRUCT_FROM_OBJECT(Github);

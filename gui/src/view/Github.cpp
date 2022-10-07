@@ -2,12 +2,12 @@
 // Created by Tyler Gilbert on 11/25/21.
 //
 
-#include <design/extras/FormList.hpp>
-#include <inet/Http.hpp>
-#include <fs/DataFile.hpp>
-#include <var/StackString.hpp>
-#include <json/JsonDocument.hpp>
 #include <design/Grid.hpp>
+#include <design/extras/FormList.hpp>
+#include <fs/DataFile.hpp>
+#include <inet/Http.hpp>
+#include <json/JsonDocument.hpp>
+#include <var/StackString.hpp>
 
 #include "Extras.hpp"
 #include "Github.hpp"
@@ -15,6 +15,7 @@
 using namespace inet;
 using namespace fs;
 using namespace var;
+using namespace lvgl;
 using namespace json;
 using namespace design;
 
@@ -49,7 +50,7 @@ get_url(inet::HttpSecureClient &secure_client, const char *url) {
 class UpdateWorker : public design::WorkerAccess<UpdateWorker> {
 public:
   UpdateWorker() = default;
-  explicit UpdateWorker(lvgl::Runtime *runtime)
+  explicit UpdateWorker(Runtime *runtime)
     : design::WorkerAccess<UpdateWorker>(runtime) {}
 
 private:
@@ -136,9 +137,9 @@ private:
   }
 };
 
-struct GithubData : public lvgl::UserDataAccess<GithubData> {
+struct GithubData : public UserDataAccess<GithubData> {
 public:
-  explicit GithubData(const char *name) : lvgl::UserDataAccess<GithubData>(name) {}
+  explicit GithubData(const char *name) : UserDataAccess<GithubData>(name) {}
   UpdateWorker worker;
 };
 
@@ -159,11 +160,10 @@ void Github::setup(Generic container) {
 Github::Github(const char *name) {
   construct_object(name);
   add_style("container");
-  {
-    auto model = ModelInScope();
-    user_data<GithubData>()->worker = std::move(
-      UpdateWorker(model.instance.runtime).set_associated_object(object()));
-  }
+
+  user_data<GithubData>()->worker
+    = std::move(UpdateWorker(ModelInScope().instance.runtime)
+                  .set_associated_object(object()));
 
   fill();
   add(Column()
@@ -171,8 +171,7 @@ Github::Github(const char *name) {
         .add_style("container")
         .add(ScreenHeader(ScreenHeader::Construct()
                             .set_name(Names::header_row)
-                            .set_title("Github: StratifyOS")
-                            .set_back_clicked_callback(go_back)))
+                            .set_title("Github: StratifyOS")))
         .add(FormList(FormList::Data::create(Names::form_list))
                .fill_width()
                .set_flex_grow()

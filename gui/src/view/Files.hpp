@@ -7,7 +7,7 @@
 
 #include "ViewObject.hpp"
 
-class Files : public ViewObject {
+class Files {
 public:
   static void setup(Generic container);
 

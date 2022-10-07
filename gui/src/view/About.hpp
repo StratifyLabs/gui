@@ -7,7 +7,7 @@
 
 #include "ViewObject.hpp"
 
-class About : public ViewObject, public lvgl::ObjectAccess<About> {
+class About : public lvgl::ObjectAccess<About> {
 public:
   static void setup(Generic generic){
     generic.add(About("about"));

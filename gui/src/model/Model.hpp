@@ -10,10 +10,10 @@
 #include <lvgl/Runtime.hpp>
 #include <lvgl/Screen.hpp>
 #include <lvgl/Theme.hpp>
+#include <lvgl/EventBus.hpp>
 
 #include <design/ModelScope.hpp>
 #include <design/Worker.hpp>
-
 
 struct Model {
   struct Names {
@@ -21,7 +21,6 @@ struct Model {
     static constexpr auto github_screen_name = "Github";
     static constexpr auto files_screen_name = "Files";
   };
-
 
   API_SINGLETON(Model);
 
@@ -33,13 +32,13 @@ struct Model {
   bool is_dark_theme = true;
   bool is_theme_updated = false;
 
-  const char * icon_path = nullptr;
+  const char *icon_path = nullptr;
   float image_scale = 1.0f;
 
   lvgl::Screen about_screen = lvgl::Screen(Names::about_screen_name);
   lvgl::Screen github_screen = lvgl::Screen(Names::github_screen_name);
   lvgl::Screen files_screen = lvgl::Screen(Names::files_screen_name);
-  lvgl::Screen home_screen = lvgl::Screen((lv_obj_t *)nullptr);
+  lvgl::Screen home_screen = lvgl::Screen(static_cast<lv_obj_t *>(nullptr));
 
   // this can be used to create a thread to process
   // background tasks
@@ -49,11 +48,11 @@ struct Model {
   printer::YamlPrinter printer;
 
   lvgl::Screen::Transition slide_right = {
-    .animation = lvgl::Screen::LoadAnimation::move_right,
+    .animation = lvgl::LoadAnimation::move_right,
     .period = animation_period_milliseconds * 1_milliseconds};
 
   lvgl::Screen::Transition slide_left = {
-    .animation = lvgl::Screen::LoadAnimation::move_left,
+    .animation = lvgl::LoadAnimation::move_left,
     .period = animation_period_milliseconds * 1_milliseconds};
 
   lvgl::Font button_font = lvgl::Font::find(48).get_font();
@@ -70,11 +69,17 @@ private:
 
 struct ModelInScope {
   Model::Scope scope;
+
 public:
-  Model & instance = Model::instance();
+  Model &instance = Model::instance();
 };
 
+enum class EventId {
+  back_button_pressed,
+  dark_theme_button_pressed,
+  light_theme_button_pressed
+};
 
-
+using Bus = lvgl::EventBus<EventId>;
 
 #endif // GUI_MODEL_HPP

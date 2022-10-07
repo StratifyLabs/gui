@@ -21,44 +21,20 @@ INCBIN(assetfs, "../gui/src/designlab/assets/assets.assetfs");
 using namespace lvgl;
 using namespace design;
 
-void Application::run(sys::Cli &cli) {
-
-  initialize(cli);
-
-  // model cannot be touched until all lvgl initialization is complete
-  // it is initialized on first access
-  auto *runtime = []() {
-    auto model = ModelInScope();
-    Display(model.instance.runtime->display()).set_theme(model.instance.dark_theme);
-
-    About::setup(Generic(model.instance.about_screen));
-    Files::setup(Generic(model.instance.files_screen));
-    Github::setup(Generic(model.instance.github_screen));
-    model.instance.home_screen = Screen(screen().object());
-    return model.instance.runtime;
-  }();
-
-  Home::setup(Generic(screen().object()));
-
-  // start the runtime loop
-  // use runtime.set_stopped() to exit
-  runtime->loop();
-}
-
-void Application::initialize(const sys::Cli &cli) {
+namespace {
+void initialize(const sys::Cli &cli) {
 #if defined __link
-
   struct Settings {
     window::Size default_size;
     window::Size minimum_size;
-    window::Window::Flags flags;
-    const char *dark_theme;
-    const char *light_theme;
-    const char *icon_path;
+    window::Window::Flags flags{window::Window::Flags::null};
+    const char *dark_theme = "";
+    const char *light_theme = "";
+    const char *icon_path = "";
   };
 
   const auto settings = []() {
-    if (sys::System().is_macosx()) {
+    if (sys::System::is_macosx()) {
       const auto default_size = window::Size(1600, 800);
       return Settings{
         .default_size = default_size,
@@ -87,7 +63,7 @@ void Application::initialize(const sys::Cli &cli) {
     window::Window::Flags::shown | settings.flags
       | window::Window::Flags::resizeable);
 
-  if (sys::System().is_processor_arm32() && sys::System().is_linux()) {
+  if (sys::System::is_processor_arm32() && sys::System::is_linux()) {
     window::Window::show_cursor(false);
   }
 
@@ -129,4 +105,57 @@ void Application::initialize(const sys::Cli &cli) {
     model.instance.dark_theme = Theme::find("dark");
   }
 #endif
+}
+
+void update_theme(EventId id) {
+  auto model = ModelInScope();
+  const auto is_dark = id == EventId::dark_theme_button_pressed;
+  const auto &theme
+    = is_dark ? model.instance.dark_theme : model.instance.light_theme;
+  Display(model.instance.runtime->display()).set_theme(theme);
+  model.instance.is_dark_theme = is_dark;
+  model.instance.is_theme_updated = true;
+  About::setup(model.instance.about_screen.get<Generic>().clean());
+  Files::setup(model.instance.files_screen.get<Generic>().clean());
+  Github::setup(model.instance.github_screen.get<Generic>().clean());
+  Home::setup(model.instance.home_screen.get<Generic>().clean());
+}
+} // namespace
+
+void Application::run(sys::Cli &cli) {
+
+  initialize(cli);
+
+  // model cannot be touched until all lvgl initialization is complete
+  // it is initialized on first access
+  auto *runtime = []() {
+    auto model = ModelInScope();
+    Display(model.instance.runtime->display())
+      .set_theme(model.instance.dark_theme);
+
+    About::setup(Generic(model.instance.about_screen));
+    Files::setup(Generic(model.instance.files_screen));
+    Github::setup(Generic(model.instance.github_screen));
+    model.instance.home_screen = Screen(screen().object());
+    return model.instance.runtime;
+  }();
+
+  auto back_button_subscription
+    = Bus::Subscription(EventId::back_button_pressed, [](EventId id) {
+        const auto transition = Screen::Transition{
+          .animation = LoadAnimation::move_right,
+          .period = Model::animation_period_milliseconds * 1_milliseconds};
+        Screen::find_screen(Screen::default_name).load(transition);
+      });
+
+  auto dark_theme_subscription
+    = Bus::Subscription(EventId::dark_theme_button_pressed, update_theme);
+  auto light_theme_subscription
+    = Bus::Subscription(EventId::light_theme_button_pressed, update_theme);
+
+  Home::setup(Generic(screen().object()));
+
+  // start the runtime loop
+  // use runtime.set_stopped() to exit
+  runtime->loop();
 }

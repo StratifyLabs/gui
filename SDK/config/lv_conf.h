@@ -512,6 +512,7 @@ e.g. "stm32f769xx.h" or "stm32f429xx.h"*/
 /*A layout similar to Grid in CSS.*/
 #define LV_USE_GRID     1
 
+#define LV_USE_MSG 1
 #define LV_USE_PNG 1
 #define LV_USE_GPU_SDL 1
 #define LV_USE_EXTERNAL_RENDERER LV_USE_GPU_SDL

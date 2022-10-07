@@ -15,7 +15,6 @@ public:
   static void run(sys::Cli & cli);
 
 private:
-  static void initialize(const sys::Cli &cli);
 };
 
 

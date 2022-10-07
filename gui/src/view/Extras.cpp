@@ -72,7 +72,9 @@ ScreenHeader::ScreenHeader(const ScreenHeader::Construct &options) {
   add(Button(Names::back_button)
         .add_style("btn_primary btn_lg")
         .add_label(icons::fa::chevron_left_solid)
-        .add_event_callback(EventCode::clicked, options.back_clicked_callback));
+        .add_event_callback(EventCode::clicked, [](lv_event_t *){
+          Bus::send(EventId::back_button_pressed);
+        }));
   add(Heading2(options.title).set_flex_grow());
   add(Spinner(Spinner::Construct().set_name(Names::spinner))
         .add_flag(Flags::hidden)

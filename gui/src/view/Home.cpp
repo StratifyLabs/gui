@@ -28,7 +28,6 @@ Home::Home(const char *name) {
   fill();
   // The current screen is the "default" screen
   // it is automatically created by lvgl
-  auto model = ModelInScope();
   clear_flag(Flags::scrollable)
     .add(Container(Names::container)
            .fill()
@@ -40,6 +39,7 @@ Home::Home(const char *name) {
   static const auto width = 45_percent;
   static const auto height = 45_percent;
   auto content = find<Column>(Names::column);
+  auto model = ModelInScope();
   content.add(NakedContainer().set_width(width).set_height(height).add(
     Image()
       .set_source(model.instance.icon_path)

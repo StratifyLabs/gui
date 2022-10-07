@@ -31,7 +31,6 @@ public:
   struct Construct {
     API_PUBLIC_MEMBER_AZ(name,Construct,const char*, "");
     API_PUBLIC_MEMBER_AZ(title,Construct,const char*, "");
-    API_PUBLIC_MEMBER_AZ(back_clicked_callback,Construct,lvgl::Event::Callback, nullptr);
   };
   explicit ScreenHeader(const Construct & options);
   explicit ScreenHeader(lv_obj_t * object){ m_object = object; }

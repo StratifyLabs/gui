@@ -7,7 +7,7 @@
 
 #include "ViewObject.hpp"
 
-class Home : public ViewObject, public lvgl::ObjectAccess<Home> {
+class Home : public lvgl::ObjectAccess<Home> {
 public:
   static void setup(Generic generic){
     generic.add(Home());

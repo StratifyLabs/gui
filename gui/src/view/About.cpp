@@ -6,10 +6,6 @@
 #include <design/HorizontalLine.hpp>
 
 #include "About.hpp"
-#include "Files.hpp"
-#include "Github.hpp"
-#include "Home.hpp"
-
 #include "Extras.hpp"
 
 using namespace var;
@@ -21,20 +17,7 @@ struct Names {
   DESIGN_DECLARE_NAME(light_button);
 };
 
-void update_theme(lv_event_t *e) {
-  auto model = ModelInScope();
-  const auto is_dark = Event(e).target().name() == Names::dark_button;
-  const auto &theme = is_dark ? model.instance.dark_theme : model.instance.light_theme;
-  Display(model.instance.runtime->display()).set_theme(theme);
-  model.instance.is_dark_theme = is_dark;
-  model.instance.is_theme_updated = true;
-  About::setup(model.instance.about_screen.get<Generic>().clean());
-  Files::setup(model.instance.files_screen.get<Generic>().clean());
-  Github::setup(model.instance.github_screen.get<Generic>().clean());
-  Home::setup(model.instance.home_screen.get<Generic>().clean());
-}
-
-}
+} // namespace
 
 About::About(const char *name) {
   construct_object(name);
@@ -45,20 +28,26 @@ About::About(const char *name) {
     Column()
       .fill()
       .add_style("container")
-      .add(ScreenHeader(
-        ScreenHeader::Construct().set_back_clicked_callback(go_back).set_title(
-          "About")))
+      .add(ScreenHeader(ScreenHeader::Construct().set_title("About")))
       .add(HorizontalLine())
       .add(Row()
              .fill_width()
              .add(Button(Names::dark_button)
                     .add_label(KeyString(icons::fa::moon_solid).append(" Dark"))
                     .add_style("btn_dark")
-                    .add_event_callback(EventCode::clicked, update_theme))
+                    .add_event_callback(
+                      EventCode::clicked,
+                      [](lv_event_t *) {
+                        Bus::send(EventId::dark_theme_button_pressed);
+                      }))
              .add(Button(Names::light_button)
                     .add_label(KeyString(icons::fa::sun_solid).append(" Light"))
                     .add_style("btn_warning")
-                    .add_event_callback(EventCode::clicked, update_theme)))
+                    .add_event_callback(
+                      EventCode::clicked,
+                      [](lv_event_t *) {
+                        Bus::send(EventId::light_theme_button_pressed);
+                      })))
       .add(AttributionRow("Version", VERSION))
       .add(AttributionRow(
         "Publisher",
