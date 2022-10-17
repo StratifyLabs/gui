@@ -37,7 +37,7 @@ constexpr auto item_name_list
 
 json::JsonValue
 get_url(inet::HttpSecureClient &secure_client, const char *url) {
-  HttpSecureClient::MethodResponse<DataFile> response;
+  auto response = HttpSecureClient::MethodResponse(DataFile());
   secure_client.get(url, response);
   if (api::ExecutionContext::is_success()) {
     return JsonDocument().load(response.file.seek(0));
@@ -47,11 +47,11 @@ get_url(inet::HttpSecureClient &secure_client, const char *url) {
 
 // Workers are used to run tasks in the background and then update the
 // graphics in the main thread
-class UpdateWorker : public design::WorkerAccess<UpdateWorker> {
+class UpdateWorker : public WorkerAccess<UpdateWorker> {
 public:
   UpdateWorker() = default;
   explicit UpdateWorker(Runtime *runtime)
-    : design::WorkerAccess<UpdateWorker>(runtime) {}
+    : WorkerAccess<UpdateWorker>(runtime) {}
 
 private:
   // Use private members to communicate between the worker
@@ -61,7 +61,7 @@ private:
   var::NumberString m_item_value;
 
   // This will run in a background thread when the worker is started
-  void work() override {
+  auto work() -> void override {
     set_spinner_busy(true);
     set_items_to_loading();
 
@@ -95,10 +95,10 @@ private:
   }
 
   // used to download info from Github
-  void update_count(
+  auto update_count(
     inet::HttpSecureClient &secure_client,
     const char *url,
-    const char *item_name) {
+    const char *item_name) -> void {
     const auto result = get_url(secure_client, url);
 
     if (is_success()) {
@@ -108,7 +108,7 @@ private:
   }
 
   // These are used to update the runtime
-  void set_spinner_busy(bool value) {
+  auto set_spinner_busy(bool value) -> void {
     m_is_spinner_busy = value;
     push_task_to_runtime<UpdateWorker>(this, [](UpdateWorker *worker) {
       auto github = Github(worker->associated_object());
@@ -117,19 +117,19 @@ private:
     }).wait_runtime_task();
   }
 
-  void update_item(var::StringView name, var::StringView value) {
+  auto update_item(var::StringView name, var::StringView value) -> void {
     m_item_name = name;
     m_item_value = value;
     push_task_to_runtime<UpdateWorker>(this, [](UpdateWorker *worker) {
       auto github = Github(worker->associated_object());
-      github.find<design::FormList>(Names::form_list)
+      github.find<FormList>(Names::form_list)
         .update_item_value(worker->m_item_name, worker->m_item_value);
     }).wait_runtime_task();
   }
-  void set_items_to_loading() {
+  auto set_items_to_loading() -> void {
     push_task_to_runtime<UpdateWorker>(this, [](UpdateWorker *worker) {
       auto github = Github(worker->associated_object());
-      auto form_list = github.find<design::FormList>(Names::form_list);
+      auto form_list = github.find<FormList>(Names::form_list);
       for (const auto name : item_name_list) {
         form_list.update_item_value(name, "loading...");
       }

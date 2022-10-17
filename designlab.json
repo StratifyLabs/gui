@@ -1,5 +1,5 @@
 {
-   "source": "gui/src",
+   "source": "src/app",
    "themes": [
       {
          "path": "SDK/dependencies/DesignAPI/themes/default/theme-dark-small.json"

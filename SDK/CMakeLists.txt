@@ -24,9 +24,10 @@ set(LWIP_STRATIFYOS_PATH
   ${CMAKE_CURRENT_SOURCE_DIR}/dependencies/StratifyOS/include
   CACHE INTERNAL "LWIP StratifyOS INCLUDE PATHS")
 if(${CMSDK_IS_ARM})
-  set(API_PUBLIC_COMPILE_OPTIONS -Os CACHE INTERNAL "API Public compile options O3")
+  set(API_PUBLIC_COMPILE_OPTIONS -Os CACHE INTERNAL "API Public compile options")
 else()
-  set(API_PUBLIC_COMPILE_OPTIONS -O3 CACHE INTERNAL "API Public compile options Os")
+  set(API_PUBLIC_COMPILE_OPTIONS -O3 -fsanitize=address CACHE INTERNAL "API Public compile options")
+  set(API_PUBLIC_LINK_OPTIONS -fsanitize=address CACHE INTERNAL "API Public Link options")
 endif()
 set(API_PUBLIC_DEBUG_COMPILE_OPTIONS -g CACHE INTERNAL "API Public debug compile options -g")
 sdk_add_subdirectory(API main)

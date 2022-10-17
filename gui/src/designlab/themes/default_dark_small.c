@@ -35,12 +35,14 @@ static const lv_style_prop_t transition_property_list[] = {
    (lv_style_prop_t)0x006D /* transform_angle */,
    (lv_style_prop_t)0x0062 /* color_filter_opacity */,
    (lv_style_prop_t)0x0061 /* color_filter_descriptor */,
-   (lv_style_prop_t)0x0060 /* opacity */
+   (lv_style_prop_t)0x0060 /* opacity */,
+  (lv_style_prop_t)0x0000 /* zero terminator */
 };
 
 static const lv_style_prop_t drawer_transition_property_list[] = {
    (lv_style_prop_t)0x006B /* translate_y */,
-   (lv_style_prop_t)0x006A /* translate_x */
+   (lv_style_prop_t)0x006A /* translate_x */,
+  (lv_style_prop_t)0x0000 /* zero terminator */
 };
 
 static const lv_style_transition_dsc_t transition_normal = {
