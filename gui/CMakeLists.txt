@@ -24,26 +24,30 @@ cmsdk_app_target(RELEASE ${LOCAL_NAME} "" release ${CMSDK_ARCH})
 set(ICON_FILE icon.icns)
 set(ICON_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../designlab/assets/${ICON_FILE})
 add_executable(${RELEASE_TARGET} MACOSX_BUNDLE ${ICON_PATH})
+
+cmsdk2_add_executable(
+  NAME ${PROJECT_NAME}
+  ARCH ${CMSDK_ARCH}
+  CONFIG relese
+  TARGET RELEASE_TARGET
+)
+
 target_sources(${RELEASE_TARGET}
   PRIVATE
   ${PRIVATE_SOURCELIST}
-  ${DESIGNLAB_SOURCELIST}
-  )
+  ${DESIGNLAB_SOURCELIST})
 
 target_compile_definitions(${RELEASE_TARGET}
   PRIVATE
-  -DVERSION=\"${CMAKE_PROJECT_VERSION}\"
-  )
+  -DVERSION=\"${CMAKE_PROJECT_VERSION}\")
 
 target_include_directories(${RELEASE_TARGET}
   PRIVATE
-  ${CMAKE_CURRENT_SOURCE_DIR}/src
-  )
+  ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 target_compile_options(${RELEASE_TARGET}
   PRIVATE
-  -O3
-  )
+  -O3)
 
 set_property(TARGET ${RELEASE_TARGET} PROPERTY CXX_STANDARD 17)
 
