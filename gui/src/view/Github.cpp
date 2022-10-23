@@ -50,8 +50,8 @@ get_url(inet::HttpSecureClient &secure_client, const char *url) {
 class UpdateWorker : public WorkerAccess<UpdateWorker> {
 public:
   UpdateWorker() = default;
-  explicit UpdateWorker(Runtime *runtime)
-    : WorkerAccess<UpdateWorker>(runtime) {}
+  explicit UpdateWorker(Runtime *runtime, lv_obj_t *object)
+    : WorkerAccess<UpdateWorker>(runtime, object) {}
 
 private:
   // Use private members to communicate between the worker
@@ -110,25 +110,24 @@ private:
   // These are used to update the runtime
   auto set_spinner_busy(bool value) -> void {
     m_is_spinner_busy = value;
-    push_task_to_runtime<UpdateWorker>(this, [](UpdateWorker *worker) {
-      auto github = Github(worker->associated_object());
-      github.find<ScreenHeader>(Names::header_row)
-        .set_busy(worker->m_is_spinner_busy);
+    push_task_to_runtime([this]() {
+      auto github = Github(associated_object());
+      github.find<ScreenHeader>(Names::header_row).set_busy(m_is_spinner_busy);
     }).wait_runtime_task();
   }
 
   auto update_item(var::StringView name, var::StringView value) -> void {
     m_item_name = name;
     m_item_value = value;
-    push_task_to_runtime<UpdateWorker>(this, [](UpdateWorker *worker) {
-      auto github = Github(worker->associated_object());
+    push_task_to_runtime([this]() {
+      auto github = Github(associated_object());
       github.find<FormList>(Names::form_list)
-        .update_item_value(worker->m_item_name, worker->m_item_value);
+        .update_item_value(m_item_name, m_item_value);
     }).wait_runtime_task();
   }
   auto set_items_to_loading() -> void {
-    push_task_to_runtime<UpdateWorker>(this, [](UpdateWorker *worker) {
-      auto github = Github(worker->associated_object());
+    push_task_to_runtime([this]() {
+      auto github = Github(associated_object());
       auto form_list = github.find<FormList>(Names::form_list);
       for (const auto name : item_name_list) {
         form_list.update_item_value(name, "loading...");
@@ -147,6 +146,8 @@ public:
 void entered(lv_event_t *e) {
   auto github = Event(e).target().find<Github>(Names::github_object);
   auto *data = github.user_data<GithubData>();
+  data->worker
+    = UpdateWorker(ModelInScope().instance.runtime, data->associated_object());
   data->worker.start();
 }
 
@@ -160,10 +161,6 @@ void Github::setup(Generic container) {
 Github::Github(const char *name) {
   construct_object(name);
   add_style("container");
-
-  user_data<GithubData>()->worker
-    = std::move(UpdateWorker(ModelInScope().instance.runtime)
-                  .set_associated_object(object()));
 
   fill();
   add(Column()

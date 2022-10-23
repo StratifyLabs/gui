@@ -22,6 +22,12 @@ using namespace lvgl;
 using namespace design;
 
 namespace {
+
+lv_fs_drv_t assetfs_drive{};
+
+bool is_raspberry_pi
+  = sys::System::is_processor_arm32() && sys::System::is_linux();
+
 void initialize(const sys::Cli &cli) {
 #if defined __link
   struct Settings {
@@ -35,35 +41,45 @@ void initialize(const sys::Cli &cli) {
 
   const auto settings = []() {
     if (sys::System::is_macosx()) {
-      const auto default_size = window::Size(1600, 800);
+      const auto default_size = window::Size(1600, 960);
       return Settings{
         .default_size = default_size,
         .minimum_size = default_size.get_half(),
-        .flags = window::Window::Flags::highdpi,
+        .flags
+        = window::Window::Flags::highdpi | window::Window::Flags::resizeable,
         .dark_theme = "default-dark-medium",
         .light_theme = "default-light-medium",
         .icon_path = "a:icon-256x256.png"};
+    }
+    if (is_raspberry_pi) {
+      const auto default_size = window::Size(800, 480);
+      return Settings{
+        .default_size = default_size,
+        .minimum_size = default_size.get_half(),
+        .flags = window::Window::Flags::null,
+        .dark_theme = "default-dark-small",
+        .light_theme = "default-light-small",
+        .icon_path = "a:icon-128x128.png"};
     }
     {
       const auto default_size = window::Size(800, 480);
       return Settings{
         .default_size = default_size,
         .minimum_size = default_size.get_half(),
-        .flags = window::Window::Flags::null,
+        .flags = window::Window::Flags::resizeable,
         .dark_theme = "default-dark-medium",
         .light_theme = "default-light-medium",
         .icon_path = "a:icon-128x128.png"};
     }
   }();
 
-  static lvgl::Runtime runtime(
+  static auto runtime = lvgl::Runtime(
     "gui",
     window::Point(),
     settings.default_size,
-    window::Window::Flags::shown | settings.flags
-      | window::Window::Flags::resizeable);
+    window::Window::Flags::shown | settings.flags);
 
-  if (sys::System::is_processor_arm32() && sys::System::is_linux()) {
+  if (is_raspberry_pi) {
     window::Window::show_cursor(false);
   }
 
@@ -75,8 +91,10 @@ void initialize(const sys::Cli &cli) {
 
   // mount the assets FS which include the PNG icon
   // this file is distributed with the binary rather than as a separate file
-  static lv_fs_drv_t drive;
-  lvgl_api_mount_asset_filesystem(DESIGN_INCBIN_DATA(assetfs), &drive, 'a');
+  lvgl_api_mount_asset_filesystem(
+    DESIGN_INCBIN_DATA(assetfs),
+    &assetfs_drive,
+    'a');
   // Icon is at a:icon256x256.png
 
   // load the PNG decoder
@@ -155,6 +173,17 @@ void Application::run(sys::Cli &cli) {
 
   Home::setup(Generic(screen().object()));
 
+  /* I am not sure why the RPI needs a short duration deferral of drawing the
+   * home screen. Without the delay, the screen starts up blank until the user pushes a
+   * button (which cannot be seen)
+   */
+  if (is_raspberry_pi) {
+    runtime->push(50_milliseconds, []() {
+      Home::setup(Generic(screen().object()));
+    });
+  } else {
+    Home::setup(Generic(screen().object()));
+  }
   // start the runtime loop
   // use runtime.set_stopped() to exit
   runtime->loop();
