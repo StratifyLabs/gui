@@ -41,6 +41,8 @@ You can build the project with the following commands:
 ```bash
 git clone https://github.com/StratifyLabs/gui.git
 cd gui
+# Choose a stable branch (main might now be stable)
+git switch v1.0
 cmake -P bootstrap.cmake
 cd cmake_link
 cmake .. -GNinja
