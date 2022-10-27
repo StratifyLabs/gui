@@ -119,8 +119,8 @@ void initialize(const sys::Cli &cli) {
     model.instance.image_scale = 0.5f;
     // grab the light and dark themes for the model
     model.instance.runtime = &runtime;
-    model.instance.light_theme = Theme::find("light");
-    model.instance.dark_theme = Theme::find("dark");
+    model.instance.light_theme = Theme::find("default-light-small");
+    model.instance.dark_theme = Theme::find("default-dark-small");
   }
 #endif
 }
