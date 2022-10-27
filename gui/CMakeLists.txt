@@ -14,13 +14,23 @@ endif()
 
 set(ICON_FILE icon.icns)
 set(ICON_PATH ../designlab/assets/${ICON_FILE})
+if(CMSDK_IS_ARM)
+  cmsdk2_add_executable(
+    NAME gui
+    ARCH ${CMSDK_ARCH}
+    SUFFIX .elf
+    CONFIG release
+    TARGET RELEASE_TARGET)
+else()
+  cmsdk2_add_executable(
+    NAME gui
+    ARCH ${CMSDK_ARCH}
+    FLAT
+    CONFIG release
+    TARGET RELEASE_TARGET)
+endif()
 
-cmsdk2_add_executable(
-  NAME ${PROJECT_NAME}
-  ARCH ${CMSDK_ARCH}
-  FLAT
-  CONFIG release
-  TARGET RELEASE_TARGET)
+
 
 cmsdk2_add_sources(
   TARGET ${RELEASE_TARGET}
