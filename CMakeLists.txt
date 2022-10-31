@@ -5,10 +5,9 @@ set(CMSDK_MACOS_VERSION_MIN 10.14 CACHE INTERNAL "Override default min OS for Ma
 set(CMAKE_MODULE_PATH ${CMSDK_LOCAL_PATH}/cmake)
 set(CMAKE_TOOLCHAIN_FILE ${CMAKE_MODULE_PATH}/cmsdk-toolchain.cmake)
 include(cmsdk)
-set(GUI_PROJECT_VERSION 1.0.0 CACHE INTERNAL "gui application version")
 project(gui
 	LANGUAGES CXX C
-	VERSION ${GUI_PROJECT_VERSION})
+	VERSION 1.0.0)
 
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -D__SANITIZE_THREAD__=0")
 
